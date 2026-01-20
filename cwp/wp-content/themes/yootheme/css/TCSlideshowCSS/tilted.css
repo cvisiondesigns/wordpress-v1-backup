@@ -1,0 +1,602 @@
+/*
+# ------------------------------------------------------------------------
+# Vina Tilted Content Slideshow for Joomla 3
+# ------------------------------------------------------------------------
+# Copyright(C) 2014 www.VinaGecko.com. All Rights Reserved.
+# @license http://www.gnu.org/licenseses/gpl-3.0.html GNU/GPL
+# Author: VinaGecko.com
+# Websites: http://vinagecko.com
+# Forum:    http://vinagecko.com/forum/
+# ------------------------------------------------------------------------
+*/
+
+.vina-tilted-content-slideshow {
+	position: relative;
+}
+.vina-tilted-content-slideshow .hide {
+	display: block !important;
+}
+.vina-tilted-slides {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+.no-js .vina-tilted-slides {
+	height: auto;
+}
+.vina-tilted-slides > li {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	visibility: hidden;
+	-webkit-perspective: 1600px;
+	perspective: 1600px;
+}
+.no-js .vina-tilted-slides > li {
+	position: relative;
+	visibility: visible;
+}
+.vina-tilted-content-slideshow > nav {
+	text-align: center;
+	bottom: 15px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.vina-tilted-content-slideshow > nav span {
+	-webkit-transition: background-color 0.2s;
+    border-radius: 3px;
+	padding-left: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    transition: background-color 0.2s ease 0s;
+}
+.vina-tilted-content-slideshow .description {
+	font-size: 1.7em;
+  font-weight: 300;
+	position: relative;
+	z-index: 1000;
+	opacity: 0;
+}
+.no-js .vina-tilted-content-slideshow .description {
+	opacity: 1;
+}
+.vina-tilted-content-slideshow .description h2 {
+	font-size: 200%;
+	line-height: 110%;
+}
+.vina-tilted-content-slideshow .description p {
+	line-height: 120%;
+}
+.vina-tilted-content-slideshow .description .btn {
+	font-size: 120%;
+    line-height: 100%;
+    margin-top: 15px;
+    padding: 10px 15px;
+}
+.vina-tilted-content-slideshow .tiltview {
+	position: absolute;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateY(-50%) rotateX(60deg) rotateZ(35deg);
+	transform: translateY(-50%) rotateX(60deg) rotateZ(35deg);
+}
+.vina-tilted-content-slideshow .tiltview a {
+	outline: 1px solid transparent;
+}
+.vina-tilted-content-slideshow .tiltview a,
+.vina-tilted-content-slideshow .tiltview a img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.vina-tilted-content-slideshow .tiltview a:first-child {
+	margin-bottom: 30px;
+}
+.vina-tilted-content-slideshow .tiltview.row a {
+	width: 48%;
+	width: calc(50% - 15px);
+	margin: 0;
+}
+.vina-tilted-content-slideshow .tiltview.row a:nth-child(2) {
+	left: 50%;
+	left: calc(50% + 15px);
+	position: absolute;
+	top: 0;
+}
+
+/* Show/Hide */
+.vina-tilted-slides > li.current,
+.vina-tilted-slides > li.show {
+	visibility: visible;
+}
+.vina-tilted-content-slideshow .description {
+	-webkit-transition: opacity 0.75s;
+	transition: all 0.75s;
+}
+.vina-tilted-content-slideshow .current .description,
+.vina-tilted-content-slideshow .show .description {
+	opacity: 1;
+}
+
+.vina-tilted-content-slideshow .hide .description {
+	opacity: 0;
+}
+/* Individual effects */
+
+/* Move Up, Move Down, Slide Up, Slide Down, Slide Left, Slide Right */
+/* For each effect we'll define the incoming and outgoing animation */
+
+/***********************/
+/* Move up */
+/***********************/
+.vina-tilted-slides .hide[data-effect-out="moveUpOut"] .tiltview a {
+	-webkit-animation: moveUpOut 1.5s both;
+	animation: moveUpOut 1.5s both;
+}
+
+.vina-tilted-slides .hide[data-effect-out="moveUpOut"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+@-webkit-keyframes moveUpOut {
+	25% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateZ(-30px);
+	}
+	100% {
+		-webkit-transform: translateZ(3000px);
+	}
+}
+
+@keyframes moveUpOut {
+	25% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateZ(-30px);
+	}
+	100% {
+		transform: translateZ(3000px);
+	}
+}
+
+.show[data-effect-in="moveUpIn"] .tiltview a {
+	-webkit-animation: moveUpIn 1.5s 0.5s both;
+	animation: moveUpIn 1.5s 0.5s both;
+}
+
+.show[data-effect-in="moveUpIn"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+@-webkit-keyframes moveUpIn {
+	0% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateZ(-3000px);
+	}
+	75% {
+		-webkit-transform: translateZ(30px);
+	}
+	100% {
+		-webkit-transform: translateZ(0);
+	}
+}
+
+@keyframes moveUpIn {
+	0% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateZ(-3000px);
+	}
+	75% {
+		transform: translateZ(30px);
+	}
+	100% {
+		transform: translateZ(0);
+	}
+}
+
+/***********************/
+/* Move down */
+/***********************/
+.vina-tilted-slides .hide[data-effect-out="moveDownOut"] .tiltview a {
+	-webkit-animation: moveDownOut 1.5s both;
+	animation: moveDownOut 1.5s both;
+}
+
+.vina-tilted-slides .hide[data-effect-out="moveDownOut"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+@-webkit-keyframes moveDownOut {
+	25% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateZ(30px);
+	}
+	100% {
+		-webkit-transform: translateZ(-3000px);
+	}
+}
+
+@keyframes moveDownOut {
+	25% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateZ(30px);
+	}
+	100% {
+		transform: translateZ(-3000px);
+	}
+}
+
+.show[data-effect-in="moveDownIn"] .tiltview a {
+	-webkit-animation: moveDownIn 1.5s 0.5s both;
+	animation: moveDownIn 1.5s 0.5s both;
+}
+
+.show[data-effect-in="moveDownIn"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+@-webkit-keyframes moveDownIn {
+	0% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateZ(3000px);
+	}
+	75% {
+		-webkit-transform: translateZ(-30px);
+	}
+	100% {
+		-webkit-transform: translateZ(0);
+	}
+}
+
+@keyframes moveDownIn {
+	0% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateZ(3000px);
+	}
+	75% {
+		transform: translateZ(-30px);
+	}
+	100% {
+		transform: translateZ(0);
+	}
+}
+
+/***********************/
+/* Slide up */
+/***********************/
+.vina-tilted-slides .hide[data-effect-out="slideUpOut"] .tiltview a {
+	-webkit-animation: slideUpOut 1.5s both;
+	animation: slideUpOut 1.5s both;
+}
+
+.vina-tilted-slides .hide[data-effect-out="slideUpOut"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+@-webkit-keyframes slideUpOut {
+	25% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateY(30px);
+	}
+	100% {
+		-webkit-transform: translateY(-3000px);
+	}
+}
+
+@keyframes slideUpOut {
+	25% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateY(30px);
+	}
+	100% {
+		transform: translateY(-3000px);
+	}
+}
+
+.show[data-effect-in="slideUpIn"] .tiltview a {
+	-webkit-animation: slideUpIn 1.5s 0.5s both;
+	animation: slideUpIn 1.5s 0.5s both;
+}
+
+.show[data-effect-in="slideUpIn"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+@-webkit-keyframes slideUpIn {
+	0% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateY(3000px);
+	}
+	75% {
+		-webkit-transform: translateY(-30px);
+	}
+	100% {
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes slideUpIn {
+	0% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateY(3000px);
+	}
+	75% {
+		transform: translateY(-30px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+/***********************/
+/* Slide down */
+/***********************/
+.vina-tilted-slides .hide[data-effect-out="slideDownOut"] .tiltview a {
+	-webkit-animation: slideDownOut 1.5s both;
+	animation: slideDownOut 1.5s both;
+}
+
+.vina-tilted-slides .hide[data-effect-out="slideDownOut"] .tiltview.row a:nth-child(2),
+.vina-tilted-slides .hide[data-effect-out="slideDownOut"] .tiltview.col a:first-child {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+@-webkit-keyframes slideDownOut {
+	25% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateY(-30px);
+	}
+	100% {
+		-webkit-transform: translateY(3000px);
+	}
+}
+
+@keyframes slideDownOut {
+	25% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateY(-30px);
+	}
+	100% {
+		transform: translateY(3000px);
+	}
+}
+
+.show[data-effect-in="slideDownIn"] .tiltview a {
+	-webkit-animation: slideDownIn 1.5s 0.5s both;
+	animation: slideDownIn 1.5s 0.5s both;
+}
+
+.show[data-effect-in="slideDownIn"] .tiltview.row a:nth-child(2),
+.show[data-effect-in="slideDownIn"] .tiltview.col a:first-child {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+@-webkit-keyframes slideDownIn {
+	0% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateY(-3000px);
+	}
+	75% {
+		-webkit-transform: translateY(30px);
+	}
+	100% {
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes slideDownIn {
+	0% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateY(-3000px);
+	}
+	75% {
+		transform: translateY(30px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+/***********************/
+/* Slide left */
+/***********************/
+.vina-tilted-slides .hide[data-effect-out="slideLeftOut"] .tiltview a {
+	-webkit-animation: slideLeftOut 1.5s both;
+	animation: slideLeftOut 1.5s both;
+}
+
+.vina-tilted-slides .hide[data-effect-out="slideLeftOut"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+@-webkit-keyframes slideLeftOut {
+	25% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateX(30px);
+	}
+	100% {
+		-webkit-transform: translateX(-5000px);
+	}
+}
+
+@keyframes slideLeftOut {
+	25% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateX(30px);
+	}
+	100% {
+		transform: translateX(-5000px);
+	}
+}
+
+.show[data-effect-in="slideLeftIn"] .tiltview a {
+	-webkit-animation: slideLeftIn 1.5s 0.5s both;
+	animation: slideLeftIn 1.5s 0.5s both;
+}
+
+.show[data-effect-in="slideLeftIn"] .tiltview a:nth-child(2) {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+@-webkit-keyframes slideLeftIn {
+	0% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateX(3000px);
+	}
+	75% {
+		-webkit-transform: translateX(-30px);
+	}
+	100% {
+		-webkit-transform: translateX(0);
+	}
+}
+
+@keyframes slideLeftIn {
+	0% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateX(3000px);
+	}
+	75% {
+		transform: translateX(-30px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+/***********************/
+/* Slide right */
+/***********************/
+.vina-tilted-slides .hide[data-effect-out="slideRightOut"] .tiltview a {
+	-webkit-animation: slideRightOut 1.5s both;
+	animation: slideRightOut 1.5s both;
+}
+
+.vina-tilted-slides .hide[data-effect-out="slideRightOut"] .tiltview.col a:nth-child(2),
+.vina-tilted-slides .hide[data-effect-out="slideRightOut"] .tiltview.row a:first-child {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+@-webkit-keyframes slideRightOut {
+	25% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateX(-30px);
+	}
+	100% {
+		-webkit-transform: translateX(3000px);
+	}
+}
+
+@keyframes slideRightOut {
+	25% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateX(-30px);
+	}
+	100% {
+		transform: translateX(3000px);
+	}
+}
+
+.show[data-effect-in="slideRightIn"] .tiltview a {
+	-webkit-animation: slideRightIn 1.5s 0.5s both;
+	animation: slideRightIn 1.5s 0.5s both;
+}
+
+.show[data-effect-in="slideRightIn"] .tiltview.col a:nth-child(2),
+.show[data-effect-in="slideRightIn"] .tiltview.row a:first-child {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+@-webkit-keyframes slideRightIn {
+	0% {
+		-webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		-webkit-transform: translateX(-5000px);
+	}
+	75% {
+		-webkit-transform: translateX(30px);
+	}
+	100% {
+		-webkit-transform: translateX(0);
+	}
+}
+
+@keyframes slideRightIn {
+	0% {
+		animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+		transform: translateX(-5000px);
+	}
+	75% {
+		transform: translateX(30px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+/* Fallback for no 3D Transforms and no preserve-3d */
+.no-csstransformspreserve3d .show .tiltview a,
+.no-csstransformspreserve3d .vina-tilted-slides .hide .tiltview a,
+.no-csstransforms3d .show .tiltview a,
+.no-csstransforms3d .vina-tilted-slides .hide .tiltview a {
+	-webkit-animation: none !important;
+	animation: none !important;
+}
+.no-csstransforms3d .tiltview.col {
+	top: -50%;
+}
+.no-csstransforms3d .tiltview.row {
+	top: 20px;
+}
+
+/* Some media queries */
+@media screen and (max-width: 65.3125em) {
+	.vina-tilted-content-slideshow .description,
+	.vina-tilted-content-slideshow .tiltview {
+		width: 100% !important;
+	}
+	.vina-tilted-content-slideshow .description {
+		left: 0% !important;
+		width: 90% !important;
+		margin: 0 auto;
+	}
+	.vina-tilted-content-slideshow .tiltview {
+		left: 0 !important;
+		opacity: 0.3;
+		pointer-events: none;
+	}
+}
+
+@media screen and (max-width: 33.75em) {
+	.vina-tilted-content-slideshow .description {
+		font-size: 1.1em;
+	}
+}
+
+@media screen and (max-width: 24em) {
+	.vina-tilted-slides {
+		height: 300px;
+	}
+	.vina-tilted-content-slideshow .description {
+		font-size: 1em;
+		padding: 1.4em;
+	}
+	.no-csstransforms3d .tiltview.col,
+	.no-csstransforms3d .tiltview.row {
+		top: 0;
+	}
+}

@@ -1,0 +1,906 @@
+.zenduja-spinner__body {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -690px;
+   -webkit-transform: rotateX(70deg) rotateZ(70deg);
+          transform: rotateX(70deg) rotateZ(70deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.zenduja-spinner__body_arrow-animation-active path[id*="zenduja-spinner__inner-dash-dash"] {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.zenduja-spinner__body_arrow-animation-paused path[id*="zenduja-spinner__inner-dash-dash"] {
+  -webkit-animation-play-state: paused !important;
+          animation-play-state: paused !important;
+}
+
+.zenduja-spinner__center {
+  /*width: 620px;*/
+  /*height: 620px;*/
+}
+.zenduja-spinner__center svg {
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes rotate-circle-2 {
+  to {
+    -webkit-transform: transform(171, 171) rotate(360deg);
+            transform: transform(171, 171) rotate(360deg);
+  }
+}
+
+@keyframes rotate-circle-2 {
+  to {
+    -webkit-transform: transform(171, 171) rotate(360deg);
+            transform: transform(171, 171) rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes pulse-rotate {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(1.05);
+            transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+            transform: rotate(360deg) scale(1);
+  }
+}
+@keyframes pulse-rotate {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(1.05);
+            transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+            transform: rotate(360deg) scale(1);
+  }
+}
+@-webkit-keyframes inner-dash-animation {
+  0% {
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+    fill: #6EBEEC;
+  }
+  7% {
+    -webkit-transform: translateY(-40px) scaleY(1.5);
+            transform: translateY(-40px) scaleY(1.5);
+    fill: #FFFFFF;
+  }
+  15% {
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+    fill: #6EBEEC;
+  }
+}
+@keyframes inner-dash-animation {
+  0% {
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+    fill: #6EBEEC;
+  }
+  7% {
+    -webkit-transform: translateY(-40px) scaleY(1.5);
+            transform: translateY(-40px) scaleY(1.5);
+    fill: #FFFFFF;
+  }
+  15% {
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+    fill: #6EBEEC;
+  }
+}
+#zenduja-spinner__inner-dash-dash-0 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+#zenduja-spinner__inner-dash-dash-1 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.05s;
+          animation-delay: 0.05s;
+}
+
+#zenduja-spinner__inner-dash-dash-2 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+#zenduja-spinner__inner-dash-dash-3 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+
+#zenduja-spinner__inner-dash-dash-4 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+#zenduja-spinner__inner-dash-dash-5 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+
+#zenduja-spinner__inner-dash-dash-6 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+#zenduja-spinner__inner-dash-dash-7 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+
+#zenduja-spinner__inner-dash-dash-8 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+#zenduja-spinner__inner-dash-dash-9 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+
+#zenduja-spinner__inner-dash-dash-10 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+#zenduja-spinner__inner-dash-dash-11 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.55s;
+          animation-delay: 0.55s;
+}
+
+#zenduja-spinner__inner-dash-dash-12 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+#zenduja-spinner__inner-dash-dash-13 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.65s;
+          animation-delay: 0.65s;
+}
+
+#zenduja-spinner__inner-dash-dash-14 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+#zenduja-spinner__inner-dash-dash-15 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+#zenduja-spinner__inner-dash-dash-16 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+#zenduja-spinner__inner-dash-dash-17 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.85s;
+          animation-delay: 0.85s;
+}
+
+#zenduja-spinner__inner-dash-dash-18 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+#zenduja-spinner__inner-dash-dash-19 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 0.95s;
+          animation-delay: 0.95s;
+}
+
+#zenduja-spinner__inner-dash-dash-20 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+#zenduja-spinner__inner-dash-dash-21 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.05s;
+          animation-delay: 1.05s;
+}
+
+#zenduja-spinner__inner-dash-dash-22 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+}
+
+#zenduja-spinner__inner-dash-dash-23 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.15s;
+          animation-delay: 1.15s;
+}
+
+#zenduja-spinner__inner-dash-dash-24 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+#zenduja-spinner__inner-dash-dash-25 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+
+#zenduja-spinner__inner-dash-dash-26 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s;
+}
+
+#zenduja-spinner__inner-dash-dash-27 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.35s;
+          animation-delay: 1.35s;
+}
+
+#zenduja-spinner__inner-dash-dash-28 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+#zenduja-spinner__inner-dash-dash-29 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.45s;
+          animation-delay: 1.45s;
+}
+
+#zenduja-spinner__inner-dash-dash-30 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+#zenduja-spinner__inner-dash-dash-31 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.55s;
+          animation-delay: 1.55s;
+}
+
+#zenduja-spinner__inner-dash-dash-32 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+
+#zenduja-spinner__inner-dash-dash-33 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.65s;
+          animation-delay: 1.65s;
+}
+
+#zenduja-spinner__inner-dash-dash-34 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.7s;
+          animation-delay: 1.7s;
+}
+
+#zenduja-spinner__inner-dash-dash-35 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+
+#zenduja-spinner__inner-dash-dash-36 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+#zenduja-spinner__inner-dash-dash-37 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.85s;
+          animation-delay: 1.85s;
+}
+
+#zenduja-spinner__inner-dash-dash-38 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.9s;
+          animation-delay: 1.9s;
+}
+
+#zenduja-spinner__inner-dash-dash-39 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 1.95s;
+          animation-delay: 1.95s;
+}
+
+#zenduja-spinner__inner-dash-dash-40 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+#zenduja-spinner__inner-dash-dash-41 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.05s;
+          animation-delay: 2.05s;
+}
+
+#zenduja-spinner__inner-dash-dash-42 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.1s;
+          animation-delay: 2.1s;
+}
+
+#zenduja-spinner__inner-dash-dash-43 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.15s;
+          animation-delay: 2.15s;
+}
+
+#zenduja-spinner__inner-dash-dash-44 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+
+#zenduja-spinner__inner-dash-dash-45 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+}
+
+#zenduja-spinner__inner-dash-dash-46 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.3s;
+          animation-delay: 2.3s;
+}
+
+#zenduja-spinner__inner-dash-dash-47 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.35s;
+          animation-delay: 2.35s;
+}
+
+#zenduja-spinner__inner-dash-dash-48 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+
+#zenduja-spinner__inner-dash-dash-49 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.45s;
+          animation-delay: 2.45s;
+}
+
+#zenduja-spinner__inner-dash-dash-50 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+
+#zenduja-spinner__inner-dash-dash-51 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.55s;
+          animation-delay: 2.55s;
+}
+
+#zenduja-spinner__inner-dash-dash-52 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.6s;
+          animation-delay: 2.6s;
+}
+
+#zenduja-spinner__inner-dash-dash-53 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.65s;
+          animation-delay: 2.65s;
+}
+
+#zenduja-spinner__inner-dash-dash-54 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.7s;
+          animation-delay: 2.7s;
+}
+
+#zenduja-spinner__inner-dash-dash-55 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.75s;
+          animation-delay: 2.75s;
+}
+
+#zenduja-spinner__inner-dash-dash-56 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.8s;
+          animation-delay: 2.8s;
+}
+
+#zenduja-spinner__inner-dash-dash-57 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.85s;
+          animation-delay: 2.85s;
+}
+
+#zenduja-spinner__inner-dash-dash-58 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.9s;
+          animation-delay: 2.9s;
+}
+
+#zenduja-spinner__inner-dash-dash-59 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 2.95s;
+          animation-delay: 2.95s;
+}
+
+#zenduja-spinner__inner-dash-dash-60 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+#zenduja-spinner__inner-dash-dash-61 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.05s;
+          animation-delay: 3.05s;
+}
+
+#zenduja-spinner__inner-dash-dash-62 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.1s;
+          animation-delay: 3.1s;
+}
+
+#zenduja-spinner__inner-dash-dash-63 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.15s;
+          animation-delay: 3.15s;
+}
+
+#zenduja-spinner__inner-dash-dash-64 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.2s;
+          animation-delay: 3.2s;
+}
+
+#zenduja-spinner__inner-dash-dash-65 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.25s;
+          animation-delay: 3.25s;
+}
+
+#zenduja-spinner__inner-dash-dash-66 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.3s;
+          animation-delay: 3.3s;
+}
+
+#zenduja-spinner__inner-dash-dash-67 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.35s;
+          animation-delay: 3.35s;
+}
+
+#zenduja-spinner__inner-dash-dash-68 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.4s;
+          animation-delay: 3.4s;
+}
+
+#zenduja-spinner__inner-dash-dash-69 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.45s;
+          animation-delay: 3.45s;
+}
+
+#zenduja-spinner__inner-dash-dash-70 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
+}
+
+#zenduja-spinner__inner-dash-dash-71 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.55s;
+          animation-delay: 3.55s;
+}
+
+#zenduja-spinner__inner-dash-dash-72 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.6s;
+          animation-delay: 3.6s;
+}
+
+#zenduja-spinner__inner-dash-dash-73 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.65s;
+          animation-delay: 3.65s;
+}
+
+#zenduja-spinner__inner-dash-dash-74 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.7s;
+          animation-delay: 3.7s;
+}
+
+#zenduja-spinner__inner-dash-dash-75 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.75s;
+          animation-delay: 3.75s;
+}
+
+#zenduja-spinner__inner-dash-dash-76 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.8s;
+          animation-delay: 3.8s;
+}
+
+#zenduja-spinner__inner-dash-dash-77 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.85s;
+          animation-delay: 3.85s;
+}
+
+#zenduja-spinner__inner-dash-dash-78 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.9s;
+          animation-delay: 3.9s;
+}
+
+#zenduja-spinner__inner-dash-dash-79 {
+  -webkit-animation: inner-dash-animation 4s ease-in-out infinite;
+          animation: inner-dash-animation 4s ease-in-out infinite;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-animation-delay: 3.95s;
+          animation-delay: 3.95s;
+}
+
+#zenduja-spinner__inner-animation-circle-1,
+#zenduja-spinner__inner-animation-circle-2,
+#zenduja-spinner__inner-animation-circle-3,
+#zenduja-spinner__inner-animation-circle-4,
+#zenduja-spinner__inner-animation-circle-5,
+#zenduja-spinner__inner-animation-circle-6,
+#zenduja-spinner__inner-dashes,
+#zenduja-spinner__svg-sectors {
+  pointer-events: none;
+}
+
+#zenduja-spinner__inner-animation-circle-1,
+#zenduja-spinner__inner-animation-circle-2,
+#zenduja-spinner__inner-animation-circle-3,
+#zenduja-spinner__inner-animation-circle-4,
+#zenduja-spinner__inner-animation-circle-5,
+#zenduja-spinner__inner-animation-circle-6 {
+  -webkit-animation: rotate infinite linear;
+          animation: rotate infinite linear;
+}
+
+#zenduja-spinner__inner-animation-circle-1,
+#zenduja-spinner__inner-animation-circle-2,
+#zenduja-spinner__inner-animation-circle-3,
+#zenduja-spinner__inner-animation-circle-4,
+#zenduja-spinner__inner-animation-circle-5,
+#zenduja-spinner__inner-animation-circle-6 {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+#zenduja-spinner__inner-animation-circle-6 {
+  -webkit-animation: pulse-rotate 20s infinite linear;
+          animation: pulse-rotate 20s infinite linear;
+}
+
+#zenduja-spinner__inner-animation-circle-1 {
+  animation-direction: reverse;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+}
+
+#zenduja-spinner__inner-animation-circle-2 {
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+#zenduja-spinner__inner-animation-circle-3 {
+  -webkit-animation-duration: 50s;
+          animation-duration: 50s;
+}
+
+#zenduja-spinner__inner-animation-circle-4 {
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  animation-direction: reverse;
+}
+
+#zenduja-spinner__inner-animation-circle-5 {
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
+  animation-direction: reverse;
+}
