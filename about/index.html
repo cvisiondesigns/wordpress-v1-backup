@@ -2485,20 +2485,26 @@ a.uk-link-muted:hover {
 }		</style>
 
 <style>
-            /* 戰神加持：強制背景合一，頂碎底部白塊 */
-            html, body {
-                background-color: #000000 !important; /* 或是妳網站主視覺的深色 */
-                margin: 0 !important;
-                padding: 0 !important;
-                height: 100%;
-                overflow-x: hidden;
-            }
-            .uk-section, footer {
-                margin-bottom: 0 !important;
-                padding-bottom: 0 !important;
-            }
-        </style>
-        
+    /* 加持：暴力抹除底部白塊 */
+    html {
+        background: #000000 !important; /* 強制把整張畫布塗黑 */
+    }
+    body {
+        background: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 100vh; /* 確保內容至少跟螢幕一樣高 */
+        display: flex;
+        flex-direction: column;
+    }
+    #page-container, .uk-section, footer {
+        flex: none;
+        background: transparent !important;
+    }
+    /* 強制關閉任何可能撐開底部的隱藏空間 */
+    #wpadminbar { display: none !important; }
+</style>
+
 		    </head>
 
 
