@@ -2488,26 +2488,27 @@ a.uk-link-muted:hover {
 }		</style>
 
 <style>
-    /* 加持：直接讓那個佔位的彈窗容器徹底消失 */
-    .xoo-el-container, 
-    .xoo-el-modal, 
-    .xoo-el-content,
-    .xoo-el-popup-notice,
-    .xoo-el-notice-opac,
-    .xoo-el-notice-modal, 
-    .xoo-el-notice-modal{
+    /* 🦁 戰神加持：只殺空間，不改背景色 */
+    
+    /* 1. 讓那個佔位的彈窗容器徹底消失，且不准撐開高度 */
+    .xoo-el-container {
         display: none !important;
         height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        visibility: hidden !important;
-        position: absolute !important; /* 讓它不佔任何空間 */
+        position: absolute !important; /* 把它從正常佈局中抽離 */
     }
 
-    /* 同時確保 body 不會被撐開 */
-    body {
+    /* 2. 讓 HTML 和 Body 恢復原本的透明/背景感，但切斷底部溢出 */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
         overflow-x: hidden !important;
-        height: auto !important;
+        /* 刪掉 background-color，保留原本的樣子 */
+    }
+
+    /* 3. 強制讓 footer 之後的所有「幽靈 div」都隱身 */
+    footer ~ div {
+        display: none !important;
+        height: 0 !important;
     }
 </style>
 
