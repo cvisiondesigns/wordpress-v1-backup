@@ -204,13 +204,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
     background-color: #000000;
 }
 
-/* 直接讓這個該死的容器徹底消失，連位子都不準佔！ */
-.xoo-el-container {
-    display: none !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    visibility: hidden !important;
-}
+
 
 
 
@@ -2493,6 +2487,25 @@ a.uk-link-muted:hover {
     font-weight: 400;
 }		</style>
 
+<style>
+    /* 加持：直接讓那個佔位的彈窗容器徹底消失 */
+    .xoo-el-container, 
+    .xoo-el-modal, 
+    .xoo-el-content {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        visibility: hidden !important;
+        position: absolute !important; /* 讓它不佔任何空間 */
+    }
+
+    /* 同時確保 body 不會被撐開 */
+    body {
+        overflow-x: hidden !important;
+        height: auto !important;
+    }
+</style>
 
 
 		    </head>
