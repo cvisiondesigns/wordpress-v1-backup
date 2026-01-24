@@ -2483,36 +2483,6 @@ a.uk-link-muted:hover {
     font-weight: 400;
 }		</style>
 
-<style>
-    /* 加持：暴力截斷所有底部溢出空間 */
-    html, body {
-        background-color: #000000 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        height: auto !important; /* 讓高度隨內容自動縮回 */
-        min-height: 100% !important;
-    }
-    
-    /* 強制限制 Canvas 的擴張 */
-    #projector {
-        max-height: 100vh !important;
-        position: absolute !important;
-    }
-
-    /* 終極大絕：隱藏 Footer 之後的所有幽靈標籤 */
-    footer ~ div, footer ~ section, footer ~ span, footer ~ iframe {
-        display: none !important;
-        height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 針對 About 頁面的內容區塊進行底部收縮 */
-    .tm-page {
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-    }
-</style>
 
 		    </head>
 
