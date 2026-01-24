@@ -2485,24 +2485,23 @@ a.uk-link-muted:hover {
 }		</style>
 
 <style>
-    /* 加持：暴力抹除底部白塊 */
+    /* 加持：完美背景覆蓋，且恢復自由滑動 */
     html {
-        background: #000000 !important; /* 強制把整張畫布塗黑 */
+        background-color: #000000 !important; /* 底層鋪黑 */
     }
     body {
-        background: #000000 !important;
+        background-color: #000000 !important; /* 身體也鋪黑 */
         margin: 0 !important;
         padding: 0 !important;
-        min-height: 100vh; /* 確保內容至少跟螢幕一樣高 */
-        display: flex;
-        flex-direction: column;
+        min-height: 100vh; /* 至少跟螢幕一樣高 */
+        overflow-x: hidden; /* 防止左右亂跑 */
+        overflow-y: auto;   /* 確保上下可以滑動！ */
     }
-    #page-container, .uk-section, footer {
-        flex: none;
-        background: transparent !important;
+    
+    /* 針對 About 頁面底部可能存在的空白 */
+    .uk-section, footer {
+        background-color: transparent !important;
     }
-    /* 強制關閉任何可能撐開底部的隱藏空間 */
-    #wpadminbar { display: none !important; }
 </style>
 
 		    </head>
