@@ -1,0 +1,42 @@
+---
+const works = [
+    { title: '愛豆網頁橫幅設計', subtitle: 'Idol Banner', img: '/wp-content/uploads/works/Graphic/works-graphic_cover.jpg' },
+    { title: '愛豆海報設計', subtitle: 'Idol Poster', img: '/wp-content/uploads/works/Graphic/andy-poster.jpg' },
+    { title: '愛豆布條設計', subtitle: 'Idol Banner', img: '/wp-content/uploads/works/Graphic/tamiafansclub-banner.jpg' },
+    { title: '網頁橫幅設計', subtitle: 'Idol Banner', img: '/wp-content/uploads/works/Graphic/eun-banner.jpg' },
+    { title: 'Icash卡片家貓毛孩', subtitle: 'Icash Card Drawing', img: '/wp-content/uploads/works/Graphic/wu-icash.jpg' },
+    { title: '名片設計', subtitle: 'Idol Name Card', img: '/wp-content/uploads/works/Graphic/eun-namecard.jpg' },
+    { title: '66號星球柴柴海報', subtitle: 'Planet 66 Shiba Design Poster', img: '/wp-content/uploads/works/Graphic/66-cvision.png' },
+    { title: '海報設計', subtitle: 'Nici Poster', img: '/wp-content/uploads/works/Graphic/niciking-poster.jpg' },
+    { title: '醒覺療癒LOGO設計', subtitle: 'Aweakening Healing college LOGO', img: '/wp-content/uploads/works/Graphic/awakening_logo.jpg' },
+    { title: '星塵滑板LOGO設計', subtitle: 'STATDUST SkateShop Sticker', img: '/wp-content/uploads/works/Graphic/stardust-logo.jpg' },
+];
+---
+<section class="py-16 bg-white min-h-screen">
+    <div class="container mx-auto px-4">
+        <div class="mb-16">
+            <h1 class="text-5xl font-serif text-[#f48f00] mb-4">.Graphic DeSiGN 面妝</h1>
+            <div class="flex flex-col md:flex-row items-end gap-8">
+                 <div class="md:w-2/3">
+                    <img src="/wp-content/uploads/works/Graphic/works-graphic_cover.jpg" alt="Graphic Cover" class="w-full rounded-2xl shadow-lg" />
+                 </div>
+                 <div class="md:w-1/3 text-right">
+                    <h2 class="text-3xl font-serif text-[#f48f00] border-b-2 border-[#f48f00] pb-2 inline-block">平面敷畫化妝術</h2>
+                 </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {works.map((work) => (
+                <div class="group relative overflow-hidden rounded-xl bg-gray-50 aspect-[4/3]">
+                    <img src={work.img} alt={work.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6 text-center">
+                        <h3 class="text-xl font-serif mb-2">{work.title}</h3>
+                        <p class="text-sm opacity-80 mb-4">{work.subtitle}</p>
+                        <span class="border border-white/50 px-4 py-1 text-xs tracking-widest uppercase">觀。畫妝</span>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
