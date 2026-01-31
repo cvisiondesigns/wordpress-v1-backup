@@ -2,15 +2,11 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import HomePage from '../components/HomePage.astro';
 ---
 
 <MainLayout title="Home - 澄視維度設計">
 	<Header />
-	<main class="min-h-[70vh] flex flex-col items-center justify-center p-8 bg-white">
-		<h1 class="text-4xl font-normal text-legacy-blue mb-6 tracking-widest">
-			Hello world!
-		</h1>
-        <p class="text-lg text-legacy-text">Astro Rebuild in Progress</p>
-	</main>
+	<HomePage />
 	<Footer />
 </MainLayout>
