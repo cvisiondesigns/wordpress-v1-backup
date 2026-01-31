@@ -8,13 +8,13 @@
             <p class="text-xl opacity-90">/ 平面宇宙裡</p>
             <p class="text-xl opacity-90">/ 用圖像訴說著表達</p>
             <div class="pt-8">
-                <li><a href="./graphic-design" class="inline-block border border-white px-8 py-3 hover:bg-white hover:text-[#f19917] transition-all tracking-widest uppercase text-sm">Explore / 探索</a></li>
+                <a href={`${import.meta.env.BASE_URL}graphic-design`} class="inline-block border border-white px-8 py-3 hover:bg-white hover:text-[#f19917] transition-all tracking-widest uppercase text-sm">Explore / 探索</a>
             </div>
         </div>
         <div class="relative group">
             <div class="flex gap-4 transform rotate-[-5deg]">
-                <img src="./wp-content/uploads/index-slightshow/01.jpg" alt="Graphic Design 01" class="w-2/3 shadow-2xl rounded-sm" />
-                <img src="./wp-content/uploads/index-slightshow/02.jpg" alt="Graphic Design 02" class="w-1/2 shadow-xl rounded-sm -mt-12" />
+                <img src={`${import.meta.env.BASE_URL}wp-content/uploads/index-slightshow/01.jpg`} alt="Graphic Design 01" class="w-2/3 shadow-2xl rounded-sm" />
+                <img src={`${import.meta.env.BASE_URL}wp-content/uploads/index-slightshow/02.jpg`} alt="Graphic Design 02" class="w-1/2 shadow-xl rounded-sm -mt-12" />
             </div>
         </div>
     </div>
@@ -34,19 +34,19 @@
         <div class="grid md:grid-cols-3 gap-12">
             <div class="space-y-4 group">
                 <div class="aspect-square overflow-hidden rounded-full border-4 border-[#ffc04c]/30 group-hover:border-[#ff9600] transition-all p-2">
-                    <img src="./wp-content/uploads/cat.jpg" alt="守護天使" class="w-full h-full object-cover rounded-full" />
+                    <img src={`${import.meta.env.BASE_URL}wp-content/uploads/cat.jpg`} alt="守護天使" class="w-full h-full object-cover rounded-full" />
                 </div>
                 <h3 class="text-lg tracking-widest">喵守護天使</h3>
             </div>
             <div class="space-y-4 group">
                 <div class="aspect-square overflow-hidden rounded-full border-4 border-[#ffc04c]/30 group-hover:border-[#ff9600] transition-all p-2">
-                    <img src="./wp-content/uploads/works/Graphic/66Planet-cvision.webp" alt="66號星球" class="w-full h-full object-cover rounded-full" />
+                    <img src={`${import.meta.env.BASE_URL}wp-content/uploads/works/Graphic/66Planet-cvision.webp`} alt="66號星球" class="w-full h-full object-cover rounded-full" />
                 </div>
                 <h3 class="text-lg tracking-widest">66號星球</h3>
             </div>
             <div class="space-y-4 group">
                 <div class="aspect-square overflow-hidden rounded-full border-4 border-[#ffc04c]/30 group-hover:border-[#ff9600] transition-all p-2">
-                    <img src="./wp-content/uploads/works/Package/Package_RoadCones-paint.webp" alt="手指滑板" class="w-full h-full object-cover rounded-full" />
+                    <img src={`${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Package_RoadCones-paint.webp`} alt="手指滑板" class="w-full h-full object-cover rounded-full" />
                 </div>
                 <h3 class="text-lg tracking-widest">手指滑板</h3>
             </div>
@@ -61,7 +61,7 @@
         <div class="flex flex-col md:flex-row items-center gap-16 mb-32">
             <div class="md:w-1/2 relative">
                 <div class="aspect-square overflow-hidden rounded-tl-[80px] rounded-br-[80px] rounded-tr-[55px] rounded-bl-[55px] border-[15px] border-[#ffe89f] transform rotate-[-45deg] scale-90">
-                   <img src="./wp-content/uploads/index-slightshow/05.jpg" alt="Web Design" class="w-full h-full object-cover transform rotate-[45deg] scale-125" />
+                   <img src={`${import.meta.env.BASE_URL}wp-content/uploads/index-slightshow/05.jpg`} alt="Web Design" class="w-full h-full object-cover transform rotate-[45deg] scale-125" />
                 </div>
             </div>
             <div class="md:w-1/2 space-y-6">
@@ -74,7 +74,7 @@
                     網站之維度空間
                 </p>
                 <div class="pt-8">
-                    <a href="./works/web-design" class="inline-block bg-[#2d2e33] text-white px-12 py-3 hover:bg-legacy-blue transition-all tracking-widest text-sm skew-x-[-20deg]">
+                    <a href={`${import.meta.env.BASE_URL}works/web-design`} class="inline-block bg-[#2d2e33] text-white px-12 py-3 hover:bg-legacy-blue transition-all tracking-widest text-sm skew-x-[-20deg]">
                         <span class="inline-block skew-x-[20deg]">GO ! 探索去 /</span>
                     </a>
                 </div>
@@ -85,7 +85,7 @@
         <div class="flex flex-col md:flex-row-reverse items-center gap-16">
             <div class="md:w-1/2 relative">
                 <div class="aspect-square overflow-hidden rounded-tl-[80px] rounded-br-[80px] rounded-tr-[55px] rounded-bl-[55px] border-[15px] border-[#ffe89f] transform rotate-[45deg] scale-90">
-                   <img src="./wp-content/uploads/works/Graphic/66Planet-cvision.webp" alt="Graphic Design" class="w-full h-full object-cover transform rotate-[-45deg] scale-125" />
+                   <img src={`${import.meta.env.BASE_URL}wp-content/uploads/works/Graphic/66Planet-cvision.webp`} alt="Graphic Design" class="w-full h-full object-cover transform rotate-[-45deg] scale-125" />
                 </div>
             </div>
             <div class="md:w-1/2 space-y-6 text-right flex flex-col items-end">
@@ -98,7 +98,7 @@
                     平面之維度視界
                 </p>
                 <div class="pt-8">
-                    <a href="./graphic-design" class="inline-block bg-[#2d2e33] text-white px-12 py-3 hover:bg-legacy-blue transition-all tracking-widest text-sm skew-x-[20deg]">
+                    <a href={`${import.meta.env.BASE_URL}graphic-design`} class="inline-block bg-[#2d2e33] text-white px-12 py-3 hover:bg-legacy-blue transition-all tracking-widest text-sm skew-x-[20deg]">
                         <span class="inline-block skew-x-[-20deg]">GO ! 探索去 /</span>
                     </a>
                 </div>
@@ -114,7 +114,7 @@
             願在視線交匯的片刻<br/>找回你我的溫度
         </h3>
         <div class="pt-12">
-            <a href="./about" class="inline-block border-b border-white pb-2 hover:text-[#fff4cb] hover:border-[#fff4cb] transition-all tracking-[0.5em] uppercase text-sm font-bold">
+            <a href={`${import.meta.env.BASE_URL}about`} class="inline-block border-b border-white pb-2 hover:text-[#fff4cb] hover:border-[#fff4cb] transition-all tracking-[0.5em] uppercase text-sm font-bold">
                 GO ! 探索視界 /
             </a>
         </div>

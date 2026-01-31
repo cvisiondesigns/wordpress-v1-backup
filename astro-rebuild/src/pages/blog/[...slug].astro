@@ -35,7 +35,7 @@ const { Content } = await entry.render();
                     {entry.data.title}
                 </h1>
                 {entry.data.heroImage && (
-                    <img src={entry.data.heroImage} alt={entry.data.title} class="w-full rounded-3xl shadow-xl" />
+                    <img src={`${import.meta.env.BASE_URL}${entry.data.heroImage.startsWith('/') ? entry.data.heroImage.slice(1) : entry.data.heroImage}`} alt={entry.data.title} class="w-full rounded-3xl shadow-xl" />
                 )}
             </header>
 
@@ -53,7 +53,7 @@ const { Content } = await entry.render();
                         <span># {tag}</span>
                     ))}
                 </div>
-                <a href="/blog" class="text-[#ff9600] hover:underline font-bold tracking-widest">
+                <a href={`${import.meta.env.BASE_URL}blog`} class="text-[#ff9600] hover:underline font-bold tracking-widest">
                     ← BACK TO BLOG
                 </a>
             </footer>

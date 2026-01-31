@@ -3,36 +3,36 @@ const packageWorks = [
     {
         title: '手指滑板-Q版idol',
         subtitle: 'Fingerboard Chibi idol',
-        img: '/wp-content/uploads/works/Package/Packgae_FingerSkateboard.png',
+        img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Packgae_FingerSkateboard.png`,
         desc: '繪製了一個Q版idol，想在手指滑板加入自己喜愛的Q版idol，並將其轉印在手指滑板上，做成獨特的Q版idol手指板。'
     },
     {
         title: '茶包裝 Black Tea',
         subtitle: 'Black Tea Packaging',
-        img: '/wp-content/uploads/works/Package/Packgae_BlackTea-Ariel.png',
+        img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Packgae_BlackTea-Ariel.png`,
         desc: '喝皇家伯爵紅茶一邊研究Illu，突然想到某種風格於是結合了當時喜愛的idol，嘗試做了牛奶罐外觀包裝。'
     },
     {
         title: '爆米花-Q版公仔 POP Corn',
         subtitle: 'POP Corn Packaging',
-        img: '/wp-content/uploads/works/Package/Packgae_POpCornModel.png',
+        img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Packgae_POpCornModel.png`,
         desc: '風味爆米花外包裝，結合各個地方文化的特色並繪製了不同風格的Q版公仔。'
     },
     {
         title: '咖啡 Venus Coffee',
         subtitle: 'Venus Coffee Logo & Package',
-        img: '/wp-content/uploads/works/Package/Packgae_Coffee.png',
+        img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Packgae_Coffee.png`,
         desc: '維納斯咖啡，假想一個虛擬咖啡並為其繪製LOGO，做成玻璃瓶外包裝。'
     }
 ];
 
 const finishedProducts = [
-    { title: '手指滑板三角錐道具包裝', subtitle: 'Road Cones Packaging', img: '/wp-content/uploads/works/Package/Package_RoadCones.png' },
-    { title: '手指滑板手作板塗鴉喵', subtitle: 'Graffiti Meow', img: '/wp-content/uploads/works/Package/Fingerboard-graffiti-skatcat.jpg' },
-    { title: '手指滑板喵呼嚕嚕', subtitle: 'MEOW~Hululu Hand Bruning', img: '/wp-content/uploads/works/Package/Fingerskatebord-meowhululu.jpg' },
-    { title: '珍珠耳環喵手工繪燒', subtitle: 'Cat With a Pearl Earring', img: '/wp-content/uploads/works/Package/Fingerskatboard_CatWithaPearlEarring.png' },
-    { title: 'UV膠手作有顆蛋', subtitle: 'UV-Fried Egg', img: '/wp-content/uploads/works/Package/Package_uv-egg.jpg' },
-    { title: '低膠樹脂手作小鹿', subtitle: 'AB EPOXY Deer', img: '/wp-content/uploads/works/Package/Package_ab-deer.jpg' }
+    { title: '手指滑板三角錐道具包裝', subtitle: 'Road Cones Packaging', img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Package_RoadCones.png` },
+    { title: '手指滑板手作板塗鴉喵', subtitle: 'Graffiti Meow', img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Fingerboard-graffiti-skatcat.jpg` },
+    { title: '手指滑板喵呼嚕嚕', subtitle: 'MEOW~Hululu Hand Bruning', img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Fingerskatebord-meowhululu.jpg` },
+    { title: '珍珠耳環喵手工繪燒', subtitle: 'Cat With a Pearl Earring', img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Fingerskatboard_CatWithaPearlEarring.png` },
+    { title: 'UV膠手作有顆蛋', subtitle: 'UV-Fried Egg', img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Package_uv-egg.jpg` },
+    { title: '低膠樹脂手作小鹿', subtitle: 'AB EPOXY Deer', img: `${import.meta.env.BASE_URL}wp-content/uploads/works/Package/Package_ab-deer.jpg` }
 ];
 ---
 <section class="py-16 bg-white min-h-screen">
@@ -41,7 +41,7 @@ const finishedProducts = [
             <h1 class="text-5xl font-serif text-[#f48f00] mb-4">.PackAGe DeSiGN 包妝</h1>
             <div class="flex flex-col md:flex-row items-end gap-8">
                  <div class="md:w-2/3">
-                    <img src="/wp-content/uploads/works/Package/works-backpage_cover.jpg" alt="Package Design Cover" class="w-full rounded-2xl shadow-lg" />
+                    <img src={`${import.meta.env.BASE_URL}wp-content/uploads/works/Package/works-backpage_cover.jpg`} alt="Package Design Cover" class="w-full rounded-2xl shadow-lg" />
                  </div>
                  <div class="md:w-1/3 text-right">
                     <h2 class="text-3xl font-serif text-[#f48f00] border-b-2 border-[#f48f00] pb-2 inline-block">包妝裝扮化妝術</h2>

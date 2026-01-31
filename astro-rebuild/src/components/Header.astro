@@ -3,21 +3,21 @@
 <header class="bg-white border-b border-gray-100 py-4 sticky top-0 z-50">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="logo">
-            <a href="./" class="flex items-center gap-2">
-                <img src="./wp-content/uploads/logoweb-use112X112px-for-google.jpg" alt="Logo" class="w-12 h-12 rounded-full" />
+            <a href={import.meta.env.BASE_URL} class="flex items-center gap-2">
+                <img src={`${import.meta.env.BASE_URL}wp-content/uploads/logoweb-use112X112px-for-google.jpg`} alt="Logo" class="w-12 h-12 rounded-full" />
                 <span class="text-xl font-bold tracking-widest text-[#2D2E33] font-serif">C / Vision Design</span>
             </a>
         </div>
         <nav>
             <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm uppercase tracking-wider">
-                <li><a href="./" class="hover:text-legacy-blue transition-colors">Home 回首</a></li>
-                <li><a href="./about" class="hover:text-legacy-blue transition-colors">WORLD 澄界</a></li>
-                <li><a href="./portfolio" class="hover:text-legacy-blue transition-colors">PORTFOLIO 人種</a></li>
-                <li><a href="./graphic-design" class="hover:text-legacy-blue transition-colors">GraPhic 面妝</a></li>
-                <li><a href="./works/web-design" class="hover:text-legacy-blue transition-colors">Web Design 站妝</a></li>
-                <li><a href="./package-design" class="hover:text-legacy-blue transition-colors">PackAge 包妝</a></li>
-                <li><a href="./blog" class="hover:text-legacy-blue transition-colors">BLOG 記錄</a></li>
-                <li><a href="./contact" class="hover:text-legacy-blue transition-colors">CONTACT 發訊</a></li>
+                <li><a href={import.meta.env.BASE_URL} class="hover:text-legacy-blue transition-colors">Home 回首</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}about`} class="hover:text-legacy-blue transition-colors">WORLD 澄界</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}portfolio`} class="hover:text-legacy-blue transition-colors">PORTFOLIO 人種</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}graphic-design`} class="hover:text-legacy-blue transition-colors">GraPhic 面妝</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}works/web-design`} class="hover:text-legacy-blue transition-colors">Web Design 站妝</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}package-design`} class="hover:text-legacy-blue transition-colors">PackAge 包妝</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}blog`} class="hover:text-legacy-blue transition-colors">BLOG 記錄</a></li>
+                <li><a href={`${import.meta.env.BASE_URL}contact`} class="hover:text-legacy-blue transition-colors">CONTACT 發訊</a></li>
             </ul>
         </nav>
     </div>

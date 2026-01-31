@@ -6,7 +6,7 @@ category: "手指滑板"
 tags: ["design", "fingerboarding"]
 ---
 
-<video class="w-full max-w-lg mx-auto rounded-xl shadow-lg" src="/wp-content/uploads/YouCut_20241007_183527569.mp4" controls="controls">
+<video class="w-full max-w-lg mx-auto rounded-xl shadow-lg" src="/new-website/wp-content/uploads/YouCut_20241007_183527569.mp4" controls="controls">
 </video>
 
 > **„手作手指滑板“**
