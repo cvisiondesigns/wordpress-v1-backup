@@ -1,0 +1,34 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="404 - 找不到頁面 - 澄視維度設計">
+    <Header />
+    <main class="py-32 bg-[#fffcf0] flex items-center justify-center min-h-[60vh]">
+        <div class="container mx-auto px-4 text-center space-y-8">
+            <div class="relative inline-block">
+                <h1 class="text-[120px] font-bold text-[#ffc04c] opacity-20 select-none">404</h1>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="H_shape text-2xl">
+                        找不到頁面 Error
+                    </h2>
+                </div>
+            </div>
+            
+            <p class="text-gray-500 max-w-md mx-auto leading-relaxed">
+                抱歉，您所尋找的頁面不存在，或是已經移動位置。
+                <br/>
+                <span class="italic text-sm">The page you are looking for does not exist or has been moved.</span>
+            </p>
+
+            <div class="pt-8">
+                <a href="/" class="px-8 py-3 bg-[#ff9600] text-white rounded-full font-bold shadow-lg hover:shadow-xl transition-all inline-block hover:scale-105">
+                    回首頁 BACK TO HOME
+                </a>
+            </div>
+        </div>
+    </main>
+    <Footer />
+</MainLayout>

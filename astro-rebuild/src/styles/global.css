@@ -1,9 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-    --color-legacy-blue: #4275f4;
+    --color-legacy-blue: #0169AF;
+    --color-legacy-orange: #ff9600;
+    --color-legacy-yellow: #fff9df;
     --color-legacy-text: #545353;
     --color-legacy-link: #05809e;
+}
+
+/* Custom Shape Classes for Titles */
+.H_shape {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #ffc04c;
+    border-radius: 400px / 350px;
+    padding: 8px 32px;
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.H_shape2 {
+    color: #ffc04c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #FFF8E0;
+    border-radius: 400px / 350px;
+    padding: 8px 32px;
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.H_border {
+    height: 1px;
+    background-color: #ffc04c;
+    width: 100%;
 }
 
 @layer base {
