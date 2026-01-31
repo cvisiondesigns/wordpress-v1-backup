@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('blog');
+	return blogEntries.map(entry => ({
+		params: { slug: entry.slug }, props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<MainLayout title={`${entry.data.title} - 澄視維度設計`}>
+    <Header />
+    <article class="py-16 bg-white min-h-screen">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <header class="mb-12 text-center">
+                 <div class="flex items-center justify-center gap-4 text-sm text-[#ff9600] mb-4 font-bold tracking-widest uppercase">
+                    <time datetime={entry.data.pubDate.toISOString()}>
+                        {entry.data.pubDate.toLocaleDateString('zh-TW', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}
+                    </time>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#ff9600]"></span>
+                    <span>{entry.data.category}</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-[#2D2E33] leading-tight mb-8">
+                    {entry.data.title}
+                </h1>
+                {entry.data.heroImage && (
+                    <img src={entry.data.heroImage} alt={entry.data.title} class="w-full rounded-3xl shadow-xl" />
+                )}
+            </header>
+
+            <div class="prose prose-lg prose-orange max-w-none 
+                prose-headings:font-serif prose-headings:text-[#2D2E33]
+                prose-blockquote:border-l-[#ff9600] prose-blockquote:bg-[#fff9df] prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic
+                prose-img:rounded-3xl prose-img:shadow-lg
+                text-gray-700 leading-relaxed">
+                <Content />
+            </div>
+
+            <footer class="mt-16 pt-8 border-t border-gray-100 italic text-gray-400 text-sm flex justify-between items-center">
+                <div class="flex gap-4">
+                    {entry.data.tags?.map(tag => (
+                        <span># {tag}</span>
+                    ))}
+                </div>
+                <a href="/blog" class="text-[#ff9600] hover:underline font-bold tracking-widest">
+                    ← BACK TO BLOG
+                </a>
+            </footer>
+        </div>
+    </article>
+    <Footer />
+</MainLayout>
+
+<style is:global>
+    /* Custom styles for article content */
+    .prose blockquote p {
+        margin: 0 !important;
+    }
+    .prose video {
+        margin: 2rem auto;
+    }
+</style>

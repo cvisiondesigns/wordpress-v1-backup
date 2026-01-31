@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<MainLayout title="BLOG 記錄 - 澄視維度設計">
+    <Header />
+    <main class="py-16 bg-[#fffcf0] min-h-screen">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h1 class="text-4xl font-serif text-[#2D2E33] mb-12 text-center tracking-widest border-b-2 border-[#ff9600] pb-4 inline-block mx-auto w-full">
+                / BLOG 記錄 /
+            </h1>
+            
+            <div class="space-y-12">
+                {posts.map((post) => (
+                    <article class="bg-white p-8 rounded-3xl shadow-sm border border-[#fff4cb] hover:shadow-md transition-shadow">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="flex-1 space-y-4">
+                                <div class="flex items-center gap-4 text-sm text-[#ff9600]">
+                                    <time datetime={post.data.pubDate.toISOString()}>
+                                        {post.data.pubDate.toLocaleDateString('zh-TW', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}
+                                    </time>
+                                    <span class="bg-[#fff4cb] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                        {post.data.category}
+                                    </span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-[#2D2E33] hover:text-[#ff9600] transition-colors">
+                                    <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                                </h2>
+                                <p class="text-gray-600 line-clamp-3 leading-relaxed">
+                                    {post.data.description}
+                                </p>
+                                <div class="flex flex-wrap gap-2 pt-2">
+                                    {post.data.tags?.map((tag) => (
+                                        <span class="text-xs text-gray-400 border border-gray-100 px-2 py-1 rounded">
+                                            # {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                            <div class="md:w-1/3 w-full">
+                                <a href={`/blog/${post.slug}/`} class="block group overflow-hidden rounded-2xl aspect-video bg-gray-100">
+                                    {post.data.heroImage ? (
+                                        <img src={post.data.heroImage} alt={post.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                    ) : (
+                                        <div class="w-full h-full flex items-center justify-center text-[#ff9600]/30 font-serif text-4xl">
+                                            {post.data.title.charAt(0)}
+                                        </div>
+                                    )}
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </main>
+    <Footer />
+</MainLayout>
