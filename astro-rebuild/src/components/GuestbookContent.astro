@@ -1,0 +1,93 @@
+---
+const comments = [
+    {
+        author: "澄澄",
+        date: "2022-02-08",
+        content: "這裡如果想留什麼可以留言喔~~~",
+        avatar: "https://secure.gravatar.com/avatar/c024d3a0c9ad3e45b213e83d764171c54bf0300ac5ea713e0702e254a53e949d?s=60&d=mm&r=g"
+    }
+];
+---
+<section class="py-16 bg-[#fffcf0]">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
+      <div class="flex-1 hidden md:block">
+        <div class="H_border"></div>
+      </div>
+      <div class="px-8">
+        <h1 class="H_shape text-center whitespace-nowrap">
+          GuestBOOK 留言 Bar
+        </h1>
+      </div>
+      <div class="flex-1 hidden md:block">
+        <div class="H_border"></div>
+      </div>
+    </div>
+
+    <!-- Comments List -->
+    <div class="bg-white p-8 md:p-12 rounded-[50px] shadow-sm border border-[#fff4cb] mb-12">
+      <h2 class="text-2xl font-bold text-[#2D2E33] mb-8 flex items-center gap-3">
+        <span class="w-2 h-8 bg-[#ffc04c] rounded-full"></span>
+        Comments ({comments.length})
+      </h2>
+      
+      <div class="space-y-8">
+        {comments.map((comment) => (
+          <div class="flex gap-4 md:gap-6 group">
+            <img src={comment.avatar} alt={comment.author} class="w-12 h-12 md:w-16 md:h-16 rounded-3xl border-2 border-[#fffcf0] shadow-sm shrink-0" />
+            <div class="flex-1 bg-[#fffcf0] p-6 rounded-[30px] rounded-tl-none relative border border-[#ffecb3]">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-[#ff9600]">{comment.author}</h3>
+                <time class="text-xs text-gray-400 font-mono italic">{comment.date}</time>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                {comment.content}
+              </p>
+              <!-- Small triangle for speech bubble effect -->
+              <div class="absolute -left-3 top-0 w-0 h-0 border-t-[10px] border-t-transparent border-r-[15px] border-r-[#fffcf0] border-b-[10px] border-b-transparent"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- New Comment Form (Placeholder) -->
+    <div class="bg-white p-8 md:p-12 rounded-[50px] shadow-xl border border-[#fff4cb]">
+      <h3 class="text-2xl font-bold text-[#2D2E33] mb-8 relative">
+        發佈留言 <span class="text-[#ffc04c]">Sign In</span>
+      </h3>
+
+      <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-8 rounded-r-2xl">
+        <p class="text-amber-800 text-sm">
+          <strong>注意：</strong> 由於靜態化後移除 WordPress 後端留言系統，目前此留言板僅供展示。
+          <br/>
+          <span class="italic">Notice: Comment system is currently disabled for static site version.</span>
+        </p>
+      </div>
+
+      <form class="space-y-6 opacity-50 pointer-events-none">
+        <div>
+          <label class="block text-sm font-bold text-gray-500 mb-2">顯示名稱 Name</label>
+          <input type="text" disabled class="w-full px-5 py-4 rounded-2xl bg-[#fffcf0] border border-[#ffecb3] text-[#2D2E33]" />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-bold text-gray-500 mb-2">電子郵件 Email (不會公開)</label>
+          <input type="email" disabled class="w-full px-5 py-4 rounded-2xl bg-[#fffcf0] border border-[#ffecb3] text-[#2D2E33]" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-gray-500 mb-2">留言內容 Comment</label>
+          <textarea disabled rows="5" class="w-full px-5 py-4 rounded-2xl bg-[#fffcf0] border border-[#ffecb3] text-[#2D2E33] resize-none"></textarea>
+        </div>
+
+        <div class="pt-4">
+          <button type="button" disabled class="w-full py-5 rounded-full bg-gray-300 text-white font-bold text-lg cursor-not-allowed">
+            發佈留言 Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
