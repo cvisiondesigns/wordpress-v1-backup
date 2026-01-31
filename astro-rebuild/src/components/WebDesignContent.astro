@@ -1,0 +1,103 @@
+---
+const webWorks = [
+    { 
+        title: '九鼎健康-企業', 
+        subtitle: 'Jodin Healthy WEB', 
+        img: '/wp-content/uploads/works/Web/View/jodin-Visualize-Web.png', 
+        desc: '公司網站，無後台，使用Bootstrap敷化成形',
+        link: '#'
+    },
+    { 
+        title: '九鼎健康-Joomla系統', 
+        subtitle: 'Jodin Healthy-Joomla', 
+        img: '/wp-content/uploads/works/Web/View/jodin-Joomla Web.png', 
+        desc: '公司網站，有後台管理功能，使用Joomla系統敷化成形',
+        link: '#'
+    },
+    { 
+        title: '九鼎健康-ERP登入介面', 
+        subtitle: 'Jodin Healthy-ERP LOGIN Web', 
+        img: '/wp-content/uploads/works/Web/View/jodin-ERP Web.png', 
+        desc: '公司網站，ERP護理資訊系統登入介面，無後台，一頁式敷化成形',
+        link: '#'
+    },
+    { 
+        title: '寵物城堡', 
+        subtitle: 'PetPet-Web', 
+        img: '/wp-content/uploads/works/Web/View/PetPet-Web.png', 
+        desc: '寵物網站，網頁視覺敷化成形',
+        link: '#'
+    },
+    { 
+        title: '媚爾依生技', 
+        subtitle: 'Haho-Web', 
+        img: '/wp-content/uploads/works/Web/View/Haho-Web.png', 
+        desc: '公司網站，網頁視覺敷化成形',
+        link: '#'
+    },
+    { 
+        title: '常玉皮膚科', 
+        subtitle: 'Changyu-Web', 
+        img: '/wp-content/uploads/works/Web/View/Changyu-Web.png', 
+        desc: '皮膚科網站，網頁視覺敷化成形',
+        link: '#'
+    },
+];
+---
+<section class="py-16 bg-white min-h-screen">
+    <div class="container mx-auto px-4">
+        <div class="mb-16">
+            <h1 class="text-5xl font-serif text-[#f48f00] mb-4">.WeBSite DeSiGN 站妝</h1>
+            <div class="flex flex-col md:flex-row items-end gap-8">
+                 <div class="md:w-2/3">
+                    <img src="/wp-content/uploads/works/Web/works-web_cover.jpg" alt="Web Design Cover" class="w-full rounded-2xl shadow-lg" />
+                 </div>
+                 <div class="md:w-1/3 text-right">
+                    <h2 class="text-3xl font-serif text-[#f48f00] border-b-2 border-[#f48f00] pb-2 inline-block">網站敷化化妝術</h2>
+                 </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {webWorks.map((work) => (
+                <div class="group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 p-6 text-center">
+                    <div class="relative overflow-hidden rounded-xl mb-6 aspect-square">
+                        <img src={work.img} alt={work.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-[#2D2E33] mb-1">{work.title}</h3>
+                    <h4 class="text-sm font-serif text-[#f48f00] uppercase tracking-widest mb-4">{work.subtitle}</h4>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">{work.desc}</p>
+                    <a href={work.link} class="inline-block border-2 border-[#f48f00] text-[#f48f00] px-8 py-2 rounded-full text-sm font-bold hover:bg-[#f48f00] hover:text-white transition-colors">
+                        憶．映像訴說 / GO !
+                    </a>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#FF9600] text-white">
+    <div class="container mx-auto px-4 text-center max-w-4xl space-y-8">
+        <div class="flex items-center justify-center gap-4">
+             <div class="h-px bg-white/30 flex-1"></div>
+             <div class="text-3xl font-serif opacity-50">//</div>
+             <div class="h-px bg-white/30 flex-1"></div>
+        </div>
+        
+        <ul class="space-y-4 text-xl md:text-2xl font-serif tracking-widest">
+            <li class="flex items-center justify-center gap-2">
+                <span class="text-[#ffeeaf]">▶</span> 猶如大腦神經網絡系統突觸觸發
+            </li>
+            <li>訊息通過人們溝通詮釋下的思維</li>
+            <li>寫出一頁又一頁內心裡的小宇宙</li>
+            <li>結合一份心與心傳遞的深刻聯繫</li>
+        </ul>
+
+        <div class="pt-12">
+            <a href="#" class="inline-block bg-[#ffeeaf] text-[#FF9600] px-12 py-4 rounded-full text-2xl font-bold hover:scale-105 transition-transform shadow-lg">
+                START
+            </a>
+        </div>
+    </div>
+</section>
