@@ -1,7 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-legacy-blue: #4275f4;
-  --color-legacy-text: #545353;
-  --color-legacy-link: #05809e;
+    --color-legacy-blue: #4275f4;
+    --color-legacy-text: #545353;
+    --color-legacy-link: #05809e;
+}
+
+@layer base {
+    body {
+        @apply text-legacy-text text-[14px];
+    }
+
+    a {
+        @apply text-legacy-link no-underline;
+    }
+
+    h1 {
+        @apply text-2xl font-normal m-0;
+        font-family: Verdana, Geneva, sans-serif;
+    }
 }
