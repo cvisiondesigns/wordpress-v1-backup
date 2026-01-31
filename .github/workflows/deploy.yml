@@ -22,20 +22,20 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: '.worktrees/static-migration/astro-rebuild/package-lock.json'
+          cache-dependency-path: 'astro-rebuild/package-lock.json'
 
       - name: Install dependencies
         run: npm install
-        working-directory: .worktrees/static-migration/astro-rebuild
+        working-directory: astro-rebuild
 
       - name: Build Astro
         run: npm run build
-        working-directory: .worktrees/static-migration/astro-rebuild
+        working-directory: astro-rebuild
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .worktrees/static-migration/astro-rebuild/dist
+          path: astro-rebuild/dist
 
   deploy:
     needs: build
