@@ -3527,11 +3527,14 @@ figure {
       float: right;
     }
 
-    /* 隱藏 mobile 相關元素 */
-    #hmenu_load_4 .hmenu_show_for_mobile,
-    #hmenu_load_4 .menu_responsive_label,
-    #hmenu_load_4 .hmenu_toggle_holder {
-      display: none !important;
+    /* 桌面版隱藏 mobile 相關元素 */
+    @media (min-width: 768px) {
+
+      #hmenu_load_4 .hmenu_show_for_mobile,
+      #hmenu_load_4 .menu_responsive_label,
+      #hmenu_load_4 .hmenu_toggle_holder {
+        display: none !important;
+      }
     }
 
     /* 隱藏空的 logo 和 social holder */
@@ -3714,63 +3717,26 @@ figure {
 
         <div id="tm-mobile" class="uk-position-top" hidden>
           <div class="uk-background-default uk-padding">
-
-
             <div class="uk-child-width-1-1" uk-grid>
-              <div>
-                <div class="uk-panel widget widget_text" id="text-5">
-
-
-                  <div class="uk-panel textwidget">
-                    <script
-                      type="text/javascript"> jQuery(function () { hmenu_activate_menu('2', '/cart/'); }); </script>
-                    <link rel="stylesheet" property="stylesheet" id="hmenu-2-general-css"
-                      href="../cwp/wp-content/plugins/hmenu/_frontend_files/_menu_2/_css/hero_menu_styles.css"
-                      type="text/css" media="all">
-                    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-                    <div class="hmenu_wrapper_state_2">
-                      <div id="hmenu_load_2" class="hmenu_load_menu hmenu_unique_menu_2" data-menu-id="2">
-                        <!-- BEGIN: MAIN -->
-                        <div id="hmenu_holder_2" class="hmenu_main_holder hmenu_main_bg_color"> <!-- BEGIN: INNER -->
-                          <div class="hmenu_inner_holder">
-                            <div class="menu_responsive_label">Menu</div> <!-- BEGIN: LEFT -->
-                            <div class="hmenu_left"> <!-- BEGIN: LOGO -->
-                              <div class="hmenu_logo"> <a href="../cwp" target="_self"> </a> </div>
-                              <div class="hmenu_grp_devider"></div> <!-- END: LOGO -->
-                            </div> <!-- END: LEFT --> <!-- BEGIN: CENTER -->
-                            <div class="hmenu_center"> </div> <!-- END: CENTER --> <!-- BEGIN: RIGHT -->
-                            <div class="hmenu_right"> <!-- BEGIN: NAV -->
-                              <div class="hmenu_navigation_holder">
-                                <ul class="hmenu_navigation_root hmenu_hover_color hmenu_full_hover"></ul>
-                                <ul class="hmenu_show_for_mobile">
-                                  <li class="hmenu_mobile_social_holder"> </li>
-                                </ul>
-                              </div>
-                              <div class="hmenu_grp_devider"></div> <!-- END: NAV --> <!-- BEGIN: SOCIAL -->
-                              <div class="hmenu_social_holder hmenu_hide_for_mobile">
-                                <ul class="hmenu_hover_color"> </ul>
-                              </div>
-                              <div class="hmenu_grp_devider"></div> <!-- END: SOCIAL --> <!-- BEGIN: TOGGLE -->
-                              <div class="hmenu_toggle_holder hmenu_mobile_show" data-toggle="close">
-                                <div class="hmenu_grp_devider"></div>
-                                <ul class="hmenu_hover_color">
-                                  <li><a>
-                                      <div class="hmenu_wrap icon_hero_default_thin_e645"></div>
-                                    </a></li>
-                                </ul>
-                              </div> <!-- END: TOGGLE -->
-                            </div> <!-- END: RIGHT -->
-                          </div> <!-- END: INNER --> <!-- BEGIN: SEARCH FULL INPUT --> <!-- END: SEARCH FULL INPUT -->
-                        </div> <!-- END: MAIN -->
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+              <div class="uk-text-center">
+                <!-- Hardcoded Main Menu for Mobile -->
+                <ul class="uk-nav uk-nav-default uk-nav-center uk-margin-large-top"
+                  style="font-size: 1.2rem; font-weight: bold;">
+                  <li><a href="../index.html">HOME</a></li>
+                  <li><a href="../world/index.html">WORLD</a></li>
+                  <li><a href="../portfolio/index.html">PORTFOLIO</a></li>
+                  <li><a href="../graphic-design/index.html">GRAPHIC</a></li>
+                  <li><a href="../blog/index.html">BLOG</a></li>
+                  <li><a href="../contact/index.html">CONTACT</a></li>
+                  <li><a href="../shop/index.html" class="uk-text-danger">SHOP</a></li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Mobile Shop Menu Container -->
+        <div id="mobile-shop-menu-container" class="uk-hidden@m"></div>
 
       </div>
 
@@ -3824,8 +3790,9 @@ figure {
 
 
     <script type="text/javascript">
-      var ajax_url = "/cwp/wp-admin/admin-ajax.php";
-      var hmenu_url = "/cwp/wp-content/plugins/hmenu/";
+      var ajax_url = "../cwp/wp-admin/admin-ajax.php";
+      var sbiajaxurl = '../cwp/wp-admin/admin-ajax.php';
+      var hmenu_url = "../cwp/wp-content/plugins/hmenu/";
     </script>
     <!-- Builder #page -->
     <div class="uk-section-default uk-section">
@@ -4474,7 +4441,7 @@ figure {
     </div>
   </div><!-- Instagram Feed JS -->
   <script type="text/javascript">
-    var sbiajaxurl = "/cwp/wp-admin/admin-ajax.php";
+    var sbiajaxurl = "../cwp/wp-admin/admin-ajax.php";
   </script>
   <script type='text/javascript'>
     (function () {
@@ -4586,466 +4553,490 @@ figure {
     /* 
      * FINAL REFINE v10: Main Menu Colors + Split Toggle (Link/Arrow)
      */
-     
+
     /* --- COMMON MOBILE HELPERS --- */
     .hmenu_mobile_target {
-        cursor: pointer !important;
-        pointer-events: auto !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
     }
-     
+
     /* --- MOBILE STYLES (< 768px) --- */
     @media (max-width: 767px) {
-    
-      /* 
-       * === 1. SHOPPING MENU (#hmenu_load_4) -> BOTTOM LAYER (z-index 90) ===
-       */
-      #hmenu_load_4 {
+
+      /* Global Mobile Reset v16 */
+      html,
+      body {
+        overflow-x: hidden !important;
         position: relative !important;
         width: 100% !important;
         margin: 0 !important;
-        height: auto !important;
-        background: transparent !important;
-        z-index: 90 !important; 
-        display: block !important;
-        clear: both;
-        pointer-events: none !important; /* Allow clicks to pass through wrapper */
-      }
-
-      /* Inner Wrappers -> Pass Through */
-      #hmenu_load_4 .hmenu_main_holder,
-      #hmenu_load_4 .hmenu_inner_holder,
-      #hmenu_load_4 .hmenu_center {
-        width: 100% !important;
-        position: relative !important;
-        height: auto !important;
         padding: 0 !important;
-        margin: 0 !important;
-        background: transparent !important;
-        pointer-events: none !important; 
-        text-align: center !important; 
       }
 
-      /* Trigger Label: "{ 逛街 }" -> Interactive + Hamburger */
+      .tm-page {
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+      }
+
+      .tm-header-mobile {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        display: block !important;
+        position: relative !important;
+        z-index: 500 !important;
+      }
+
+      /* 
+       * === 1. SHOP MENU (#hmenu_load_4) -> ACCORDION STYLE ===
+       */
+      #mobile-shop-menu-container {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: center !important;
+        clear: both !important;
+        background: #fdf5e6 !important;
+        /* Online Light Yellow */
+      }
+
+      /* 商店選單手機版樣式同步 */
+      #hmenu_load_4 .hmenu_main_holder {
+        height: 40px !important;
+        background-color: #fef5dd !important;
+        width: 100% !important;
+        display: block !important;
+        position: relative !important;
+      }
+
+      #hmenu_load_4 .hmenu_inner_holder {
+        display: block !important;
+        height: 40px !important;
+        width: 100% !important;
+      }
+
       #hmenu_load_4 .menu_responsive_label {
         display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
         position: relative !important;
-        width: 100%;
-        text-align: center;
         line-height: 40px !important;
         height: 40px !important;
-        z-index: 91;
-        font-family: 'Federo', sans-serif;
         color: #ab6f01 !important;
-        background-color: rgba(171, 111, 1, 0.1) !important; 
-        pointer-events: auto !important; 
+        font-family: 'Federo', sans-serif !important;
+        font-size: 18px !important;
+        pointer-events: auto !important;
         cursor: pointer !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      
-      /* Hamburger Icon */
-      #hmenu_load_4 .menu_responsive_label::after {
-          content: "\2630"; 
-          font-family: sans-serif; 
-          font-size: 24px;
-          position: absolute;
-          right: 15px;
-          top: 0;
-          line-height: 40px;
-          color: #ab6f01;
-      }
-
-      /* Hide default toggle */
-      #hmenu_load_4 .hmenu_toggle_holder { display: none !important; }
-
-      /* Dropdown Content */
-      .hmenu_shopping_mobile {
-        display: block !important;
-        position: relative !important;
+        z-index: 100 !important;
+        text-align: center !important;
         width: 100% !important;
-        max-height: 0 !important;
-        overflow: hidden !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s !important;
         margin: 0 !important;
-        background: rgba(254, 245, 221, 0.95) !important; 
-        z-index: 90;
         padding: 0 !important;
-        pointer-events: auto !important; 
-        text-align: center !important; 
+        left: 0 !important;
+        transform: none !important;
       }
-      .hmenu_shopping_mobile.mobile-open {
-        max-height: 600px !important; 
-        opacity: 1 !important;
+
+      #hmenu_load_4 .menu_responsive_label::after {
+        content: "\2630" !important;
+        display: block !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        font-family: sans-serif !important;
+        font-size: 22px !important;
+        color: #ab6f01 !important;
         visibility: visible !important;
       }
-      /* Shopping List Items */
-      .hmenu_shopping_mobile > ul { width: 100% !important; padding: 0 !important; text-align: center !important; }
-      .hmenu_shopping_mobile > ul > li { width: 100% !important; float: none !important; text-align: center !important; border-bottom: 1px solid rgba(171, 111, 1, 0.15) !important; }
-      .hmenu_shopping_mobile > ul > li > a { display: block !important; padding: 15px 0 !important; text-align: center !important; color: #ab6f01 !important; font-size: 15px !important; }
 
+      #hmenu_load_4 .hmenu_toggle_holder {
+        display: none !important;
+      }
+
+      /* 展開時的內容樣式 - 修正內容不出現的問題 */
+      #hmenu_load_4 .hmenu_navigation_holder {
+        display: none;
+        width: 100% !important;
+        background-color: #fef5dd !important;
+        z-index: 1000 !important;
+        transition: opacity 0.4s !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        overflow: hidden !important;
+      }
+
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+      }
+
+      body.heron-menu-active #hmenu_load_4 .hmenu_main_holder,
+      body.heron-menu-active #hmenu_load_4 .hmenu_inner_holder,
+      body.heron-menu-active #hmenu_load_4 .hmenu_center {
+        height: auto !important;
+      }
+
+
+      #hmenu_load_4 .hmenu_navigation_root {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+      }
+
+      #hmenu_load_4 .hmenu_navigation_root>li {
+        display: block !important;
+        width: 100% !important;
+        float: none !important;
+        border-bottom: 1px solid rgba(171, 111, 1, 0.1) !important;
+      }
+
+      #hmenu_load_4 .hmenu_navigation_root>li>a {
+        display: block !important;
+        line-height: 40px !important;
+        height: auto !important;
+        padding: 0 20px !important;
+        text-align: left !important;
+        color: #ab6f01 !important;
+        text-decoration: none !important;
+      }
+
+      #hmenu_load_4 .hmenu_item_devider {
+        display: none !important;
+      }
 
       /* 
-       * === 2. MAIN MENU (#hmenu_load_1) -> TOP LAYER (z-index 200) ===
+       * === 2. MAIN MENU (#hmenu_load_1) ===
        */
       #hmenu_load_1 {
-        position: relative !important; /* Ensure it stays in flow but on top if overlapped */
-        width: 100% !important;
-        z-index: 200 !important; /* Higher than shopping menu */
+        z-index: 2000 !important;
       }
-      
-      /* CONTAINER: Yellow Background + Flex Layout */
+
       #hmenu_load_1 .hmenu_main_holder {
-          display: flex !important;
-          flex-direction: row !important;
-          align-items: center !important;
-          justify-content: space-between !important;
-          height: 70px !important; /* Fixed header height */
-          background-color: #ffd687 !important; /* USER COLOR DEFAULT */
-          padding: 0 15px !important;
-          z-index: 202 !important;
-          border-bottom: 1px solid #e0c070 !important;
+        background-color: #ffd687 !important;
+        height: 60px !important;
       }
-      
-      #hmenu_load_1 .hmenu_inner_holder {
-          display: flex !important;
-          width: 100% !important;
-          align-items: center !important;
-          justify-content: space-between !important;
-          background: transparent !important;
-      }
-      
-      /* LOGO: Force Visible & Size */
-      #hmenu_load_1 .hmenu_left {
-          display: block !important;
-          flex: 0 0 auto !important;
-          width: auto !important;
-          float: none !important;
-      }
-      #hmenu_load_1 .hmenu_logo {
-          display: block !important;
-          width: auto !important;
-          height: auto !important;
-          margin: 0 !important;
-          padding: 0 !important;
-      }
-      #hmenu_load_1 .hmenu_logo a {
-          display: block !important;
-      }
-      #hmenu_load_1 .hmenu_logo img {
-          display: block !important;
-          height: 45px !important; /* Good height for logo */
-          width: auto !important;
-          max-width: 150px !important;
-          opacity: 1 !important;
-          visibility: visible !important;
-      }
-      
-      /* LABEL: Center/Right Text */
+
       #hmenu_load_1 .menu_responsive_label {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        width: auto !important;
-        flex: 1 1 auto !important;
-        line-height: normal !important;
-        text-align: right !important; /* Align with hamburger usually on right */
-        background-color: transparent !important; 
-        color: #241e14 !important; /* USER COLOR */
-        font-family: 'Federo', sans-serif;
-        font-size: 16px !important;
+        color: #241e14 !important;
+        line-height: 60px !important;
         font-weight: bold !important;
-        cursor: pointer !important;
-        pointer-events: auto !important;
-        padding-right: 10px !important;
       }
 
-      /* Hide original toggle */
-      #hmenu_load_1 .hmenu_toggle_holder { display: none !important; }
-
-      /* Dropdown Content */
       .hmenu_main_mobile {
-        display: block !important;
-        width: 100% !important;
-        max-height: 0 !important;
-        overflow: hidden !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s !important;
-        background: #ffd687 !important; /* Match Header */
-        position: absolute !important; /* Overlay */
-        top: 70px !important; /* Below header */
-        left: 0 !important;
-        z-index: 201 !important;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        background: #ffd687 !important;
+        top: 60px !important;
       }
+
       .hmenu_main_mobile.mobile-open {
-        max-height: 600px !important; 
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-      
-      /* Main Menu List Styling */
-      .hmenu_main_mobile ul { display: block !important; padding: 0 !important; margin: 0 !important; list-style: none !important; }
-      
-      /* LIST ITEMS */
-      .hmenu_main_mobile ul li { 
-          display: block !important; 
-          border-bottom: 1px solid rgba(36, 30, 20, 0.1) !important; 
-          position: relative !important;
-          background-color: #ffd687 !important; /* Default BG */
-          transition: background-color 0.2s !important;
-      }
-      
-      /* HOVER / ACTIVE STATE for PARENT ITEMS */
-      .hmenu_main_mobile ul li:hover,
-      .hmenu_main_mobile ul li.active-state { 
-          background-color: #f29918 !important; /* USER HOVER BG */
-      }
-      
-      /* LINKS */
-      .hmenu_main_mobile ul li a { 
-          display: block !important; 
-          padding: 15px 20px !important;
-          padding-right: 50px !important; /* Make room for toggle arrow */ 
-          color: #241e14 !important; /* USER TEXT */
-          font-size: 16px !important; 
-          text-align: left !important; 
-          text-decoration: none !important;
-          position: relative !important;
-      }
-      
-      /* HOVER TEXT */
-      .hmenu_main_mobile ul li:hover > a,
-      .hmenu_main_mobile ul li.active-state > a {
-          color: #ffffff !important; /* USER HOVER TEXT */
-      }
-      
-      /* --- CLICKABLE TOGGLE AREA (Right Side) --- */
-      .hmenu_click_toggle {
-          position: absolute !important;
-          top: 0 !important;
-          right: 0 !important;
-          width: 50px !important; /* Sensitive area */
-          height: 100% !important;
-          z-index: 50 !important;
-          cursor: pointer !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          background: rgba(0,0,0,0.01) !important; /* Almost invisible click catch */
-          /* If user says arrow exists visually, we don't need to add content. 
-             But if it's missing, let's add a small indicator just in case or assume transparency.
-             User said "right side already has arrow". So we leave it transparent.
-          */
+        max-height: 1000px !important;
       }
 
-      /* --- SUBMENU CONTAINER --- */
+      .hmenu_click_toggle::after {
+        content: "▼";
+        color: #241e14;
+      }
+
       .hmenu_submenu {
-          display: none !important; /* Hidden by default */
-          background-color: #ffeeb0 !important; /* Lighter background for submenu */
-          width: 100% !important;
-          padding: 0 !important;
-          margin: 0 !important;
-          border-top: 1px solid rgba(0,0,0,0.05) !important;
-      }
-      
-      /* OPEN STATE */
-      .hmenu_submenu.sub-open {
-          display: block !important;
-          animation: slideDown 0.3s ease-out;
-      }
-      
-      @keyframes slideDown {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-      }
-      
-      /* SUBMENU ITEMS */
-      .hmenu_submenu li {
-          background-color: transparent !important; /* Inherit from container */
-          border-bottom: 1px solid rgba(0,0,0,0.03) !important;
-      }
-      .hmenu_submenu li a {
-          padding-left: 40px !important; /* Indent */
-          font-size: 14px !important;
-          color: #5d4d34 !important; /* Darker text for contrast on light bg */
-      }
-      .hmenu_submenu li:hover {
-          background-color: rgba(255,255,255,0.3) !important;
-      }
-      .hmenu_submenu li:hover a {
-          color: #241e14 !important;
+        background: rgba(0, 0, 0, 0.05) !important;
       }
 
+      /* Fix UIkit overlap */
+      .uk-offcanvas-bar {
+        z-index: 3000 !important;
+      }
+    }
 
-      /* Image Fix */
-      .tm-mask-default { mask: none !important; -webkit-mask: none !important; }
-      .tm-mask-default img { display: block !important; visibility: visible !important; opacity: 1 !important; max-width: 100% !important; height: auto !important; }
-      
-      /* Hide dividers in mobile logo area */
-      #hmenu_load_1 .hmenu_grp_devider { display: none !important; }
+    /* Image Fix */
+    .tm-mask-default {
+      mask: none !important;
+      -webkit-mask: none !important;
+    }
+
+    .tm-mask-default img {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Hide dividers in mobile logo area */
+    #hmenu_load_1 .hmenu_grp_devider {
+      display: none !important;
+    }
     }
 
     /* --- DESKTOP/TABLET RESET (>= 768px) --- */
     @media (min-width: 768px) {
+
       /* Hide mobile elements */
       .menu_responsive_label,
-      .hmenu_toggle_holder { display: none !important; }
-      
+      .hmenu_toggle_holder {
+        display: none !important;
+      }
+
       /* Reset Wrappers */
-      #hmenu_load_4, #hmenu_load_4 .hmenu_main_holder, #hmenu_load_4 .hmenu_inner_holder {
-          height: auto !important; min-height: 0 !important; background: transparent !important; padding: 0 !important; margin: 0 !important; border: none !important; width: 100% !important; display: block !important;
+      #hmenu_load_4,
+      #hmenu_load_4 .hmenu_main_holder,
+      #hmenu_load_4 .hmenu_inner_holder,
+      #hmenu_load_4 .hmenu_center {
+        height: auto !important;
+        min-height: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        width: 100% !important;
+        display: block !important;
+        position: relative !important;
+        left: 0 !important;
+        transform: none !important;
       }
 
       /* Nav Holder Reset */
       #hmenu_load_4 .hmenu_navigation_holder {
-        display: block !important; position: relative !important; width: auto !important; height: auto !important; background: transparent !important; visibility: visible !important; opacity: 1 !important; padding: 10px 0 !important; margin: 0 auto !important; pointer-events: auto !important; text-align: center !important; max-height: none !important;
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        background: transparent !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        padding: 10px 0 !important;
+        margin: 0 auto !important;
+        pointer-events: auto !important;
+        text-align: center !important;
+        max-height: none !important;
+        left: 0 !important;
+        transform: none !important;
       }
-      /* Remove mobile class effects */
-      .mobile-open { display: block !important; animation: none !important; max-height: none !important; opacity: 1 !important; visibility: visible !important; }
+    }
 
-      /* List Items - No Wrap */
-      #hmenu_load_4 .hmenu_navigation_holder > ul { display: inline-block !important; white-space: nowrap !important; text-align: center !important; margin: 0 auto !important; padding: 0 !important; }
-      #hmenu_load_4 .hmenu_navigation_holder > ul > li { display: inline-block !important; float: none !important; width: auto !important; vertical-align: middle !important; border: none !important; }
-      #hmenu_load_4 .hmenu_navigation_holder > ul > li > a { padding: 0 15px !important; display: inline-block !important; width: auto !important; }
-      #hmenu_load_4 .hmenu_item_devider { display: inline-block !important; width: 1px !important; height: 12px !important; background: #ccc !important; vertical-align: middle !important; margin: 0 5px !important; }
-      
-      /* Main Menu Desktop Reset */
-      #hmenu_load_1 { position: relative !important; z-index: 100 !important; }
-      #hmenu_load_1 .hmenu_navigation_holder { display: block !important; position: relative !important; max-height: none !important; opacity: 1 !important; visibility: visible !important; }
-      /* Ensure logo behaves normally on desktop */
-      #hmenu_load_1 .hmenu_logo img { height: auto !important; max-width: 100% !important; width: auto !important; }
-      #hmenu_load_1 .hmenu_inner_holder { display: block !important; }
-      /* Submenus Desktop */
-      .hmenu_click_toggle { display: none !important; } 
-      .hmenu_submenu { diplay: block !important; }
+    /* Remove mobile class effects */
+    .mobile-open {
+      display: block !important;
+      animation: none !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* List Items - Stack Vertically and Center */
+    #hmenu_load_4 .hmenu_navigation_holder>ul,
+    #hmenu_load_4 .hmenu_navigation_root {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      transform: none !important;
+      position: relative !important;
+      white-space: normal !important;
+      list-style: none !important;
+    }
+
+    #hmenu_load_4 .hmenu_navigation_holder>ul>li,
+    #hmenu_load_4 .hmenu_navigation_root>li {
+      display: block !important;
+      float: none !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: none !important;
+      position: relative !important;
+      border: none !important;
+    }
+
+    #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
+    #hmenu_load_4 .hmenu_navigation_root>li>a,
+    #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
+    #hmenu_load_4 .hmenu_navigation_root>li>a div,
+    #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
+    #hmenu_load_4 .hmenu_navigation_root>li>a span {
+      padding: 10px 0 !important;
+      display: block !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      text-decoration: none !important;
+      left: 0 !important;
+      float: none !important;
+      background: transparent !important;
+    }
+
+    /* Ensure toggle interactivity */
+    .menu_responsive_label {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+    }
+
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+    #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
+      max-height: 5000px !important;
+      text-align: center !important;
+    }
+
+    .hmenu_item_devider {
+      display: none !important;
+    }
+
+    /* Main Menu Desktop Reset */
+    #hmenu_load_1 {
+      position: relative !important;
+      z-index: 100 !important;
+    }
+
+    #hmenu_load_1 .hmenu_navigation_holder {
+      display: block !important;
+      position: relative !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* Ensure logo behaves normally on desktop */
+    #hmenu_load_1 .hmenu_logo img {
+      height: auto !important;
+      max-width: 100% !important;
+      width: auto !important;
+    }
+
+    #hmenu_load_1 .hmenu_inner_holder {
+      display: block !important;
+    }
+
+    /* Submenus Desktop */
+    .hmenu_click_toggle {
+      display: none !important;
+    }
+
+    .hmenu_submenu {
+      display: block !important;
     }
   </style>
+  <script type="text/javascript" src="../cwp/wp-content/plugins/hmenu/assets/js/frontend_script.js"></script>
   <script>
-    (function() {
-      // Robust Menu Controller
+    (function () {
+      // PRO Robust Menu Controller v19 - COMPLETE UNIVERSAL
       var menuController = {
-        init: function() {
-           console.log('Menu Controller Init v12');
-           this.fixBanner();
-           this.setupShoppingMenu(); // Load 4
-           this.setupMainMenu();     // Load 1
+        init: function () {
+          console.log('Menu Controller Init v19 - Cart');
+          this.applyGlobalFixes();
+          this.injectWarriorSquares();
+          this.fixMobileLayout();
+          this.setupShoppingMenu();
+          this.setupMainMenu();
         },
-        
-        fixBanner: function() {
-           var bannerImg = document.querySelector('img[alt="Shop Banner"]');
-           if (bannerImg) {
-             bannerImg.style.display = 'block';
-             bannerImg.style.visibility = 'visible';
-             bannerImg.style.opacity = '1';
-             bannerImg.style.maxWidth = '100%';
-             bannerImg.style.height = 'auto';
-             var p = bannerImg.closest('.tm-mask-default');
-             if (p) { p.style.mask = 'none'; p.style.webkitMask = 'none'; p.style.display = 'block'; p.style.opacity = '1'; p.style.visibility = 'visible'; }
-           }
+        applyGlobalFixes: function () {
+          document.documentElement.style.overflowX = 'hidden';
+          document.body.style.overflowX = 'hidden';
+          document.body.style.width = '100%';
         },
-        
-        // Helper to setup accordion logic
-        setupAccordion: function(wrapperId, labelSelector, navSelector, menuClass) {
-           var wrapper = document.querySelector(wrapperId);
-           var label = wrapper ? wrapper.querySelector(labelSelector) : null;
-           var nav = wrapper ? wrapper.querySelector(navSelector) : null;
-           
-           if (label && nav) {
-             console.log('Setup Accordion for:', wrapperId);
-             nav.classList.add(menuClass);
-             
-             // Cleanup old listeners
-             var newLabel = label.cloneNode(true);
-             if (label.parentNode) {
-                label.parentNode.replaceChild(newLabel, label);
-                
-                newLabel.addEventListener('click', function(e) {
-                   // Only trigger on mobile width
-                   if (window.innerWidth < 768) {
-                       console.log(wrapperId + ' Clicked');
-                       e.preventDefault();
-                       e.stopPropagation(); 
-                       
-                       if (nav.classList.contains('mobile-open')) {
-                           nav.classList.remove('mobile-open');
-                       } else {
-                           // Close other menu if open? Optional, usage preference.
-                           // For now, let them overlap if user wants.
-                           nav.classList.add('mobile-open');
-                       }
-                   }
-                });
-             }
-             
-             // --- SUBMENU TOGGLE LOGIC (SPLIT ACTION) ---
-             if (wrapperId === '#hmenu_load_1') {
-                 this.injectToggleArea(nav);
-             }
-
-             // Resize reset
-             window.addEventListener('resize', function() {
-                if (window.innerWidth >= 768) {
-                    nav.classList.remove('mobile-open');
-                    nav.removeAttribute('style'); 
-                }
-             });
-           } else {
-             console.warn('Elements missing for:', wrapperId);
-           }
+        injectWarriorSquares: function () {
+          var shopMenu = document.getElementById('hmenu_load_4');
+          if (!shopMenu) return;
+          var inner = shopMenu.querySelector('.hmenu_inner_holder');
+          if (inner && !inner.querySelector('.shop-custom-toggle')) {
+            var square = document.createElement('div');
+            square.className = 'shop-custom-toggle hmenu_mobile_show';
+            square.innerHTML = '<span></span><span></span><span></span>';
+            inner.appendChild(square);
+          }
         },
-        
-        injectToggleArea: function(nav) {
-            // Find LIs that have a submenu (.hmenu_submenu)
-            var parents = nav.querySelectorAll('li');
-            parents.forEach(function(li) {
-                var sub = li.querySelector('.hmenu_submenu');
-                
-                if (sub) {
-                    // Create Invisible Toggle Area for Right Side
-                    var toggle = document.createElement('span');
-                    toggle.className = 'hmenu_click_toggle';
-                    // Optional: Inner arrow if really needed visually, but user said it exists.
-                    // toggle.innerHTML = '▼'; 
-                    
-                    li.appendChild(toggle);
-                    
-                    // Bind click to the TOGGLE AREA
-                    toggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('Toggle Clicked');
-                        
-                        if (sub.classList.contains('sub-open')) {
-                            sub.classList.remove('sub-open');
-                            li.classList.remove('active-state');
-                        } else {
-                            sub.classList.add('sub-open');
-                            li.classList.add('active-state');
-                        }
-                    });
-                }
+        fixMobileLayout: function () {
+          var isMobile = window.innerWidth <= 767;
+          var shopMenu = document.getElementById('hmenu_load_4');
+          if (isMobile && shopMenu) {
+            var setImp = function (el, prop, val) { el.style.setProperty(prop, val, 'important'); };
+            var holders = shopMenu.querySelectorAll('.hmenu_main_holder, .hmenu_inner_holder, .hmenu_center');
+            holders.forEach(function (h) {
+              setImp(h, 'display', 'block');
+              setImp(h, 'width', '100%');
+              setImp(h, 'left', '0');
+              setImp(h, 'transform', 'none');
+              setImp(h, 'margin', '0 auto');
             });
+            setImp(shopMenu, 'left', '0');
+            setImp(shopMenu, 'width', '100%');
+          }
         },
-        
-        setupShoppingMenu: function() {
-            this.setupAccordion('#hmenu_load_4', '.menu_responsive_label', '.hmenu_navigation_holder', 'hmenu_shopping_mobile');
+        setupAccordion: function (wrapperId, labelSelector, navSelector, mobileClass) {
+          var wrapper = document.querySelector(wrapperId);
+          if (!wrapper) return;
+          var labels = wrapper.querySelectorAll(labelSelector);
+          var nav = wrapper.querySelector(navSelector);
+          if (labels.length > 0 && nav) {
+            nav.classList.add(mobileClass);
+            var toggleFunc = function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              nav.classList.toggle('mobile-open');
+            };
+            labels.forEach(function (label) {
+              if (label.dataset.initV19) return;
+              label.dataset.initV19 = "true";
+              label.style.cursor = 'pointer';
+              label.addEventListener('click', toggleFunc);
+              label.addEventListener('touchstart', toggleFunc, { passive: false });
+            });
+            this.injectToggleArea(nav);
+          }
         },
-        
-        setupMainMenu: function() {
-            this.setupAccordion('#hmenu_load_1', '.menu_responsive_label', '.hmenu_navigation_holder', 'hmenu_main_mobile');
+        injectToggleArea: function (nav) {
+          var parents = nav.querySelectorAll('li');
+          parents.forEach(function (li) {
+            var sub = li.querySelector('.hmenu_submenu');
+            if (sub && !li.dataset.toggleInitV19) {
+              li.dataset.toggleInitV19 = "true";
+              var toggle = document.createElement('span');
+              toggle.className = 'hmenu_click_toggle';
+              li.appendChild(toggle);
+              var subToggle = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                sub.classList.toggle('sub-open');
+              };
+              toggle.addEventListener('click', subToggle);
+              toggle.addEventListener('touchstart', subToggle, { passive: false });
+            }
+          });
+        },
+        setupShoppingMenu: function () {
+          this.setupAccordion('#hmenu_load_4', '.menu_responsive_label, .hmenu_toggle_holder, .shop-custom-toggle', '.hmenu_navigation_holder', 'hmenu_shopping_mobile_active');
+        },
+        setupMainMenu: function () {
+          this.setupAccordion('#hmenu_load_1', '.menu_responsive_label, #hmenu_load_1 .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_main_mobile_active');
         }
       };
-      
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => menuController.init());
-      } else {
+      var runInit = function () {
         menuController.init();
-      }
+        setTimeout(function () { menuController.fixMobileLayout(); }, 300);
+      };
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', runInit); } else { runInit(); }
+      window.addEventListener('resize', function () { menuController.fixMobileLayout(); });
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.hmenu_load_menu')) {
+          var opens = document.querySelectorAll('.mobile-open');
+          opens.forEach(function (el) { el.classList.remove('mobile-open'); });
+        }
+      });
     })();
   </script>
 </body>
