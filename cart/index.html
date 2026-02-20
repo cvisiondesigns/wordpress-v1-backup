@@ -4826,75 +4826,89 @@ figure {
       visibility: visible !important;
     }
 
-    /* List Items - Stack Vertically and Center */
-    #hmenu_load_4 .hmenu_navigation_holder>ul,
-    #hmenu_load_4 .hmenu_navigation_root {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      left: 0 !important;
-      right: 0 !important;
-      margin: 0 auto !important;
-      padding: 0 !important;
-      transform: none !important;
-      position: relative !important;
-      white-space: normal !important;
-      list-style: none !important;
-    }
+    @media (max-width: 767px) {
 
-    #hmenu_load_4 .hmenu_navigation_holder>ul>li,
-    #hmenu_load_4 .hmenu_navigation_root>li {
-      display: block !important;
-      float: none !important;
-      width: 100% !important;
-      text-align: center !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      transform: none !important;
-      position: relative !important;
-      border: none !important;
-    }
+      /* 🛡️ 增加選擇器權重，確保在手機版絕對勝過後方的 Desktop Reset */
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: 5000px !important;
+        text-align: center !important;
+      }
 
-    #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
-    #hmenu_load_4 .hmenu_navigation_root>li>a,
-    #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
-    #hmenu_load_4 .hmenu_navigation_root>li>a div,
-    #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
-    #hmenu_load_4 .hmenu_navigation_root>li>a span {
-      padding: 10px 0 !important;
-      display: block !important;
-      width: 100% !important;
-      text-align: center !important;
-      margin: 0 auto !important;
-      text-decoration: none !important;
-      left: 0 !important;
-      float: none !important;
-      background: transparent !important;
-    }
+      /* List Items - Stack Vertically and Center */
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+        position: relative !important;
+        white-space: normal !important;
+        list-style: none !important;
+      }
 
-    /* Ensure toggle interactivity */
-    .menu_responsive_label {
-      pointer-events: auto !important;
-      cursor: pointer !important;
-    }
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li {
+        display: block !important;
+        float: none !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        position: relative !important;
+        border: none !important;
+      }
 
-    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
-    #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      height: auto !important;
-      max-height: 5000px !important;
-      text-align: center !important;
-    }
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a div,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a span {
+        padding: 10px 0 !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        text-decoration: none !important;
+        left: 0 !important;
+        float: none !important;
+        background: transparent !important;
+      }
 
-    .hmenu_item_devider {
-      display: none !important;
+      /* Ensure toggle interactivity */
+      .menu_responsive_label {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+      }
+
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+      #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: 5000px !important;
+        text-align: center !important;
+      }
+
+      .hmenu_item_devider {
+        display: none !important;
+      }
     }
 
     /* Main Menu Desktop Reset */

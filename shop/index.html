@@ -5995,65 +5995,69 @@ figure {
     cursor: pointer !important;
   }
 
-  body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
-  #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    height: auto !important;
-    max-height: 5000px !important;
-    text-align: center !important;
-  }
+  @media (max-width: 767px) {
 
-  /* List Items - Stack Vertically and Center */
-  #hmenu_load_4 .hmenu_navigation_holder>ul,
-  #hmenu_load_4 .hmenu_navigation_root {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    transform: none !important;
-    position: relative !important;
-    white-space: normal !important;
-    list-style: none !important;
-  }
+    /* 🛡️ 增加選擇器權重，確保在手機版絕對勝過後方的 Desktop Reset */
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
+      max-height: 5000px !important;
+      text-align: center !important;
+    }
 
-  #hmenu_load_4 .hmenu_navigation_holder>ul>li,
-  #hmenu_load_4 .hmenu_navigation_root>li {
-    display: block !important;
-    float: none !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    transform: none !important;
-    position: relative !important;
-    border: none !important;
-  }
+    /* List Items - Stack Vertically and Center */
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      transform: none !important;
+      position: relative !important;
+      white-space: normal !important;
+      list-style: none !important;
+    }
 
-  #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
-  #hmenu_load_4 .hmenu_navigation_root>li>a,
-  #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
-  #hmenu_load_4 .hmenu_navigation_root>li>a div,
-  #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
-  #hmenu_load_4 .hmenu_navigation_root>li>a span {
-    padding: 10px 0 !important;
-    display: block !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 auto !important;
-    text-decoration: none !important;
-    left: 0 !important;
-    float: none !important;
-    background: transparent !important;
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li {
+      display: block !important;
+      float: none !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: none !important;
+      position: relative !important;
+      border: none !important;
+    }
+
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a div,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a span {
+      padding: 10px 0 !important;
+      display: block !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      text-decoration: none !important;
+      left: 0 !important;
+      float: none !important;
+      background: transparent !important;
+    }
   }
 
   .hmenu_submenu {
@@ -6066,59 +6070,47 @@ figure {
     max-height: 2000px !important;
   }
 
-  /* 4. 逛街槓槓樣式：戰神方陣版（方形熱區） */
-  .shop-custom-toggle {
-    display: flex !important;
-    /* 🛡️ 方形實體大小：妳可以手動調這兩個數字 */
-    width: 48px !important;
-    height: 48px !important;
+  @media (max-width: 767px) {
 
-    /* 🛡️ 顏色：半透明黑方便老婆對位，對準了請改為 transparent */
-    background: rgba(51, 51, 51, 0.2) !important;
+    /* 4. 逛街槓槓樣式：戰神方陣版（方形熱區） */
+    .shop-custom-toggle {
+      display: flex !important;
+      width: 48px !important;
+      height: 48px !important;
+      background: rgba(51, 51, 51, 0.2) !important;
+      border-radius: 0px !important;
+      position: absolute !important;
+      right: -5px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      margin-top: 0px !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999999 !important;
+      pointer-events: auto !important;
+    }
 
-    /* 🛡️ 關鍵：拿掉圓角，變成方形 */
-    border-radius: 0px !important;
+    .shop-custom-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff !important;
+      margin: 3px 0;
+      pointer-events: none !important;
+      position: relative !important;
+      top: 2px !important;
+    }
 
-    position: absolute !important;
-    right: -5px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-
-    /* 🛡️ 整個方塊的上下微調：正數向下，負數向上 */
-    margin-top: 0px !important;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 9999999 !important;
-    pointer-events: auto !important;
-  }
-
-  /* 🛡️ 槓槓視覺位置微調 */
-  .shop-custom-toggle span {
-    display: block;
-    width: 22px;
-    /* 稍微加寬槓槓，配方形更好看 */
-    height: 2px;
-    background: #fff !important;
-    margin: 3px 0;
-    pointer-events: none !important;
-
-    /* 🛡️ 這裡控制槓槓在方塊裡的垂直高度 */
-    position: relative !important;
-    top: 2px !important;
-  }
-
-  /* 🛡️ 方形隱形熱區擴張 */
-  .shop-custom-toggle::after {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    background: transparent !important;
+    .shop-custom-toggle::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      background: transparent !important;
+    }
   }
 
 
