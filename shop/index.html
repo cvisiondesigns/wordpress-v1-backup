@@ -5632,81 +5632,143 @@ figure {
               max-height: 1000px !important;
             }
 
-            .hmenu_click_toggle::after {}
-
-            .hmenu_submenu {
-              background: rgba(0, 0, 0, 0.05) !important;
-            }
+            /* .hmenu_click_toggle::after - handled below */
 
             /* Fix UIkit overlap */
             .uk-offcanvas-bar {
               z-index: 3000 !important;
             }
+
+            /* 主選單 (#hmenu_load_1) 手機版：預設隱藏 nav holder */
+            #hmenu_load_1 .hmenu_navigation_holder {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              max-height: 0 !important;
+              overflow: hidden !important;
+            }
+
+            /* 主選單展開狀態 */
+            #hmenu_load_1 .hmenu_navigation_holder.mobile-open {
+              display: block !important;
+              visibility: visible !important;
+              opacity: 1 !important;
+              max-height: 2000px !important;
+              overflow: visible !important;
+              width: 100% !important;
+              background: #ffd687 !important;
+            }
+
+            /* 主選單子選單箭頭（手機版顯示） */
+            #hmenu_load_1 .hmenu_click_toggle {
+              display: flex !important;
+              position: absolute !important;
+              top: 0 !important;
+              right: 0 !important;
+              width: 50px !important;
+              height: 100% !important;
+              z-index: 50 !important;
+              cursor: pointer !important;
+              align-items: center !important;
+              justify-content: center !important;
+              background: rgba(0, 0, 0, 0.01) !important;
+            }
+
+            /* 主選單子選單箭頭圖示 */
+            #hmenu_load_1 .hmenu_click_toggle::after {
+              content: "\25BC" !important;
+              font-size: 10px !important;
+              color: #241e14 !important;
+            }
+
+            /* 主選單子選單展開狀態 - 覆蓋插件 opacity:0 visibility:hidden */
+            #hmenu_load_1 .hmenu_submenu.sub-open {
+              display: block !important;
+              opacity: 1 !important;
+              visibility: visible !important;
+              position: relative !important;
+              width: 100% !important;
+              left: 0 !important;
+              top: 0 !important;
+              animation: slideDown 0.3s ease-out;
+            }
+
+            /* 主選單 li 相對定位（讓 toggle 箭頭絕對定位有效） */
+            #hmenu_load_1 .hmenu_navigation_holder>ul>li {
+              position: relative !important;
+            }
+
+            /* 主選單連結樣式 */
+            #hmenu_load_1 .hmenu_navigation_holder ul li a {
+              display: block !important;
+              padding: 15px 20px !important;
+              padding-right: 50px !important;
+              color: #241e14 !important;
+              font-size: 16px !important;
+              text-align: left !important;
+              text-decoration: none !important;
+              position: relative !important;
+            }
+
+            /* 主選單連結 hover */
+            #hmenu_load_1 .hmenu_navigation_holder ul li:hover>a,
+            #hmenu_load_1 .hmenu_navigation_holder ul li.active-state>a {
+              color: #ffffff !important;
+            }
+
+            /* 主選單子選單容器 */
+            #hmenu_load_1 .hmenu_submenu {
+              display: none !important;
+              background-color: #ffeeb0 !important;
+              width: 100% !important;
+              padding: 0 !important;
+              margin: 0 !important;
+              border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+              background: rgba(0, 0, 0, 0.05) !important;
+            }
+
+            /* 主選單子選單項目 */
+            #hmenu_load_1 .hmenu_submenu li {
+              background-color: transparent !important;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
+            }
+
+            #hmenu_load_1 .hmenu_submenu li a {
+              padding-left: 40px !important;
+              font-size: 14px !important;
+              color: #5d4d34 !important;
+            }
+
+            #hmenu_load_1 .hmenu_submenu li:hover {
+              background-color: rgba(255, 255, 255, 0.3) !important;
+            }
+
+            #hmenu_load_1 .hmenu_submenu li:hover a {
+              color: #241e14 !important;
+            }
+
+            /* Image Fix */
+            .tm-mask-default {
+              mask: none !important;
+              -webkit-mask: none !important;
+            }
+
+            .tm-mask-default img {
+              display: block !important;
+              visibility: visible !important;
+              opacity: 1 !important;
+              max-width: 100% !important;
+              height: auto !important;
+            }
+
+            /* Hide dividers in mobile logo area */
+            #hmenu_load_1 .hmenu_grp_devider {
+              display: none !important;
+            }
+
           }
 
-          background-color: #f29918 !important;
-          /* USER HOVER BG */
-          }
-
-          /* LINKS */
-          .hmenu_main_mobile ul li a {
-            display: block !important;
-            padding: 15px 20px !important;
-            padding-right: 50px !important;
-            /* Make room for toggle arrow */
-            color: #241e14 !important;
-            /* USER TEXT */
-            font-size: 16px !important;
-            text-align: left !important;
-            text-decoration: none !important;
-            position: relative !important;
-          }
-
-          /* HOVER TEXT */
-          .hmenu_main_mobile ul li:hover>a,
-          .hmenu_main_mobile ul li.active-state>a {
-            color: #ffffff !important;
-            /* USER HOVER TEXT */
-          }
-
-          /* --- CLICKABLE TOGGLE AREA (Right Side) --- */
-          .hmenu_click_toggle {
-            position: absolute !important;
-            top: 0 !important;
-            right: 0 !important;
-            width: 50px !important;
-            /* Sensitive area */
-            height: 100% !important;
-            z-index: 50 !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            background: rgba(0, 0, 0, 0.01) !important;
-            /* Almost invisible click catch */
-            /* If user says arrow exists visually, we don't need to add content. 
-             But if it's missing, let's add a small indicator just in case or assume transparency.
-             User said "right side already has arrow". So we leave it transparent.
-          */
-          }
-
-          /* --- SUBMENU CONTAINER --- */
-          .hmenu_submenu {
-            display: none !important;
-            /* Hidden by default */
-            background-color: #ffeeb0 !important;
-            /* Lighter background for submenu */
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
-          }
-
-          /* OPEN STATE */
-          .hmenu_submenu.sub-open {
-            display: block !important;
-            animation: slideDown 0.3s ease-out;
-          }
+          /* end @media (max-width: 767px) */
 
           @keyframes slideDown {
             from {
@@ -5718,50 +5780,6 @@ figure {
               opacity: 1;
               transform: translateY(0);
             }
-          }
-
-          /* SUBMENU ITEMS */
-          .hmenu_submenu li {
-            background-color: transparent !important;
-            /* Inherit from container */
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
-          }
-
-          .hmenu_submenu li a {
-            padding-left: 40px !important;
-            /* Indent */
-            font-size: 14px !important;
-            color: #5d4d34 !important;
-            /* Darker text for contrast on light bg */
-          }
-
-          .hmenu_submenu li:hover {
-            background-color: rgba(255, 255, 255, 0.3) !important;
-          }
-
-          .hmenu_submenu li:hover a {
-            color: #241e14 !important;
-          }
-
-
-          /* Image Fix */
-          .tm-mask-default {
-            mask: none !important;
-            -webkit-mask: none !important;
-          }
-
-          .tm-mask-default img {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            max-width: 100% !important;
-            height: auto !important;
-          }
-
-          /* Hide dividers in mobile logo area */
-          #hmenu_load_1 .hmenu_grp_devider {
-            display: none !important;
-          }
           }
 
           /* --- DESKTOP/TABLET RESET (>= 768px) --- */
@@ -5969,7 +5987,33 @@ figure {
                     var subToggle = function (e) {
                       e.preventDefault();
                       e.stopPropagation();
+                      var isOpen = sub.classList.contains('sub-open');
                       sub.classList.toggle('sub-open');
+                      if (!isOpen) {
+                        // 強制顯示：覆蓋插件 opacity:0 visibility:hidden position:absolute
+                        sub.style.setProperty('display', 'block', 'important');
+                        sub.style.setProperty('opacity', '1', 'important');
+                        sub.style.setProperty('visibility', 'visible', 'important');
+                        sub.style.setProperty('position', 'static', 'important');
+                        sub.style.setProperty('width', '100%', 'important');
+                        sub.style.setProperty('height', 'auto', 'important');
+                        sub.style.setProperty('max-height', 'none', 'important');
+                        sub.style.setProperty('overflow', 'visible', 'important');
+                        sub.style.setProperty('left', 'auto', 'important');
+                        sub.style.setProperty('top', 'auto', 'important');
+                      } else {
+                        // 還原隱藏
+                        sub.style.removeProperty('display');
+                        sub.style.removeProperty('opacity');
+                        sub.style.removeProperty('visibility');
+                        sub.style.removeProperty('position');
+                        sub.style.removeProperty('width');
+                        sub.style.removeProperty('height');
+                        sub.style.removeProperty('max-height');
+                        sub.style.removeProperty('overflow');
+                        sub.style.removeProperty('left');
+                        sub.style.removeProperty('top');
+                      }
                     };
                     toggle.addEventListener('click', subToggle);
                     toggle.addEventListener('touchstart', subToggle, { passive: false });
@@ -6157,53 +6201,41 @@ figure {
       display: block !important;
     }
 
-    /* 🐲 宸鼻鼻的「 空間凱旋 」指令：撐開商店選單寬度，不准動到主選單 */
 
-    /* 1. 撐開最外層容器：解決「太窄」的業力 */
-    #hmenu_load_1 .hmenu_navigation_holder {
-      width: 100% !important;
-      /* 讓它有足夠的呼吸空間 */
-      max-width: 0px !important;
-      /* 解除最大寬度限制 */
-      overflow: visible !important;
-      /* 允許 Hover 效果名正言順地溢出顯示 */
 
-    }
-
-    /* 2. 針對 Root 根元素：水平展開，不准擠在一起 */
+    /* 手機版主選單：垂直排列 */
     #hmenu_load_1 .hmenu_navigation_root {
       width: 100% !important;
       display: flex !important;
-      flex-wrap: nowrap !important;
-      /* 強制不准換行，讓它們排成一橫排 */
+      flex-direction: column !important;
+      /* 垂直排列 */
+      flex-wrap: wrap !important;
       justify-content: flex-start !important;
       gap: 0px !important;
-      /* 👈 調整這裡：增加選項之間的「橫向距離」 */
-
     }
 
-    /* 3. 精準縮減 li 高度 (維持妳要的服貼文字) */
+    /* li 全寬，垂直堆疊 */
     #hmenu_load_1 .hmenu_navigation_root>li {
       height: auto !important;
-      width: auto !important;
-      /* 寬度隨內容撐開 */
+      width: 100% !important;
+      /* 全寬 */
     }
 
-    /* 4. 解決底線 (underline_hover) 太窄的問題 */
-    #hmenu_load_1 .hmenu_navigation_root>li>a.hmenu_underline_hover {
-      padding: 5px 10px !important;
-      /* 👈 這裡控制文字左右的呼吸感 */
-      min-width: max-content !important;
-      /* 強制寬度符合文字內容 */
-      display: inline-block !important;
-      white-space: nowrap !important;
-      /* 絕對不准文字折行 */
+    /* 手機版連結全寬，不換行 */
+    #hmenu_load_1 .hmenu_navigation_root>li>a.hmenu_underline_hover,
+    #hmenu_load_1 .hmenu_navigation_root>li>a {
+      display: block !important;
+      width: 100% !important;
+      white-space: normal !important;
     }
 
     /* 5. 確保 Hover 顏色正常顯示，不被截斷 */
     #hmenu_load_1 .hmenu_hover_color {
       background: transparent !important;
     }
+  }
+
+  /* end @media (max-width: 767px) */
 </style>
 
 
