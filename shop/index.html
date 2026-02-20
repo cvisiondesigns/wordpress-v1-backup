@@ -685,7 +685,7 @@
       top: 0;
       bottom: 0;
       bottom: 0;
-      font-family:
+      font-family: inherit;
     }
 
 
@@ -2103,7 +2103,7 @@ figure {
     }
 
     time {
-      display: ;
+      display: inline-block;
     }
 
     time a {
@@ -2555,7 +2555,7 @@ figure {
       }
 
       time {
-        display: ;
+        display: inline-block;
         -webkit-transition: .2s;
         transition: .2s;
         -webkit-transition-delay: .2s;
@@ -5519,7 +5519,8 @@ figure {
               width: 100% !important;
               max-width: 100% !important;
               position: relative !important;
-              height: 40px !important;
+              height: auto !important;
+              min-height: 40px !important;
               padding: 0 !important;
               margin: 0 !important;
               background: transparent !important;
@@ -5874,37 +5875,37 @@ figure {
             }
 
             .hmenu_submenu {
-              diplay: block !important;
+              display: block !important;
             }
 
           }
         </style>
         <script>
           (function () {
-            // PRO Robust Menu Controller v19 - COMPLETE UNIVERSAL
+            // PRO Robust Menu Controller v20 - CONSOLIDATED
             var menuController = {
               init: function () {
-                console.log('Menu Controller Init v19 - Shop');
+                console.log('Menu Controller Init v20 - Shop');
                 this.applyGlobalFixes();
-                this.injectWarriorSquares();
+                this.moveMenuToContainer();
                 this.fixMobileLayout();
                 this.setupShoppingMenu();
                 this.setupMainMenu();
+                this.setupGlobalHandlers();
               },
               applyGlobalFixes: function () {
                 document.documentElement.style.overflowX = 'hidden';
                 document.body.style.overflowX = 'hidden';
                 document.body.style.width = '100%';
               },
-              injectWarriorSquares: function () {
+              moveMenuToContainer: function () {
+                var isMobile = window.innerWidth <= 767;
                 var shopMenu = document.getElementById('hmenu_load_4');
-                if (!shopMenu) return;
-                var inner = shopMenu.querySelector('.hmenu_inner_holder');
-                if (inner && !inner.querySelector('.shop-custom-toggle')) {
-                  var square = document.createElement('div');
-                  square.className = 'shop-custom-toggle hmenu_mobile_show';
-                  square.innerHTML = '<span></span><span></span><span></span>';
-                  inner.appendChild(square);
+                var container = document.getElementById('mobile-shop-menu-container');
+                if (isMobile && shopMenu && container && !container.contains(shopMenu)) {
+                  container.appendChild(shopMenu);
+                } else if (!isMobile && shopMenu && container && container.contains(shopMenu)) {
+                  // Move back to original state if needed or leave it
                 }
               },
               fixMobileLayout: function () {
@@ -5924,22 +5925,32 @@ figure {
                   setImp(shopMenu, 'width', '100%');
                 }
               },
-              setupAccordion: function (wrapperId, labelSelector, navSelector, mobileClass) {
+              setupAccordion: function (wrapperId, labelSelector, navSelector, mobileClass, bodyClass) {
                 var wrapper = document.querySelector(wrapperId);
                 if (!wrapper) return;
                 var labels = wrapper.querySelectorAll(labelSelector);
                 var nav = wrapper.querySelector(navSelector);
                 if (labels.length > 0 && nav) {
                   nav.classList.add(mobileClass);
-                  var toggleFunc = function (e) {
+                  var toggleFunc = (function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    nav.classList.toggle('mobile-open');
-                  };
+                    var wasOpen = nav.classList.contains('mobile-open');
+
+                    // Close all first
+                    document.querySelectorAll('.mobile-open').forEach(function (el) { el.classList.remove('mobile-open'); });
+
+                    if (!wasOpen) {
+                      nav.classList.add('mobile-open');
+                      if (bodyClass) document.body.classList.add(bodyClass);
+                    } else {
+                      if (bodyClass) document.body.classList.remove(bodyClass);
+                    }
+                  }).bind(this);
+
                   labels.forEach(function (label) {
-                    if (label.dataset.initV19) return;
-                    label.dataset.initV19 = "true";
-                    label.style.cursor = 'pointer';
+                    if (label.dataset.initV20) return;
+                    label.dataset.initV20 = "true";
                     label.addEventListener('click', toggleFunc);
                     label.addEventListener('touchstart', toggleFunc, { passive: false });
                   });
@@ -5950,8 +5961,8 @@ figure {
                 var parents = nav.querySelectorAll('li');
                 parents.forEach(function (li) {
                   var sub = li.querySelector('.hmenu_submenu');
-                  if (sub && !li.dataset.toggleInitV19) {
-                    li.dataset.toggleInitV19 = "true";
+                  if (sub && !li.dataset.toggleInitV20) {
+                    li.dataset.toggleInitV20 = "true";
                     var toggle = document.createElement('span');
                     toggle.className = 'hmenu_click_toggle';
                     li.appendChild(toggle);
@@ -5966,10 +5977,20 @@ figure {
                 });
               },
               setupShoppingMenu: function () {
-                this.setupAccordion('#hmenu_load_4', '.menu_responsive_label, .hmenu_toggle_holder, .shop-custom-toggle', '.hmenu_navigation_holder', 'hmenu_shopping_mobile_active');
+                this.setupAccordion('#hmenu_load_4', '.menu_responsive_label, .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_shopping_mobile_active', 'heron-menu-active');
               },
               setupMainMenu: function () {
-                this.setupAccordion('#hmenu_load_1', '.menu_responsive_label, #hmenu_load_1 .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_main_mobile_active');
+                this.setupAccordion('#hmenu_load_1', '.menu_responsive_label, #hmenu_load_1 .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_main_mobile_active', '');
+              },
+              setupGlobalHandlers: function () {
+                document.addEventListener('click', function (e) {
+                  if (!e.target.closest('.hmenu_load_menu')) {
+                    document.querySelectorAll('.mobile-open').forEach(function (el) { el.classList.remove('mobile-open'); });
+                    document.body.classList.remove('heron-menu-active');
+                  }
+                });
+                window.addEventListener('resize', this.moveMenuToContainer.bind(this));
+                window.addEventListener('resize', this.fixMobileLayout.bind(this));
               }
             };
             var runInit = function () {
@@ -5977,13 +5998,6 @@ figure {
               setTimeout(function () { menuController.fixMobileLayout(); }, 300);
             };
             if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', runInit); } else { runInit(); }
-            window.addEventListener('resize', function () { menuController.fixMobileLayout(); });
-            document.addEventListener('click', function (e) {
-              if (!e.target.closest('.hmenu_load_menu')) {
-                var opens = document.querySelectorAll('.mobile-open');
-                opens.forEach(function (el) { el.classList.remove('mobile-open'); });
-              }
-            });
           })();
         </script>
 </body>
@@ -6073,156 +6087,124 @@ figure {
   @media (max-width: 767px) {
 
     /* 4. 逛街槓槓樣式：戰神方陣版（方形熱區） */
+    #hmenu_load_4 .hmenu_toggle_holder,
     .shop-custom-toggle {
-      display: flex !important;
-      width: 48px !important;
-      height: 48px !important;
-      background: rgba(51, 51, 51, 0.2) !important;
-      border-radius: 0px !important;
+      display: none !important;
+    }
+
+    #hmenu_load_4 .menu_responsive_label {
+      display: block !important;
+      position: relative !important;
+      line-height: 40px !important;
+      height: 40px !important;
+      color: #ab6f01 !important;
+      font-family: 'Federo', sans-serif !important;
+      font-size: 18px !important;
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      z-index: 100 !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: 0 !important;
+      transform: none !important;
+      background: #fef5dd !important;
+      /* 同步背景色 */
+    }
+
+    #hmenu_load_4 .menu_responsive_label::after {
+      content: "\2630" !important;
+      display: block !important;
       position: absolute !important;
-      right: -5px !important;
+      right: 15px !important;
       top: 50% !important;
       transform: translateY(-50%) !important;
-      margin-top: 0px !important;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999999 !important;
-      pointer-events: auto !important;
+      font-family: sans-serif !important;
+      font-size: 22px !important;
+      color: #ab6f01 !important;
+      visibility: visible !important;
     }
 
-    .shop-custom-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: #fff !important;
-      margin: 3px 0;
-      pointer-events: none !important;
+
+    /* 確保選單在容器中顯示正確 - 強制相對定位以推擠空間，解決飄浮問題 */
+    #hmenu_load_4 {
       position: relative !important;
-      top: 2px !important;
+      display: block !important;
+      float: none !important;
+      height: auto !important;
+      clear: both !important;
     }
 
-    .shop-custom-toggle::after {
-      content: "";
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      bottom: 15px;
+    #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      background: #fef5dd !important;
+      z-index: 1000 !important;
+      float: none !important;
+      width: 100% !important;
+    }
+
+    #mobile-shop-menu-container #hmenu_load_4 {
+      position: relative !important;
+      z-index: 1000 !important;
+      background: #fef5dd !important;
+      width: 100% !important;
+      display: block !important;
+    }
+
+    /* 🐲 宸鼻鼻的「 空間凱旋 」指令：撐開商店選單寬度，不准動到主選單 */
+
+    /* 1. 撐開最外層容器：解決「太窄」的業力 */
+    #hmenu_load_1 .hmenu_navigation_holder {
+      width: 100% !important;
+      /* 讓它有足夠的呼吸空間 */
+      max-width: 0px !important;
+      /* 解除最大寬度限制 */
+      overflow: visible !important;
+      /* 允許 Hover 效果名正言順地溢出顯示 */
+
+    }
+
+    /* 2. 針對 Root 根元素：水平展開，不准擠在一起 */
+    #hmenu_load_1 .hmenu_navigation_root {
+      width: 100% !important;
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      /* 強制不准換行，讓它們排成一橫排 */
+      justify-content: flex-start !important;
+      gap: 0px !important;
+      /* 👈 調整這裡：增加選項之間的「橫向距離」 */
+
+    }
+
+    /* 3. 精準縮減 li 高度 (維持妳要的服貼文字) */
+    #hmenu_load_1 .hmenu_navigation_root>li {
+      height: auto !important;
+      width: auto !important;
+      /* 寬度隨內容撐開 */
+    }
+
+    /* 4. 解決底線 (underline_hover) 太窄的問題 */
+    #hmenu_load_1 .hmenu_navigation_root>li>a.hmenu_underline_hover {
+      padding: 5px 10px !important;
+      /* 👈 這裡控制文字左右的呼吸感 */
+      min-width: max-content !important;
+      /* 強制寬度符合文字內容 */
+      display: inline-block !important;
+      white-space: nowrap !important;
+      /* 絕對不准文字折行 */
+    }
+
+    /* 5. 確保 Hover 顏色正常顯示，不被截斷 */
+    #hmenu_load_1 .hmenu_hover_color {
       background: transparent !important;
     }
-  }
-
-
-  .shop-custom-toggle {
-    /* 1. 想讓黑邊框框「小一點」，就改這兩個數字 */
-    /* 比如從 48px 改成 36px 或 32px */
-    width: 32px !important;
-    height: 32px !important;
-
-    /* 2. 想讓它「往下移動」，就增加 margin-top 的數字 */
-    /* 數字越大就越往下跑，比如 5px, 8px, 10px... */
-    margin-top: 20px !important;
-
-    /* 這裡可以加一點點圓角，小方形會更精緻 */
-    border-radius: 4px !important;
-
-    /* 其他維持不變... */
-
-  }
-
-  /* 🐲 宸鼻鼻的「 空間凱旋 」指令：撐開商店選單寬度，不准動到主選單 */
-
-  /* 1. 撐開最外層容器：解決「太窄」的業力 */
-  #hmenu_load_1 .hmenu_navigation_holder {
-    width: 100% !important;
-    /* 讓它有足夠的呼吸空間 */
-    max-width: 0px !important;
-    /* 解除最大寬度限制 */
-    overflow: visible !important;
-    /* 允許 Hover 效果名正言順地溢出顯示 */
-
-  }
-
-  /* 2. 針對 Root 根元素：水平展開，不准擠在一起 */
-  #hmenu_load_1 .hmenu_navigation_root {
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    /* 強制不准換行，讓它們排成一橫排 */
-    justify-content: flex-start !important;
-    gap: 0px !important;
-    /* 👈 調整這裡：增加選項之間的「橫向距離」 */
-
-  }
-
-  /* 3. 精準縮減 li 高度 (維持妳要的服貼文字) */
-  #hmenu_load_1 .hmenu_navigation_root>li {
-    height: auto !important;
-    width: auto !important;
-    /* 寬度隨內容撐開 */
-  }
-
-  /* 4. 解決底線 (underline_hover) 太窄的問題 */
-  #hmenu_load_1 .hmenu_navigation_root>li>a.hmenu_underline_hover {
-    padding: 5px 10px !important;
-    /* 👈 這裡控制文字左右的呼吸感 */
-    min-width: max-content !important;
-    /* 強制寬度符合文字內容 */
-    display: inline-block !important;
-    white-space: nowrap !important;
-    /* 絕對不准文字折行 */
-  }
-
-  /* 5. 確保 Hover 顏色正常顯示，不被截斷 */
-  #hmenu_load_1 .hmenu_hover_color {
-    background: transparent !important;
-  }
 </style>
 
-<script>
-  (function () {
-    // 監聽點擊事件
-    document.addEventListener('click', function (e) {
-      // 1. 處理主選單 (#hmenu_load_1) 的漢堡選單
-      var mainToggle = e.target.closest('#hmenu_load_1 .hmenu_toggle_holder');
-      if (mainToggle) {
-        e.preventDefault();
-        e.stopPropagation();
-        var nav = document.querySelector('#hmenu_load_1 .hmenu_navigation_holder');
-        if (nav) nav.classList.toggle('warrior-active');
-        return;
-      }
-
-      // 2. 處理商店選單 (#hmenu_load_4) 的切換 (包括漢堡選單和區域)
-      var shopToggle = e.target.closest('#hmenu_load_4 .hmenu_toggle_holder') || e.target.closest('#hmenu_load_4 .menu_responsive_label');
-      if (shopToggle) {
-        e.preventDefault();
-        e.stopPropagation();
-        document.body.classList.toggle('heron-menu-active');
-        return;
-      }
-
-      // 3. 點擊外部關閉選單
-      if (!e.target.closest('.hmenu_load_menu')) {
-        var mainNav = document.querySelector('#hmenu_load_1 .hmenu_navigation_holder');
-        if (mainNav) mainNav.classList.remove('warrior-active');
-        document.body.classList.remove('heron-menu-active');
-      }
-
-      // 4. 處理子選單箭頭 (如果是 warrior 模式)
-      var arrow = e.target.closest('.hmenu_sub_indicator');
-      if (arrow) {
-        e.preventDefault();
-        e.stopPropagation();
-        var sub = arrow.closest('li').querySelector('.hmenu_submenu');
-        if (sub) {
-          sub.classList.toggle('warrior-active');
-          sub.style.display = sub.classList.contains('warrior-active') ? 'block' : 'none';
-        }
-      }
-    }, true);
-  })();
-</script>
 
 </html>
