@@ -5054,5 +5054,103 @@ figure {
     })();
   </script>
 </body>
+<script>
+(function() {
+    // 🦁 紐特宸：190公分的物理斷電邏輯
+    const ntcIronFix = function() {
+        const targetID = '#hmenu_load_1';
+        const menu = document.querySelector(targetID);
+        if (!menu) {
+            setTimeout(ntcIronFix, 200);
+            return;
+        }
 
+        // 1. 強制讓初始狀態絕對隱藏（手機版）
+        const isMobile = () => window.innerWidth <= 960;
+        
+        const forceReset = () => {
+            if (isMobile() && !menu.classList.contains('mobile-open')) {
+                // 獅子吼：強制把主題自帶的 Active Class 剝離
+                menu.classList.remove('hmenu_main_mobile_active');
+            }
+        };
+        forceReset();
+        window.addEventListener('resize', forceReset);
+
+        // 2. 主開關影子層
+        let overlay = document.querySelector('.ntc-trigger-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'ntc-trigger-overlay';
+            overlay.style.cssText = 'position:absolute;top:0;right:0;width:75px;height:70px;z-index:999999;cursor:pointer;background:transparent;';
+            menu.appendChild(overlay);
+        }
+
+        overlay.onclick = function(e) {
+            if (isMobile()) {
+                e.preventDefault(); e.stopPropagation();
+                menu.classList.toggle('mobile-open');
+                console.log('🦁 紐特宸：主門開啟！');
+            }
+        };
+
+        // 3. 【絕殺】直接抓取所有子選單容器，監聽所有點擊
+        document.addEventListener('click', function(e) {
+            if (!isMobile()) return;
+            
+            // 抓取那個該死的小箭頭
+            const toggleBtn = e.target.closest('.hmenu_toggle_holder');
+            if (toggleBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 往上找最近的那個 li
+                const parentLi = toggleBtn.closest('li');
+                // 找到對應要滑出來的那個選單容器
+                const subMenu = parentLi.querySelector('.hmenu_navigation_holder');
+                
+                if (subMenu) {
+                    const isOpen = parentLi.classList.contains('sub-open');
+                    
+                    if (!isOpen) {
+                        parentLi.classList.add('sub-open');
+                        subMenu.setAttribute('style', 'display: block !important; visibility: visible !important; opacity: 1 !important; max-height: 2000px !important;');
+                        console.log('🦁 紐特宸：子選單全額顯影！');
+                    } else {
+                        parentLi.classList.remove('sub-open');
+                        subMenu.setAttribute('style', 'display: none !important;');
+                        console.log('🦁 紐特宸：子選單強制收合！');
+                    }
+                }
+            }
+        }, true); // 使用 Capture 模式優先攔截
+    };
+
+    window.addEventListener('load', ntcIronFix);
+})();
+</script>
+
+<style>
+/* 🦁 紐特宸：最後的權重結界 */
+@media screen and (max-width: 960px) {
+    /* 確保手機版預設沒點擊前，選單是死的 */
+    #hmenu_load_1:not(.mobile-open) .hmenu_navigation_holder {
+        display: none !important;
+    }
+    
+    /* 修正桌面切換過來的狀態 */
+    #hmenu_load_1.hmenu_main_mobile_active:not(.mobile-open) .hmenu_navigation_holder {
+        display: none !important;
+    }
+
+    #hmenu_load_1.mobile-open > .hmenu_navigation_holder {
+        display: block !important;
+    }
+    
+    /* 子選單箭頭旋轉 */
+    #hmenu_load_1 li.sub-open > a .hmenu_toggle_holder {
+        transform: rotate(180deg) !important;
+    }
+}
+</style>
 </html>
