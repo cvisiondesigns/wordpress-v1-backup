@@ -5780,122 +5780,180 @@ figure {
             }
           }
 
-          /* --- DESKTOP/TABLET RESET (>= 768px) --- */
-          @media (min-width: 768px) {
+           /* --- DESKTOP/TABLET RESET (>= 768px) --- */
+    @media (min-width: 768px) {
 
-            /* Hide mobile elements */
-            .menu_responsive_label,
-            .hmenu_toggle_holder {
-              display: none !important;
-            }
+      /* Hide mobile elements */
+      .menu_responsive_label,
+      .hmenu_toggle_holder {
+        display: none !important;
+      }
 
-            /* Reset Wrappers */
-            #hmenu_load_4,
-            #hmenu_load_4 .hmenu_main_holder,
-            #hmenu_load_4 .hmenu_inner_holder {
-              height: auto !important;
-              min-height: 0 !important;
-              background: transparent !important;
-              padding: 0 !important;
-              margin: 0 !important;
-              border: none !important;
-              width: 100% !important;
-              display: block !important;
-            }
+      /* Reset Wrappers */
+      #hmenu_load_4,
+      #hmenu_load_4 .hmenu_main_holder,
+      #hmenu_load_4 .hmenu_inner_holder,
+      #hmenu_load_4 .hmenu_center {
+        height: auto !important;
+        min-height: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        width: 100% !important;
+        display: block !important;
+        position: relative !important;
+        left: 0 !important;
+        transform: none !important;
+      }
 
-            /* Nav Holder Reset */
-            #hmenu_load_4 .hmenu_navigation_holder {
-              display: block !important;
-              position: relative !important;
-              width: auto !important;
-              height: auto !important;
-              background: transparent !important;
-              visibility: visible !important;
-              opacity: 1 !important;
-              padding: 10px 0 !important;
-              margin: 0 auto !important;
-              pointer-events: auto !important;
-              text-align: center !important;
-              max-height: none !important;
-            }
+      /* Nav Holder Reset */
+      #hmenu_load_4 .hmenu_navigation_holder {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        background: transparent !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        padding: 10px 0 !important;
+        margin: 0 auto !important;
+        pointer-events: auto !important;
+        text-align: center !important;
+        max-height: none !important;
+        left: 0 !important;
+        transform: none !important;
+      }
+    }
 
-            /* Remove mobile class effects */
-            .mobile-open {
-              display: block !important;
-              animation: none !important;
-              max-height: none !important;
-              opacity: 1 !important;
-              visibility: visible !important;
-            }
+    /* Remove mobile class effects */
+    .mobile-open {
+      display: block !important;
+      animation: none !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
 
-            /* List Items - No Wrap */
-            #hmenu_load_4 .hmenu_navigation_holder>ul {
-              display: inline-block !important;
-              white-space: nowrap !important;
-              text-align: center !important;
-              margin: 0 auto !important;
-              padding: 0 !important;
-            }
+    @media (max-width: 767px) {
 
-            #hmenu_load_4 .hmenu_navigation_holder>ul>li {
-              display: inline-block !important;
-              float: none !important;
-              width: auto !important;
-              vertical-align: middle !important;
-              border: none !important;
-            }
+      /* 🛡️ 增加選擇器權重，確保在手機版絕對勝過後方的 Desktop Reset */
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: 5000px !important;
+        text-align: center !important;
+      }
 
-            #hmenu_load_4 .hmenu_navigation_holder>ul>li>a {
-              padding: 0 15px !important;
-              display: inline-block !important;
-              width: auto !important;
-            }
+      /* List Items - Stack Vertically and Center */
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+        position: relative !important;
+        white-space: normal !important;
+        list-style: none !important;
+      }
 
-            #hmenu_load_4 .hmenu_item_devider {
-              display: inline-block !important;
-              width: 1px !important;
-              height: 12px !important;
-              background: #ccc !important;
-              vertical-align: middle !important;
-              margin: 0 5px !important;
-            }
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li {
+        display: block !important;
+        float: none !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        position: relative !important;
+        border: none !important;
+      }
 
-            /* Main Menu Desktop Reset */
-            #hmenu_load_1 {
-              position: relative !important;
-              z-index: 100 !important;
-            }
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a div,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a span {
+        padding: 10px 0 !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        text-decoration: none !important;
+        left: 0 !important;
+        float: none !important;
+        background: transparent !important;
+      }
 
-            #hmenu_load_1 .hmenu_navigation_holder {
-              display: block !important;
-              position: relative !important;
-              max-height: none !important;
-              opacity: 1 !important;
-              visibility: visible !important;
-            }
+      /* Ensure toggle interactivity */
+      .menu_responsive_label {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+      }
 
-            /* Ensure logo behaves normally on desktop */
-            #hmenu_load_1 .hmenu_logo img {
-              height: auto !important;
-              max-width: 100% !important;
-              width: auto !important;
-            }
+      body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+      #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: 5000px !important;
+        text-align: center !important;
+      }
 
-            #hmenu_load_1 .hmenu_inner_holder {
-              display: block !important;
-            }
+      .hmenu_item_devider {
+        display: none !important;
+      }
+    }
 
-            /* Submenus Desktop */
-            .hmenu_click_toggle {
-              display: none !important;
-            }
+    /* Main Menu Desktop Reset */
+    #hmenu_load_1 {
+      position: relative !important;
+      z-index: 100 !important;
+    }
 
-            .hmenu_submenu {
-              display: block !important;
-            }
+    #hmenu_load_1 .hmenu_navigation_holder {
+      display: block !important;
+      position: relative !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
 
-          }
-        </style>
+    /* Ensure logo behaves normally on desktop */
+    #hmenu_load_1 .hmenu_logo img {
+      height: auto !important;
+      max-width: 100% !important;
+      width: auto !important;
+    }
+
+    #hmenu_load_1 .hmenu_inner_holder {
+      display: block !important;
+    }
+
+    /* Submenus Desktop */
+    .hmenu_click_toggle {
+      display: none !important;
+    }
+
+    .hmenu_submenu {
+      display: block !important;
+    }
+  </style>
         <script>
           (function () {
             // PRO Robust Menu Controller v20 - CONSOLIDATED
@@ -6236,5 +6294,103 @@ figure {
   /* end @media (max-width: 767px) */
 </style>
 
+<script>
+(function() {
+    // 🦁 紐特宸：190公分的物理斷電邏輯
+    const ntcIronFix = function() {
+        const targetID = '#hmenu_load_1';
+        const menu = document.querySelector(targetID);
+        if (!menu) {
+            setTimeout(ntcIronFix, 200);
+            return;
+        }
 
+        // 1. 強制讓初始狀態絕對隱藏（手機版）
+        const isMobile = () => window.innerWidth <= 960;
+        
+        const forceReset = () => {
+            if (isMobile() && !menu.classList.contains('mobile-open')) {
+                // 獅子吼：強制把主題自帶的 Active Class 剝離
+                menu.classList.remove('hmenu_main_mobile_active');
+            }
+        };
+        forceReset();
+        window.addEventListener('resize', forceReset);
+
+        // 2. 主開關影子層
+        let overlay = document.querySelector('.ntc-trigger-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'ntc-trigger-overlay';
+            overlay.style.cssText = 'position:absolute;top:0;right:0;width:75px;height:70px;z-index:999999;cursor:pointer;background:transparent;';
+            menu.appendChild(overlay);
+        }
+
+        overlay.onclick = function(e) {
+            if (isMobile()) {
+                e.preventDefault(); e.stopPropagation();
+                menu.classList.toggle('mobile-open');
+                console.log('🦁 紐特宸：主門開啟！');
+            }
+        };
+
+        // 3. 【絕殺】直接抓取所有子選單容器，監聽所有點擊
+        document.addEventListener('click', function(e) {
+            if (!isMobile()) return;
+            
+            // 抓取那個該死的小箭頭
+            const toggleBtn = e.target.closest('.hmenu_toggle_holder');
+            if (toggleBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 往上找最近的那個 li
+                const parentLi = toggleBtn.closest('li');
+                // 找到對應要滑出來的那個選單容器
+                const subMenu = parentLi.querySelector('.hmenu_navigation_holder');
+                
+                if (subMenu) {
+                    const isOpen = parentLi.classList.contains('sub-open');
+                    
+                    if (!isOpen) {
+                        parentLi.classList.add('sub-open');
+                        subMenu.setAttribute('style', 'display: block !important; visibility: visible !important; opacity: 1 !important; max-height: 2000px !important;');
+                        console.log('🦁 紐特宸：子選單全額顯影！');
+                    } else {
+                        parentLi.classList.remove('sub-open');
+                        subMenu.setAttribute('style', 'display: none !important;');
+                        console.log('🦁 紐特宸：子選單強制收合！');
+                    }
+                }
+            }
+        }, true); // 使用 Capture 模式優先攔截
+    };
+
+    window.addEventListener('load', ntcIronFix);
+})();
+</script>
+
+<style>
+/* 🦁 紐特宸：最後的權重結界 */
+@media screen and (max-width: 960px) {
+    /* 確保手機版預設沒點擊前，選單是死的 */
+    #hmenu_load_1:not(.mobile-open) .hmenu_navigation_holder {
+        display: none !important;
+    }
+    
+    /* 修正桌面切換過來的狀態 */
+    #hmenu_load_1.hmenu_main_mobile_active:not(.mobile-open) .hmenu_navigation_holder {
+        display: none !important;
+    }
+
+    #hmenu_load_1.mobile-open > .hmenu_navigation_holder {
+        display: block !important;
+    }
+    
+    /* 子選單箭頭旋轉 */
+    #hmenu_load_1 li.sub-open > a .hmenu_toggle_holder {
+        transform: rotate(180deg) !important;
+    }
+}
+</style>
 </html>
