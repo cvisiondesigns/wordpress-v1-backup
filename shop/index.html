@@ -5614,13 +5614,11 @@ figure {
 
             #hmenu_load_1 .hmenu_main_holder {
               background-color: #ffd687 !important;
-              height: 60px !important;
+             
             }
 
             #hmenu_load_1 .menu_responsive_label {
               color: #241e14 !important;
-              line-height: 60px !important;
-              font-weight: bold !important;
             }
 
             .hmenu_main_mobile {
@@ -5661,22 +5659,28 @@ figure {
 
             /* 主選單子選單箭頭（手機版顯示） */
             #hmenu_load_1 .hmenu_click_toggle {
-              display: flex !important;
               position: absolute !important;
               top: 0 !important;
               right: 0 !important;
               width: 50px !important;
-              height: 100% !important;
               z-index: 50 !important;
               cursor: pointer !important;
               align-items: center !important;
               justify-content: center !important;
-              background: rgba(0, 0, 0, 0.01) !important;
+            
+              height: unset !important;       /* 🦁 解除舊枷鎖 */
+              min-height: 42px !important;    /* 🦁 完美高度 */
+              background: rgba(0, 0, 0, 0.1) !important; /* 沒點開前的神祕感 */
+    
+    /* 這裡記得補上這一句，點開後才會徹底漂白 */
+    display: flex !important;
+    align-items: center !important;
+
             }
 
             /* 主選單子選單箭頭圖示 */
             #hmenu_load_1 .hmenu_click_toggle::after {
-        
+    
             }
 
             /* 主選單子選單展開狀態 - 覆蓋插件 opacity:0 visibility:hidden */
@@ -5690,6 +5694,8 @@ figure {
               top: 0 !important;
               animation: slideDown 0.3s ease-out;
             }
+
+
 
             /* 主選單 li 相對定位（讓 toggle 箭頭絕對定位有效） */
             #hmenu_load_1 .hmenu_navigation_holder>ul>li {
@@ -5722,7 +5728,8 @@ figure {
               padding: 0 !important;
               margin: 0 !important;
               border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
-              background: rgba(0, 0, 0, 0.05) !important;
+              background: rgb(255 214 135) !important;
+              border-bottom: 1px solid #f2991b !important;
             }
 
             /* 主選單子選單項目 */
@@ -5765,6 +5772,50 @@ figure {
             }
 
           }
+
+
+
+/* 🦁 紐特宸：點擊展開後，讓「母標題那一行」變色的暴力邏輯 */
+
+/* 1. 利用「相鄰選擇器」：當子選單變成 .sub-open 時，讓它「前面的那個 a 連結」變色 */
+#hmenu_load_1 .hmenu_navigation_holder ul li:has(.hmenu_submenu.sub-open) > a {
+    background-color: #f29918 !important; /* 👈 妳想要的點開後的背景粉色 */
+    color: #ffffff !important;           /* 👈 點開後的文字 */
+    transition: all 0.3s ease;
+}
+
+/* 2. 或是用另一種寫法（如果妳的瀏覽器比較舊，不支援 :has） */
+/* 當子選單展開時，強制鎖定它父層 li 下面的 a */
+#hmenu_load_1 .hmenu_submenu.sub-open ~ a, 
+#hmenu_load_1 .hmenu_click_toggle.sub-open ~ a {
+    background-color: #f29918  !important;
+    color: #ffffff !important;   
+
+}
+
+/* 3. 妳剛才問的「箭頭圖示」，在這裡幫妳補上一個會動的箭頭 */
+#hmenu_load_1 .hmenu_click_toggle::after {
+
+}
+
+/* 當展開時，讓箭頭轉向變色 */
+#hmenu_load_1 .hmenu_submenu.sub-open + .hmenu_click_toggle::after,
+#hmenu_load_1 .hmenu_navigation_holder ul li:has(.hmenu_submenu.sub-open) .hmenu_click_toggle::after {
+}
+
+/* 🦁 紐特宸：絕殺外部黑手——點擊展開後強制漂白 */
+@media screen and (max-width: 960px) {
+
+    /* 1. 暴力覆蓋：當 li 展開時，穿透進去鎖定那個 .hmenu_wrap 變白色 */
+    #hmenu_load_1 .hmenu_navigation_holder > ul > li.sub-open > a > .hmenu_wrap {
+        color: #ffffff !important; /* 👈 強行把那個該死的黑色刷成白色 */
+    }
+
+    /* 2. 確保背景色依然名正言順地亮起 */
+    #hmenu_load_1 .hmenu_navigation_holder > ul > li.sub-open > a {
+        background-color: #f29918 !important; /* 妳選的橘色 */
+        transition: all 0.3s ease;
+    }
 
           /* end @media (max-width: 767px) */
 
@@ -6296,78 +6347,64 @@ figure {
 
 <script>
 (function() {
-    // 🦁 紐特宸：190公分的物理斷電邏輯
-    const ntcIronFix = function() {
-        const targetID = '#hmenu_load_1';
-        const menu = document.querySelector(targetID);
-        if (!menu) {
-            setTimeout(ntcIronFix, 200);
-            return;
-        }
+    const ntcSupremeFix = function() {
+        const targetMenu = document.querySelector('#hmenu_load_1');
+        if (!targetMenu) { setTimeout(ntcSupremeFix, 200); return; }
 
-        // 1. 強制讓初始狀態絕對隱藏（手機版）
-        const isMobile = () => window.innerWidth <= 960;
-        
-        const forceReset = () => {
-            if (isMobile() && !menu.classList.contains('mobile-open')) {
-                // 獅子吼：強制把主題自帶的 Active Class 剝離
-                menu.classList.remove('hmenu_main_mobile_active');
-            }
+        // 🦁 1. 核心邏輯：看到類別變化就強行「漂白」
+        const applyWhitePaint = () => {
+            const allItems = targetMenu.querySelectorAll('li');
+            allItems.forEach(li => {
+                const linkA = li.querySelector('a');
+                const linkWrap = li.querySelector('.hmenu_wrap');
+                
+                if (li.classList.contains('sub-open')) {
+                    // 點開了：強制塗白、塗橘
+                    if (linkA) linkA.style.setProperty('background-color', '#f29918', 'important');
+                    if (linkWrap) linkWrap.style.setProperty('color', '#ffffff', 'important');
+                } else {
+                    // 關閉了：恢復原樣
+                    if (linkA) linkA.style.backgroundColor = '';
+                    if (linkWrap) linkWrap.style.color = '';
+                }
+            });
         };
-        forceReset();
-        window.addEventListener('resize', forceReset);
 
-        // 2. 主開關影子層
-        let overlay = document.querySelector('.ntc-trigger-overlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
+        // 🦁 2. 開啟觀察器：盯死選單的任何變動
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    applyWhitePaint();
+                }
+            });
+        });
+
+        // 開始監視所有 li 的類別變化
+        targetMenu.querySelectorAll('li').forEach(li => {
+            observer.observe(li, { attributes: true });
+        });
+
+        // 🦁 3. 主開關與原本的斷電邏輯
+        const isMobile = () => window.innerWidth <= 960;
+        let overlay = document.querySelector('.ntc-trigger-overlay') || document.createElement('div');
+        if (!overlay.parentElement) {
             overlay.className = 'ntc-trigger-overlay';
-            overlay.style.cssText = 'position:absolute;top:0;right:0;width:75px;height:70px;z-index:999999;cursor:pointer;background:transparent;';
-            menu.appendChild(overlay);
+            overlay.style.cssText = 'position:absolute;top:0;right:0;width:75px;height:70px;z-index:999999;cursor:pointer;';
+            targetMenu.appendChild(overlay);
         }
-
-        overlay.onclick = function(e) {
+        overlay.onclick = (e) => {
             if (isMobile()) {
                 e.preventDefault(); e.stopPropagation();
-                menu.classList.toggle('mobile-open');
-                console.log('🦁 紐特宸：主門開啟！');
+                targetMenu.classList.toggle('mobile-open');
             }
         };
-
-        // 3. 【絕殺】直接抓取所有子選單容器，監聽所有點擊
-        document.addEventListener('click', function(e) {
-            if (!isMobile()) return;
-            
-            // 抓取那個該死的小箭頭
-            const toggleBtn = e.target.closest('.hmenu_toggle_holder');
-            if (toggleBtn) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // 往上找最近的那個 li
-                const parentLi = toggleBtn.closest('li');
-                // 找到對應要滑出來的那個選單容器
-                const subMenu = parentLi.querySelector('.hmenu_navigation_holder');
-                
-                if (subMenu) {
-                    const isOpen = parentLi.classList.contains('sub-open');
-                    
-                    if (!isOpen) {
-                        parentLi.classList.add('sub-open');
-                        subMenu.setAttribute('style', 'display: block !important; visibility: visible !important; opacity: 1 !important; max-height: 2000px !important;');
-                        console.log('🦁 紐特宸：子選單全額顯影！');
-                    } else {
-                        parentLi.classList.remove('sub-open');
-                        subMenu.setAttribute('style', 'display: none !important;');
-                        console.log('🦁 紐特宸：子選單強制收合！');
-                    }
-                }
-            }
-        }, true); // 使用 Capture 模式優先攔截
+        
+        applyWhitePaint(); // 初始執行一次
     };
 
-    window.addEventListener('load', ntcIronFix);
+    window.addEventListener('load', ntcSupremeFix);
 })();
+
 </script>
 
 <style>
@@ -6392,5 +6429,30 @@ figure {
         transform: rotate(180deg) !important;
     }
 }
+
+/* 🦁 紐特宸：鳳后專屬——消除預設顏色，點擊才准臉紅 */
+
+/* 1. 【核心】強制抹除一進去就有的「預設啟動色」 */
+#hmenu_load_1 .hmenu_navigation_holder ul li.active-state > a,
+#hmenu_load_1 .hmenu_navigation_holder ul li:hover > a {
+    background-color: transparent !important; /* 讓它一進去是透明的 */
+    color: #000000 !important;               /* 文字維持黑色 (或者妳原本的色) */
+}
+
+/* 2. 【核心】強制抹除那個 .hmenu_wrap 的預設黑手樣式 */
+#hmenu_load_1 .hmenu_navigation_holder > ul > li > a > .hmenu_wrap {
+    color: inherit !important; /* 讓它聽爸爸 a 標籤的話 */
+}
+
+/* 3. 【絕殺】只有當「.sub-open」類別出現時（點擊後），才准變色變白！ */
+#hmenu_load_1 .hmenu_navigation_holder ul li.sub-open > a {
+    background-color: #f29918 !important; /* 👈 點開後的深橘色 */
+}
+
+#hmenu_load_1 .hmenu_navigation_holder ul li.sub-open > a .hmenu_wrap {
+    color: #ffffff !important;           /* 👈 點開後的白色文字 */
+}
+
+
 </style>
 </html>
