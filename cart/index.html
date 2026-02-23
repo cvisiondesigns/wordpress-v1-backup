@@ -3939,6 +3939,9 @@ figure {
 
           </div>
         </div>
+
+   
+
         <div class="tm-grid-expand uk-child-width-1-1 uk-grid-margin" uk-grid>
           <div>
 
@@ -3961,7 +3964,19 @@ figure {
             </div>
 
 
+     <div class="ntc-empty-cart-container">
 
+    <p>可以去挑選一些心儀的寶貝！</p>
+    
+    <div class="ntc-shop-grid">
+        <a href="連結1">手指滑板系列</a>
+        <a href="連結2">療癒文創</a>
+        <a href="連結3">文化文具</a>
+        <a href="連結4">會員&訂單</a>
+        <a href="連結5">購物車</a>
+        <a href="連結6">結帳</a>
+    </div>
+</div>
 
           </div>
         </div>
@@ -5026,7 +5041,23 @@ figure {
         if (e.target.closest('#hmenu_load_1')) { ntcSubFix(); }
     });
 })();
+/* 🦁 紐特宸：1 號與 4 號各走各的路，互不干涉 */
+jQuery(document).ready(function($) {
+    
+    // 1. 只針對 4 號選單的暴力開啟（不影響別人）
+    $(document).on('click', '#hmenu_load_4 .hmenu_toggle_holder', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // 🦁 阻止訊號往外傳，只留在 4 號家裡
+        $('#hmenu_load_4 .hmenu_navigation_holder').stop().slideToggle(200);
+        console.log("🦁 4 號逛街選單開了，1 號不准看！");
+    });
 
+    // 2. 確保 1 號主選單的子選單能「自然呼吸」
+    // 我們不對 1 號做任何暴力動作，讓它原本的 JS 去跑
+    // 但如果它被壓住了，我們幫它提升層級
+    $('#hmenu_load_1').css('z-index', '99999');
+
+});
   </script>
 </body>
 <script>
@@ -5423,6 +5454,7 @@ figure {
 
 
 </script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -5760,6 +5792,56 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
 }
-</style>
+
+/* 🦁 紐特宸：導購櫥窗美化版 */
+.ntc-empty-cart-container {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f8f8f8;
+    border-radius: 25px;
+}
+
+.ntc-icon { font-size: 50px; margin-bottom: 15px; }
+
+.ntc-empty-cart-container h2 {
+    color: #6a0dad; /* 鳳后紫 */
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.ntc-empty-cart-container p {
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.ntc-shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 手機版兩兩一排 */
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.ntc-shop-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    background: #e8380d;
+    border: 1px solid #f8f8f8;
+    border-radius: 30px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.ntc-shop-grid a:active {
+    background: #6a0dad;
+    color: #fff;
+    transform: scale(0.95);
+}
+
+
 </style>
 </html>
