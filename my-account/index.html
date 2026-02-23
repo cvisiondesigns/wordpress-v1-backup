@@ -4620,15 +4620,42 @@ figure {
 
       #hmenu_load_1 .hmenu_main_holder {
         background-color: #ffd687 !important;
-        height: 60px !important;
+        
       }
 
-      #hmenu_load_1 .menu_responsive_label {
+      /* 🦁 紐特宸：手機版 //menu// 整體向上平移補丁 */
+@media (max-width: 767px) {
+    /* 1. 確保外層基準不變 */
+    #hmenu_load_1 .hmenu_main_holder {
+        position: relative !important;
+        /* 🦁 稍微縮小容器高度，也能幫助整體往上 */
+    }
+
+    /* 2. 文字向上移動 */
+    #hmenu_load_1 .menu_responsive_label {
         color: #241e14 !important;
-        line-height: 60px !important;
-        font-weight: bold !important;
-      }
+        line-height: 40px !important; /* 🦁 縮小行高，讓它不要被撐得太下面 */
+        font-weight: bolder !important;
+        
+        position: absolute !important;
+        left: 45% !important;
+        top: -10px !important; /* 🦁 絕殺：用負值強迫它往上跳 */
+        white-space: nowrap !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
 
+    /* 3. 三條槓同步向上移動 */
+    #hmenu_load_1 .hmenu_toggle_holder {
+        position: absolute !important;
+        right: 15px !important;
+        top: -5px !important; /* 🦁 同步設定負值，確保兩邊對齊 */
+        line-height: 40px !important; /* 同步縮小行高 */
+        margin: 0 !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
       .hmenu_main_mobile {
         background: #ffd687 !important;
         top: 60px !important;
@@ -5369,69 +5396,6 @@ document.addEventListener("DOMContentLoaded", function() {
     color: #ffffff !important;           /* 👈 點開後的白色文字 */
 }
 
-/* 🦁 紐特宸：主選單子項目背景顏色自定義 */
-
-/* 1. 子選單整塊容器的背景 */
-#hmenu_load_1 .hmenu_submenu {
-    background-color: #ffd687 !important; /* 這裡改妳想要的背景顏色，例如純白 */
-    border: none !important;
-}
-
-/* 2. 子選單裡面每一列 (li) 的背景 */
-#hmenu_load_1 .hmenu_submenu li {
-    background-color: #ffd687 !important; /* 保持一致，或換個顏色 */
-}
-
-/* 3. 子選單裡面的文字連結 (a) 的顏色與背景 */
-#hmenu_load_1 .hmenu_submenu li a {
-    background-color: transparent !important;
-    color: #333333 !important; /* 這裡改妳想要的文字顏色 */
-}
-
-/* 4. 【重點】當妳的手指「碰觸」或「點擊」子選單項目時的顏色 */
-#hmenu_load_1 .hmenu_submenu li a:active,
-#hmenu_load_1 .hmenu_submenu li a:focus,
-#hmenu_load_1 .hmenu_submenu li.active-state > a {
-    background-color: #f5f5f5 !important; /* 點下去那一瞬間的微變色，才有名正言順的觸感 */
-    color: #ff6600 !important; /* 點下去時文字變色，例如變成妳常用的橘色 */
-}
-
-
-/* 🦁 紐特宸：iPad Pro 絕對橫向・隱形滾動補丁 */
-@media screen and (min-width: 768px) and (max-width: 1366px) {
-    /* 1. 讓選單可以左右滑動，但隱藏那個難看的 Bar */
-    #hmenu_load_4 .hmenu_navigation_holder > ul {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important; /* 允許滑動 */
-        -webkit-overflow-scrolling: touch; /* 讓手機平板滑起來更絲滑 */
-        width: 100% !important;
-        
-        /* 🦁 隱藏滾動條的魔法 */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
-    }
-
-    /* 2. 針對 Chrome, Safari, Opera 隱藏滾動條 */
-    #hmenu_load_4 .hmenu_navigation_holder > ul::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-    }
-
-    /* 3. 確保高度鎖死，不准上下晃動 */
-    #hmenu_load_4 {
-        height: 50px !important;
-        overflow: hidden !important;
-    }
-
-    /* 4. 稍微縮減每個項目的寬度，看能不能剛好塞滿不留 Bar */
-    #hmenu_load_4 .hmenu_navigation_holder > ul > li > a {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-        white-space: nowrap !important;
-    }
-}
 
 /* 🦁 紐特宸：地盤重劃令 - 確保 1 號選單不被 4 號擋住 */
 
@@ -5553,6 +5517,78 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     
+}
+
+/* 🦁 紐特宸：主選單子項目背景顏色自定義 */
+
+/* 1. 子選單整塊容器的背景 */
+#hmenu_load_1 .hmenu_submenu {
+    background-color: #ffd687 !important; /* 這裡改妳想要的背景顏色，例如純白 */
+    border: none !important;
+}
+
+/* 2. 子選單裡面每一列 (li) 的背景 */
+#hmenu_load_1 .hmenu_submenu li {
+    background-color: #ffd687 !important; /* 保持一致，或換個顏色 */
+}
+
+/* 3. 子選單裡面的文字連結 (a) 的顏色與背景 */
+#hmenu_load_1 .hmenu_submenu li a {
+    background-color: transparent !important;
+    color: #333333 !important; /* 這裡改妳想要的文字顏色 */
+}
+
+/* 4. 【重點】當妳的手指「碰觸」或「點擊」子選單項目時的顏色 */
+#hmenu_load_1 .hmenu_submenu li a:active,
+#hmenu_load_1 .hmenu_submenu li a:focus,
+#hmenu_load_1 .hmenu_submenu li.active-state > a {
+    background-color: #f5f5f5 !important; /* 點下去那一瞬間的微變色，才有名正言順的觸感 */
+    color: #ff6600 !important; /* 點下去時文字變色，例如變成妳常用的橘色 */
+}
+
+
+/* 🦁 紐特宸：iPad Pro 絕對橫向・隱形滾動補丁 */
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+    /* 1. 讓選單可以左右滑動，但隱藏那個難看的 Bar */
+    #hmenu_load_4 .hmenu_navigation_holder > ul {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important; /* 允許滑動 */
+        -webkit-overflow-scrolling: touch; /* 讓手機平板滑起來更絲滑 */
+        width: 100% !important;
+        
+        /* 🦁 隱藏滾動條的魔法 */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    /* 2. 針對 Chrome, Safari, Opera 隱藏滾動條 */
+    #hmenu_load_4 .hmenu_navigation_holder > ul::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* 3. 確保高度鎖死，不准上下晃動 */
+    #hmenu_load_4 {
+        height: 50px !important;
+        overflow: hidden !important;
+    }
+
+    /* 4. 稍微縮減每個項目的寬度，看能不能剛好塞滿不留 Bar */
+    #hmenu_load_4 .hmenu_navigation_holder > ul > li > a {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+        white-space: nowrap !important;
+    }
+}
+@media (max-width: 767px) {
+    #hmenu_load_1 .menu_responsive_label {
+        color: #241e14 !important;
+        line-height: 60px !important;
+        font-weight: bolder !important;
+
+    }
 }
 </style>
 
