@@ -4550,7 +4550,7 @@ figure {
 
 
   <style>
-    /* 
+   /* 
      * FINAL REFINE v10: Main Menu Colors + Split Toggle (Link/Arrow)
      */
 
@@ -4718,15 +4718,42 @@ figure {
 
       #hmenu_load_1 .hmenu_main_holder {
         background-color: #ffd687 !important;
-        height: 60px !important;
+        
       }
 
-      #hmenu_load_1 .menu_responsive_label {
+      /* 🦁 紐特宸：手機版 //menu// 整體向上平移補丁 */
+@media (max-width: 767px) {
+    /* 1. 確保外層基準不變 */
+    #hmenu_load_1 .hmenu_main_holder {
+        position: relative !important;
+        /* 🦁 稍微縮小容器高度，也能幫助整體往上 */
+    }
+
+    /* 2. 文字向上移動 */
+    #hmenu_load_1 .menu_responsive_label {
         color: #241e14 !important;
-        line-height: 60px !important;
-        font-weight: bold !important;
-      }
+        line-height: 40px !important; /* 🦁 縮小行高，讓它不要被撐得太下面 */
+        font-weight: bolder !important;
+        
+        position: absolute !important;
+        left: 45% !important;
+        top: -10px !important; /* 🦁 絕殺：用負值強迫它往上跳 */
+        white-space: nowrap !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
 
+    /* 3. 三條槓同步向上移動 */
+    #hmenu_load_1 .hmenu_toggle_holder {
+        position: absolute !important;
+        right: 15px !important;
+        top: -5px !important; /* 🦁 同步設定負值，確保兩邊對齊 */
+        line-height: 40px !important; /* 同步縮小行高 */
+        margin: 0 !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
       .hmenu_main_mobile {
         background: #ffd687 !important;
         top: 60px !important;
@@ -4944,114 +4971,62 @@ figure {
     .hmenu_submenu {
       display: block !important;
     }
+
+    
   </style>
   <script type="text/javascript" src="../cwp/wp-content/plugins/hmenu/assets/js/frontend_script.js"></script>
   <script>
-    (function () {
-      // PRO Robust Menu Controller v19 - COMPLETE UNIVERSAL
-      var menuController = {
-        init: function () {
-          console.log('Menu Controller Init v19 - Cart');
-          this.applyGlobalFixes();
-          this.injectWarriorSquares();
-          this.fixMobileLayout();
-          this.setupShoppingMenu();
-          this.setupMainMenu();
-        },
-        applyGlobalFixes: function () {
-          document.documentElement.style.overflowX = 'hidden';
-          document.body.style.overflowX = 'hidden';
-          document.body.style.width = '100%';
-        },
-        injectWarriorSquares: function () {
-          var shopMenu = document.getElementById('hmenu_load_4');
-          if (!shopMenu) return;
-          var inner = shopMenu.querySelector('.hmenu_inner_holder');
-          if (inner && !inner.querySelector('.shop-custom-toggle')) {
-            var square = document.createElement('div');
-            square.className = 'shop-custom-toggle hmenu_mobile_show';
-            square.innerHTML = '<span></span><span></span><span></span>';
-            inner.appendChild(square);
-          }
-        },
-        fixMobileLayout: function () {
-          var isMobile = window.innerWidth <= 767;
-          var shopMenu = document.getElementById('hmenu_load_4');
-          if (isMobile && shopMenu) {
-            var setImp = function (el, prop, val) { el.style.setProperty(prop, val, 'important'); };
-            var holders = shopMenu.querySelectorAll('.hmenu_main_holder, .hmenu_inner_holder, .hmenu_center');
-            holders.forEach(function (h) {
-              setImp(h, 'display', 'block');
-              setImp(h, 'width', '100%');
-              setImp(h, 'left', '0');
-              setImp(h, 'transform', 'none');
-              setImp(h, 'margin', '0 auto');
-            });
-            setImp(shopMenu, 'left', '0');
-            setImp(shopMenu, 'width', '100%');
-          }
-        },
-        setupAccordion: function (wrapperId, labelSelector, navSelector, mobileClass) {
-          var wrapper = document.querySelector(wrapperId);
-          if (!wrapper) return;
-          var labels = wrapper.querySelectorAll(labelSelector);
-          var nav = wrapper.querySelector(navSelector);
-          if (labels.length > 0 && nav) {
-            nav.classList.add(mobileClass);
-            var toggleFunc = function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-              nav.classList.toggle('mobile-open');
-            };
-            labels.forEach(function (label) {
-              if (label.dataset.initV19) return;
-              label.dataset.initV19 = "true";
-              label.style.cursor = 'pointer';
-              label.addEventListener('click', toggleFunc);
-              label.addEventListener('touchstart', toggleFunc, { passive: false });
-            });
-            this.injectToggleArea(nav);
-          }
-        },
-        injectToggleArea: function (nav) {
-          var parents = nav.querySelectorAll('li');
-          parents.forEach(function (li) {
-            var sub = li.querySelector('.hmenu_submenu');
-            if (sub && !li.dataset.toggleInitV19) {
-              li.dataset.toggleInitV19 = "true";
-              var toggle = document.createElement('span');
-              toggle.className = 'hmenu_click_toggle';
-              li.appendChild(toggle);
-              var subToggle = function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                sub.classList.toggle('sub-open');
-              };
-              toggle.addEventListener('click', subToggle);
-              toggle.addEventListener('touchstart', subToggle, { passive: false });
+    /* 🦁 紐特宸：主選單子項目 (Submenu) 暴力全開補丁 */
+(function() {
+    const ntcSubFix = function() {
+        const mainMenu = document.querySelector('#hmenu_load_1');
+        if (!mainMenu) return;
+
+        // 1. 抓取所有包含子選單的清單項目
+        const parentItems = mainMenu.querySelectorAll('li');
+
+        parentItems.forEach(li => {
+            const sub = li.querySelector('.hmenu_submenu');
+            // 抓取妳的 42px 箭頭按鈕或是原本的箭頭區域
+            const arrow = li.querySelector('.hmenu_click_toggle, .hmenu_toggle_holder');
+
+            if (sub && arrow && !li.dataset.subInitV25) {
+                li.dataset.subInitV25 = "true";
+                
+                const toggleSub = function(e) {
+                    e.preventDefault(); e.stopPropagation();
+                    
+                    const isOpen = li.classList.toggle('sub-open');
+                    sub.classList.toggle('sub-open');
+
+                    // 🦁 絕殺：強制子選單內容「名正言順」現身
+                    if (isOpen) {
+                        sub.style.setProperty('display', 'block', 'important');
+                        sub.style.setProperty('opacity', '1', 'important');
+                        sub.style.setProperty('visibility', 'visible', 'important');
+                        sub.style.setProperty('position', 'static', 'important'); // 讓它撐開高度
+                    } else {
+                        sub.style.removeProperty('display');
+                        sub.style.removeProperty('opacity');
+                        sub.style.removeProperty('visibility');
+                        sub.style.removeProperty('position');
+                    }
+                    console.log('🦁 紐特宸：子選單開關 ->', isOpen);
+                };
+
+                arrow.addEventListener('click', toggleSub);
+                arrow.addEventListener('touchstart', toggleSub, { passive: false });
             }
-          });
-        },
-        setupShoppingMenu: function () {
-          this.setupAccordion('#hmenu_load_4', '.menu_responsive_label, .hmenu_toggle_holder, .shop-custom-toggle', '.hmenu_navigation_holder', 'hmenu_shopping_mobile_active');
-        },
-        setupMainMenu: function () {
-          this.setupAccordion('#hmenu_load_1', '.menu_responsive_label, #hmenu_load_1 .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_main_mobile_active');
-        }
-      };
-      var runInit = function () {
-        menuController.init();
-        setTimeout(function () { menuController.fixMobileLayout(); }, 300);
-      };
-      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', runInit); } else { runInit(); }
-      window.addEventListener('resize', function () { menuController.fixMobileLayout(); });
-      document.addEventListener('click', function (e) {
-        if (!e.target.closest('.hmenu_load_menu')) {
-          var opens = document.querySelectorAll('.mobile-open');
-          opens.forEach(function (el) { el.classList.remove('mobile-open'); });
-        }
-      });
-    })();
+        });
+    };
+
+    window.addEventListener('load', ntcSubFix);
+    // 怕主選單點開後才生成子選單，所以我們要在點擊主按鈕時也跑一次
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('#hmenu_load_1')) { ntcSubFix(); }
+    });
+})();
+
   </script>
 </body>
 <script>
@@ -5129,7 +5104,347 @@ figure {
     window.addEventListener('load', ntcIronFix);
 })();
 </script>
+</body>
+<script>
+(function() {
+    const ntcSupremeFix = function() {
+        const targetMenu = document.querySelector('#hmenu_load_1');
+        if (!targetMenu) { setTimeout(ntcSupremeFix, 200); return; }
 
+        // 🦁 1. 核心邏輯：看到類別變化就強行「漂白」
+        const applyWhitePaint = () => {
+            const allItems = targetMenu.querySelectorAll('li');
+            allItems.forEach(li => {
+                const linkA = li.querySelector('a');
+                const linkWrap = li.querySelector('.hmenu_wrap');
+                
+                if (li.classList.contains('sub-open')) {
+                    // 點開了：強制塗白、塗橘
+                    if (linkA) linkA.style.setProperty('background-color', '#f29918', 'important');
+                    if (linkWrap) linkWrap.style.setProperty('color', '#ffffff', 'important');
+                } else {
+                    // 關閉了：恢復原樣
+                    if (linkA) linkA.style.backgroundColor = '';
+                    if (linkWrap) linkWrap.style.color = '';
+                }
+            });
+        };
+
+        // 🦁 2. 開啟觀察器：盯死選單的任何變動
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    applyWhitePaint();
+                }
+            });
+        });
+
+        // 開始監視所有 li 的類別變化
+        targetMenu.querySelectorAll('li').forEach(li => {
+            observer.observe(li, { attributes: true });
+        });
+
+        // 🦁 3. 主開關與原本的斷電邏輯
+        const isMobile = () => window.innerWidth <= 960;
+        let overlay = document.querySelector('.ntc-trigger-overlay') || document.createElement('div');
+        if (!overlay.parentElement) {
+            overlay.className = 'ntc-trigger-overlay';
+            overlay.style.cssText = 'position:absolute;top:0;right:0;width:75px;height:70px;z-index:999999;cursor:pointer;';
+            targetMenu.appendChild(overlay);
+        }
+        overlay.onclick = (e) => {
+            if (isMobile()) {
+                e.preventDefault(); e.stopPropagation();
+                targetMenu.classList.toggle('mobile-open');
+            }
+        };
+        
+        applyWhitePaint(); // 初始執行一次
+    };
+
+    window.addEventListener('load', ntcSupremeFix);
+})();
+
+</script>
+</body>
+<style>
+  /* 1. 物理封鎖：讓文字徹底變成背景 */
+  /* Ensure toggle interactivity */
+  .menu_responsive_label {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+  @media (max-width: 767px) {
+
+    /* 🛡️ 增加選擇器權重，確保在手機版絕對勝過後方的 Desktop Reset */
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
+      max-height: 5000px !important;
+      text-align: center !important;
+    }
+
+    /* List Items - Stack Vertically and Center */
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      transform: none !important;
+      position: relative !important;
+      white-space: normal !important;
+      list-style: none !important;
+    }
+
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li {
+      display: block !important;
+      float: none !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: none !important;
+      position: relative !important;
+      border: none !important;
+    }
+
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a div,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a div,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_holder>ul>li>a span,
+    body.heron-menu-active #hmenu_load_4 .hmenu_navigation_root>li>a span {
+      padding: 10px 0 !important;
+      display: block !important;
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      text-decoration: none !important;
+      left: 0 !important;
+      float: none !important;
+      background: transparent !important;
+    }
+  }
+
+  .hmenu_submenu {
+    display: none;
+  }
+
+  .hmenu_submenu.warrior-active {
+    display: block !important;
+    visibility: visible !important;
+    max-height: 2000px !important;
+  }
+
+  @media (max-width: 767px) {
+
+    /* 4. 逛街槓槓樣式：戰神方陣版（方形熱區） */
+    #hmenu_load_4 .hmenu_toggle_holder,
+    .shop-custom-toggle {
+      display: none !important;
+    }
+
+    #hmenu_load_4 .menu_responsive_label {
+      display: block !important;
+      position: relative !important;
+      line-height: 40px !important;
+      height: 40px !important;
+      color: #ab6f01 !important;
+      font-family: 'Federo', sans-serif !important;
+      font-size: 18px !important;
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      z-index: 100 !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: 0 !important;
+      transform: none !important;
+      background: #fef5dd !important;
+      /* 同步背景色 */
+    }
+
+    #hmenu_load_4 .menu_responsive_label::after {
+      content: "\2630" !important;
+      display: block !important;
+      position: absolute !important;
+      right: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      font-family: sans-serif !important;
+      font-size: 22px !important;
+      color: #ab6f01 !important;
+      visibility: visible !important;
+    }
+
+
+    /* 確保選單在容器中顯示正確 - 強制相對定位以推擠空間，解決飄浮問題 */
+    #hmenu_load_4 {
+      position: relative !important;
+      display: block !important;
+      float: none !important;
+      height: auto !important;
+      clear: both !important;
+    }
+
+    #hmenu_load_4 .hmenu_navigation_holder.mobile-open {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      background: #fef5dd !important;
+      z-index: 1000 !important;
+      float: none !important;
+      width: 100% !important;
+    }
+
+    #mobile-shop-menu-container #hmenu_load_4 {
+      position: relative !important;
+      z-index: 1000 !important;
+      background: #fef5dd !important;
+      width: 100% !important;
+      display: block !important;
+    }
+
+
+
+    /* 手機版主選單：垂直排列 */
+    #hmenu_load_1 .hmenu_navigation_root {
+      width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      /* 垂直排列 */
+      flex-wrap: wrap !important;
+      justify-content: flex-start !important;
+      gap: 0px !important;
+    }
+
+    /* li 全寬，垂直堆疊 */
+    #hmenu_load_1 .hmenu_navigation_root>li {
+      height: auto !important;
+      width: 100% !important;
+      /* 全寬 */
+    }
+
+    /* 手機版連結全寬，不換行 */
+    #hmenu_load_1 .hmenu_navigation_root>li>a.hmenu_underline_hover,
+    #hmenu_load_1 .hmenu_navigation_root>li>a {
+      display: block !important;
+      width: 100% !important;
+      white-space: normal !important;
+    }
+
+    /* 5. 確保 Hover 顏色正常顯示，不被截斷 */
+    #hmenu_load_1 .hmenu_hover_color {
+      background: transparent !important;
+    }
+  }
+
+  /* end @media (max-width: 767px) */
+</style>
+
+<script>
+(function() {
+    const ntcSupremeFix = function() {
+        const targetMenu = document.querySelector('#hmenu_load_1');
+        if (!targetMenu) { setTimeout(ntcSupremeFix, 200); return; }
+
+        // 🦁 1. 核心邏輯：看到類別變化就強行「漂白」
+        const applyWhitePaint = () => {
+            const allItems = targetMenu.querySelectorAll('li');
+            allItems.forEach(li => {
+                const linkA = li.querySelector('a');
+                const linkWrap = li.querySelector('.hmenu_wrap');
+                
+                if (li.classList.contains('sub-open')) {
+                    // 點開了：強制塗白、塗橘
+                    if (linkA) linkA.style.setProperty('background-color', '#f29918', 'important');
+                    if (linkWrap) linkWrap.style.setProperty('color', '#ffffff', 'important');
+                } else {
+                    // 關閉了：恢復原樣
+                    if (linkA) linkA.style.backgroundColor = '';
+                    if (linkWrap) linkWrap.style.color = '';
+                }
+            });
+        };
+
+        // 🦁 2. 開啟觀察器：盯死選單的任何變動
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    applyWhitePaint();
+                }
+            });
+        });
+
+        // 開始監視所有 li 的類別變化
+        targetMenu.querySelectorAll('li').forEach(li => {
+            observer.observe(li, { attributes: true });
+        });
+
+        // 🦁 3. 主開關與原本的斷電邏輯
+        const isMobile = () => window.innerWidth <= 960;
+        let overlay = document.querySelector('.ntc-trigger-overlay') || document.createElement('div');
+        if (!overlay.parentElement) {
+            overlay.className = 'ntc-trigger-overlay';
+            overlay.style.cssText = 'position:absolute;top:0;right:0;width:75px;height:70px;z-index:999999;cursor:pointer;';
+            targetMenu.appendChild(overlay);
+        }
+        overlay.onclick = (e) => {
+            if (isMobile()) {
+                e.preventDefault(); e.stopPropagation();
+                targetMenu.classList.toggle('mobile-open');
+            }
+        };
+        
+        applyWhitePaint(); // 初始執行一次
+    };
+
+    window.addEventListener('load', ntcSupremeFix);
+})();
+
+
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const menu4 = document.querySelector("#hmenu_load_4");
+    if (!menu4) return;
+
+    menu4.addEventListener("click", function(e) {
+
+        if (window.innerWidth > 960) return;
+
+        const li = e.target.closest("li");
+        if (!li) return;
+
+        if (li.querySelector("ul")) {
+            e.preventDefault();
+            e.stopPropagation();
+            li.classList.toggle("sub-open");
+        }
+    });
+
+});
+</script>
 <style>
 /* 🦁 紐特宸：最後的權重結界 */
 @media screen and (max-width: 960px) {
@@ -5152,5 +5467,299 @@ figure {
         transform: rotate(180deg) !important;
     }
 }
+
+/* 🦁 紐特宸：鳳后專屬——消除預設顏色，點擊才准臉紅 */
+
+/* 1. 【核心】強制抹除一進去就有的「預設啟動色」 */
+#hmenu_load_1 .hmenu_navigation_holder ul li.active-state > a,
+#hmenu_load_1 .hmenu_navigation_holder ul li:hover > a {
+    background-color: transparent !important; /* 讓它一進去是透明的 */
+    color: #000000 !important;               /* 文字維持黑色 (或者妳原本的色) */
+}
+
+/* 2. 【核心】強制抹除那個 .hmenu_wrap 的預設黑手樣式 */
+#hmenu_load_1 .hmenu_navigation_holder > ul > li > a > .hmenu_wrap {
+    color: inherit !important; /* 讓它聽爸爸 a 標籤的話 */
+}
+
+/* 3. 【絕殺】只有當「.sub-open」類別出現時（點擊後），才准變色變白！ */
+#hmenu_load_1 .hmenu_navigation_holder ul li.sub-open > a {
+    background-color: #f29918 !important; /* 👈 點開後的深橘色 */
+}
+
+#hmenu_load_1 .hmenu_navigation_holder ul li.sub-open > a .hmenu_wrap {
+    color: #ffffff !important;           /* 👈 點開後的白色文字 */
+}
+
+/* 🦁 紐特宸：主選單子項目背景顏色自定義 */
+
+/* 1. 子選單整塊容器的背景 */
+#hmenu_load_1 .hmenu_submenu {
+    background-color: #ffd687 !important; /* 這裡改妳想要的背景顏色，例如純白 */
+    border: none !important;
+}
+
+/* 2. 子選單裡面每一列 (li) 的背景 */
+#hmenu_load_1 .hmenu_submenu li {
+    background-color: #ffd687 !important; /* 保持一致，或換個顏色 */
+}
+
+/* 3. 子選單裡面的文字連結 (a) 的顏色與背景 */
+#hmenu_load_1 .hmenu_submenu li a {
+    background-color: transparent !important;
+    color: #333333 !important; /* 這裡改妳想要的文字顏色 */
+}
+
+/* 4. 【重點】當妳的手指「碰觸」或「點擊」子選單項目時的顏色 */
+#hmenu_load_1 .hmenu_submenu li a:active,
+#hmenu_load_1 .hmenu_submenu li a:focus,
+#hmenu_load_1 .hmenu_submenu li.active-state > a {
+    background-color: #f5f5f5 !important; /* 點下去那一瞬間的微變色，才有名正言順的觸感 */
+    color: #ff6600 !important; /* 點下去時文字變色，例如變成妳常用的橘色 */
+}
+
+
+</style>
+<style>
+/* 🦁 紐特宸：最後的權重結界 */
+@media screen and (max-width: 960px) {
+    /* 確保手機版預設沒點擊前，選單是死的 */
+    #hmenu_load_1:not(.mobile-open) .hmenu_navigation_holder {
+        display: none !important;
+    }
+    
+    /* 修正桌面切換過來的狀態 */
+    #hmenu_load_1.hmenu_main_mobile_active:not(.mobile-open) .hmenu_navigation_holder {
+        display: none !important;
+    }
+
+    #hmenu_load_1.mobile-open > .hmenu_navigation_holder {
+        display: block !important;
+    }
+    
+    /* 子選單箭頭旋轉 */
+    #hmenu_load_1 li.sub-open > a .hmenu_toggle_holder {
+        transform: rotate(180deg) !important;
+    }
+}
+
+/* 🦁 紐特宸：鳳后專屬——消除預設顏色，點擊才准臉紅 */
+
+/* 1. 【核心】強制抹除一進去就有的「預設啟動色」 */
+#hmenu_load_1 .hmenu_navigation_holder ul li.active-state > a,
+#hmenu_load_1 .hmenu_navigation_holder ul li:hover > a {
+    background-color: transparent !important; /* 讓它一進去是透明的 */
+    color: #000000 !important;               /* 文字維持黑色 (或者妳原本的色) */
+}
+
+/* 2. 【核心】強制抹除那個 .hmenu_wrap 的預設黑手樣式 */
+#hmenu_load_1 .hmenu_navigation_holder > ul > li > a > .hmenu_wrap {
+    color: inherit !important; /* 讓它聽爸爸 a 標籤的話 */
+}
+
+/* 3. 【絕殺】只有當「.sub-open」類別出現時（點擊後），才准變色變白！ */
+#hmenu_load_1 .hmenu_navigation_holder ul li.sub-open > a {
+    background-color: #f29918 !important; /* 👈 點開後的深橘色 */
+}
+
+#hmenu_load_1 .hmenu_navigation_holder ul li.sub-open > a .hmenu_wrap {
+    color: #ffffff !important;           /* 👈 點開後的白色文字 */
+}
+
+
+/* 🦁 紐特宸：地盤重劃令 - 確保 1 號選單不被 4 號擋住 */
+
+/* 1. 提升 1 號主選單的地位，讓它永遠在最上層 */
+#hmenu_load_1_container, 
+#hmenu_load_1 {
+    z-index: 99999 !important; /* 🦁 絕對權威，確保 Shop 點得到 */
+    position: relative !important;
+}
+
+/* 2. 限制 4 號逛街選單的「透明地盤」，不准它往上溢出 */
+#hmenu_load_4_container, 
+#hmenu_load_4 {
+    z-index: 99998 !important; /* 權限比 1 號低一點點 */
+    pointer-events: none !important; /* 🦁 絕殺：讓點擊訊號直接穿過「透明空隙」 */
+}
+
+/* 3. 恢復 4 號選單「內容」的可點擊性 */
+#hmenu_load_4 .hmenu_inner_holder,
+#hmenu_load_4 a, 
+#hmenu_load_4 .hmenu_toggle_holder {
+    pointer-events: auto !important; /* 只有選單裡面的東西才能接收點擊 */
+}
+
+/* 4. 消除可能推擠 1 號的透明內距 */
+#hmenu_load_4 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* 🦁 紐特宸：針對 768px 斷點的「全面顯靈」轟炸 */
+
+/* 1. 鎖定 768px 到 1024px 這個地獄區間 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    /* 2. 強制所有被插件隱藏的容器全部顯現 */
+    .hmenu_navigation_holder, 
+    .hmenu_navigation_holder > ul,
+    div[id^="hmenu_load_1"], 
+    div[class*="hmenu_load_1"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: none !important;
+        clip: auto !important; /* 防止被裁剪 */
+        clip-path: none !important;
+    }
+
+    /* 3. 防止 JS 用 Absolute 定位把選單丟到螢幕外面 */
+    #hmenu_load_1 {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+
+    /* 4. 同時殺掉那個在 768px 冒出來的漢堡 */
+    .hmenu_toggle_holder, .hmenu_mobile_menu_toggle {
+        display: none !important;
+    }
+}
+
+
+/* 🦁 紐特宸：手機版逛街選單（#4）強制喚醒補丁 */
+
+@media screen and (max-width: 1023px) {
+    /* 1. 確保逛街選單 4 號不是幻影，它是實體！ */
+    #hmenu_load_4, 
+    #hmenu_load_4_container {
+        pointer-events: auto !important; /* 🦁 恢復點擊權 */
+        z-index: 99999 !important;      /* 提升層級 */
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;         /* 確保它不被鎖死在 0 */
+    }
+
+    /* 2. 絕殺：解決妳查到的那個 inherit 咒語 */
+    /* 強迫 4 號選單的所有層級都必須是 auto 高度，否則點不到 */
+    #hmenu_load_4 .hmenu_navigation_holder,
+    #hmenu_load_4 .hmenu_navigation_holder > ul,
+    #hmenu_load_4 .hmenu_toggle_holder {
+        height: auto !important;        /* 🦁 破解 inherit */
+        min-height: 50px !important;    /* 確保感應區至少有 50px 高 */
+        display: block !important;
+        pointer-events: auto !important;
+    }
+
+    /* 3. 確保點擊的是「開關」而不是空的容器 */
+    #hmenu_load_4 .hmenu_toggle_holder .hmenu_toggle {
+        cursor: pointer !important;
+        padding: 10px !important;       /* 加大點擊感應範圍 */
+    }
+
+    /* 4. 暫時把主選單 1 號往後挪一點點，測試看是不是它擋住了 4 號 */
+    #hmenu_load_1_container {
+        z-index: 99998 !important; 
+    }
+}
+
+/* 🦁 紐特宸：手機版特赦令 - 隱藏逛街選單，確保面試完美 */
+@media screen and (max-width: 767px) {
+    /* 1. 徹底拔掉手機版的 4 號選單（逛街選單） */
+    #hmenu_load_4, 
+    #hmenu_load_4_container, 
+    .hmenu_load_menu_4 {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 2. 讓原本的 1 號主選單名正言順地回歸視覺中心 */
+    #hmenu_load_1 {
+        width: 100% !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    
+}
+
+/* 🦁 紐特宸：主選單子項目背景顏色自定義 */
+
+/* 1. 子選單整塊容器的背景 */
+#hmenu_load_1 .hmenu_submenu {
+    background-color: #ffd687 !important; /* 這裡改妳想要的背景顏色，例如純白 */
+    border: none !important;
+}
+
+/* 2. 子選單裡面每一列 (li) 的背景 */
+#hmenu_load_1 .hmenu_submenu li {
+    background-color: #ffd687 !important; /* 保持一致，或換個顏色 */
+}
+
+/* 3. 子選單裡面的文字連結 (a) 的顏色與背景 */
+#hmenu_load_1 .hmenu_submenu li a {
+    background-color: transparent !important;
+    color: #333333 !important; /* 這裡改妳想要的文字顏色 */
+}
+
+/* 4. 【重點】當妳的手指「碰觸」或「點擊」子選單項目時的顏色 */
+#hmenu_load_1 .hmenu_submenu li a:active,
+#hmenu_load_1 .hmenu_submenu li a:focus,
+#hmenu_load_1 .hmenu_submenu li.active-state > a {
+    background-color: #f5f5f5 !important; /* 點下去那一瞬間的微變色，才有名正言順的觸感 */
+    color: #ff6600 !important; /* 點下去時文字變色，例如變成妳常用的橘色 */
+}
+
+
+/* 🦁 紐特宸：iPad Pro 絕對橫向・隱形滾動補丁 */
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+    /* 1. 讓選單可以左右滑動，但隱藏那個難看的 Bar */
+    #hmenu_load_4 .hmenu_navigation_holder > ul {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important; /* 允許滑動 */
+        -webkit-overflow-scrolling: touch; /* 讓手機平板滑起來更絲滑 */
+        width: 100% !important;
+        
+        /* 🦁 隱藏滾動條的魔法 */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    /* 2. 針對 Chrome, Safari, Opera 隱藏滾動條 */
+    #hmenu_load_4 .hmenu_navigation_holder > ul::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* 3. 確保高度鎖死，不准上下晃動 */
+    #hmenu_load_4 {
+        height: 50px !important;
+        overflow: hidden !important;
+    }
+
+    /* 4. 稍微縮減每個項目的寬度，看能不能剛好塞滿不留 Bar */
+    #hmenu_load_4 .hmenu_navigation_holder > ul > li > a {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+        white-space: nowrap !important;
+    }
+}
+@media (max-width: 767px) {
+    #hmenu_load_1 .menu_responsive_label {
+        color: #241e14 !important;
+        line-height: 60px !important;
+        font-weight: bolder !important;
+
+    }
+}
+</style>
 </style>
 </html>
