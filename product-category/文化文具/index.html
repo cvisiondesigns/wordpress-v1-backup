@@ -2699,7 +2699,37 @@ a.uk-link-muted:hover {
 .uk-card-primary.uk-card-body .uk-subnav>*>:first-child, .uk-card-primary>:not([class*=uk-card-media]) .uk-subnav>*>:first-child, .uk-card-secondary.uk-card-body .uk-subnav>*>:first-child, .uk-card-secondary>:not([class*=uk-card-media]) .uk-subnav>*>:first-child, .uk-light .uk-subnav>*>:first-child, .uk-offcanvas-bar .uk-subnav>*>:first-child, .uk-overlay-primary .uk-subnav>*>:first-child, .uk-section-primary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-section-secondary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-tile-primary:not(.uk-preserve-color) .uk-subnav>*>:first-child, .uk-tile-secondary:not(.uk-preserve-color) .uk-subnav>*>:first-child {
     color: rgba(255, 255, 255, .8);
     font-weight: 400;
-}		</style>
+}	
+
+/* 逛街選單無法致中問題 */
+@media (max-width: 767px) {
+    #hmenu_load_4 .menu_responsive_label
+ {
+       
+  display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        height: 40px !important;
+        line-height: 40px !important; /* 🦁 加上這行，讓文字在 40px 高度裡垂直居中 */
+        
+        /* 👇 鼻特製：強制清除所有可能導致歪掉的干擾 */
+        margin: 0 auto !important;     /* 確保左右間距相等 */
+        padding-left: 0 !important;    /* 防止內縮導致重心偏移 */
+        padding-right: 0 !important;
+        left: 0 !important;            /* 防止相對定位偏移 */
+        right: 0 !important;
+        float: none !important;        /* 防止它往左或往右飄 */
+        
+    }
+}
+/* 逛街選單調整置中，加上 body 或 html 前綴，增加重量截斷hero menu css控制麵包桿 */
+body #hmenu_load_4 div.menu_responsive_label {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 auto !important;
+}
+</style>
 		    </head>
 
 
