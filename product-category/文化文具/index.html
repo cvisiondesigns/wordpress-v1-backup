@@ -2855,9 +2855,104 @@ body #hmenu_load_4 div.menu_responsive_label {
             
             
                 
-                    <div> <script type="text/javascript"> jQuery(function(){ hmenu_activate_menu('4','/product-category/%E6%96%87%E5%8C%96%E6%96%87%E5%85%B7/'); }); </script> <link rel="stylesheet" property="stylesheet" id="hmenu-4-general-css" href="../../cwp/wp-content/plugins/hmenu/_frontend_files/_menu_4/_css/hero_menu_styles.css" type="text/css" media="all"><link href="https://fonts.googleapis.com/css?family=Federo%7COpen+Sans" rel="stylesheet" type="text/css"><div class="hmenu_wrapper_state_4"><div id="hmenu_load_4" style="display:none" class="hmenu_load_menu hmenu_unique_menu_4" data-menu-id="4"> <!-- BEGIN: MAIN --> <div id="hmenu_holder_4" class="hmenu_main_holder hmenu_main_bg_color"> <!-- BEGIN: INNER --> <div class="hmenu_inner_holder"> <div class="menu_responsive_label">｛ 逛街 ｝</div> <!-- BEGIN: LEFT --> <div class="hmenu_left"> <!-- BEGIN: LOGO --> <div class="hmenu_logo"> <a href="../../cwp" target="_self"> </a> </div> <div class="hmenu_grp_devider"></div> <!-- END: LOGO --> </div> <!-- END: LEFT --> <!-- BEGIN: CENTER --> <div class="hmenu_center"> <!-- BEGIN: NAV --> <div class="hmenu_navigation_holder"> <ul class="hmenu_navigation_root hmenu_hover_color hmenu_underline_hover"><li class=""><a href="../%e6%89%8b%e6%8c%87%e6%bb%91%e6%9d%bf%e7%b3%bb%e5%88%97" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_31"><span>手指滑板系列</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../%e7%99%82%e7%99%92%e6%96%87%e5%89%b5" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_25"><span>療癒文創</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../%e6%96%87%e5%8c%96%e6%96%87%e5%85%b7" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_26"><span>文化文具</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../../my-account/index.html" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_30"><span>會員&amp;訂單</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../../cart/index.html" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_28"><span>購物車</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../../checkout/index.html" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_29"><span>結帳</span></div></a><div class="hmenu_item_devider"></div></li></ul> <ul class="hmenu_show_for_mobile"> <li class="hmenu_mobile_social_holder"> </li> </ul> </div> <div class="hmenu_grp_devider"></div> <!-- END: NAV --> </div> <!-- END: CENTER --> <!-- BEGIN: RIGHT --> <div class="hmenu_right"> <!-- BEGIN: SOCIAL --> <div class="hmenu_social_holder hmenu_hide_for_mobile"> <ul class="hmenu_hover_color"> </ul> </div> <div class="hmenu_grp_devider"></div> <!-- END: SOCIAL --> <!-- BEGIN: TOGGLE --> <div class="hmenu_toggle_holder hmenu_mobile_show" data-toggle="close"> <div class="hmenu_grp_devider"></div> <ul class="hmenu_hover_color"> <li><a><div class="hmenu_wrap icon_hero_default_thin_e645"></div></a></li> </ul> </div> <!-- END: TOGGLE --> </div> <!-- END: RIGHT --> </div> <!-- END: INNER --> <!-- BEGIN: SEARCH FULL INPUT --> <!-- END: SEARCH FULL INPUT --> </div> <!-- END: MAIN --> </div></div></div>
-                
-            
+                     <div class="newt_eternal_wrapper">
+    <div class="newt_mobile_trigger" onclick="toggleNewtMenu()">
+        <span>｛ 逛街 ｝</span>
+        <div class="newt_hamburger_icon">
+            <i></i><i></i><i></i>
+        </div>
+    </div>
+
+    <ul id="newt_nav_list" class="newt_eternal_nav">
+        <li><a href="/product-category/%e6%89%8b%e6%8c%87%e6%bb%91%e6%9d%bf%e7%b3%bb%e5%88%97">手指滑板系列</a></li>
+        <li><a href="/product-category/%e7%99%82%e7%99%92%e6%96%87%e5%89%b5">療癒文創</a></li>
+        <li><a href="#">文化文具</a></li>
+        <li><a href="/my-account/index.html">會員&訂單</a></li>
+        <li><a href="/cart/index.html">購物車</a></li>
+        <li><a href="/checkout/index.html">結帳</a></li>
+    </ul>
+</div>
+
+<style>
+    /* 1. 基礎設定與封印壞東西 */
+    #hmenu_load_4 { display: none !important; height: 0 !important; }
+    
+    .newt_eternal_wrapper {
+        width: 100% !important;
+        background: #fff9e1 !important;
+        border-bottom: 0px solid #eee !important;
+        padding: 0 !important;
+        display: block !important;
+        clear: both !important;
+        position: relative;
+    }
+
+    /* 2. 預設桌面與平板：水噹噹橫排與分隔線 */
+    .newt_eternal_nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 12px 0 !important;
+    }
+
+    .newt_eternal_nav li { display: flex; align-items: center; }
+    .newt_eternal_nav li a {
+        color: #ac6f00 !important;
+        text-decoration: none !important;
+        font-weight: bolder !important;
+        font-size: 18px !important;
+        padding: 15px 15px !important;
+        border-top: 2px solid #fff5cb;
+        background: #fff9e1 !important;
+        
+    }
+    .newt_eternal_nav li:not(:last-child)::after {
+        content: "｜"; color: #ccc; font-size: 12px;
+    }
+
+    /* 預設隱藏漢堡按鈕 */
+    .newt_mobile_trigger { display: none; }
+
+    /* 3. 【核心】320px 以下變身漢堡選單 */
+    @media (max-width: 480px) { /* 建議設 480 讓一般手機也受惠，若堅持 320 可改為 320 */
+        .newt_mobile_trigger {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+            gap: 10px;
+            font-weight:bolder;
+            color: #ac6f00;
+        }
+
+        .newt_hamburger_icon { display: flex; flex-direction: column; gap: 4px; }
+        .newt_hamburger_icon i { display: block; width: 20px; height: 0px; background: #ac6f00; }
+
+        .newt_eternal_nav {
+            display: none !important; /* 預設收起來 */
+            flex-direction: column !important;
+            padding: 0 !important;
+            border-top: 1px solid #fff5cb;
+        }
+
+        /* 展開狀態 */
+        .newt_eternal_nav.is-open { display: flex !important; }
+        .newt_eternal_nav li { width: 100%; justify-content: center; border-bottom: 1px solid #f9f9f9; }
+        .newt_eternal_nav li::after { content: "" !important; } /* 手機版不留分隔線 */
+        .newt_eternal_nav li a { padding: 12px 0 !important; width: 100%; text-align: center; }
+    }
+</style>
+
+<script>
+    function toggleNewtMenu() {
+        var nav = document.getElementById('newt_nav_list');
+        nav.classList.toggle('is-open');
+    }
+</script>
         
     
 </div>

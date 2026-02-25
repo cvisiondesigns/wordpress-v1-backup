@@ -2856,12 +2856,108 @@ body #hmenu_load_4 div.menu_responsive_label {
             
             
                 
-                    <div> <script type="text/javascript"> jQuery(function(){ hmenu_activate_menu('4','/product-category/%E6%89%8B%E6%8C%87%E6%BB%91%E6%9D%BF%E7%B3%BB%E5%88%97/'); }); </script> <link rel="stylesheet" property="stylesheet" id="hmenu-4-general-css" href="../../cwp/wp-content/plugins/hmenu/_frontend_files/_menu_4/_css/hero_menu_styles.css" type="text/css" media="all"><link href="https://fonts.googleapis.com/css?family=Federo%7COpen+Sans" rel="stylesheet" type="text/css"><div class="hmenu_wrapper_state_4"><div id="hmenu_load_4" style="display:none" class="hmenu_load_menu hmenu_unique_menu_4" data-menu-id="4"> <!-- BEGIN: MAIN --> <div id="hmenu_holder_4" class="hmenu_main_holder hmenu_main_bg_color"> <!-- BEGIN: INNER --> <div class="hmenu_inner_holder"> <div class="menu_responsive_label">｛ 逛街 ｝</div> <!-- BEGIN: LEFT --> <div class="hmenu_left"> <!-- BEGIN: LOGO --> <div class="hmenu_logo"> <a href="../../cwp" target="_self"> </a> </div> <div class="hmenu_grp_devider"></div> <!-- END: LOGO --> </div> <!-- END: LEFT --> <!-- BEGIN: CENTER --> <div class="hmenu_center"> <!-- BEGIN: NAV --> <div class="hmenu_navigation_holder"> <ul class="hmenu_navigation_root hmenu_hover_color hmenu_underline_hover"><li class=""><a href="../%e6%89%8b%e6%8c%87%e6%bb%91%e6%9d%bf%e7%b3%bb%e5%88%97" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_31"><span>手指滑板系列</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../%e7%99%82%e7%99%92%e6%96%87%e5%89%b5" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_25"><span>療癒文創</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../%e6%96%87%e5%8c%96%e6%96%87%e5%85%b7" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_26"><span>文化文具</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../../my-account/index.html" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_30"><span>會員&amp;訂單</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../../cart/index.html" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_28"><span>購物車</span></div></a><div class="hmenu_item_devider"></div></li><li class=""><a href="../../checkout/index.html" target="_self" title=""><div class="hmenu_no_sub hmenu_wrap hmenu_nav_uni_29"><span>結帳</span></div></a><div class="hmenu_item_devider"></div></li></ul> <ul class="hmenu_show_for_mobile"> <li class="hmenu_mobile_social_holder"> </li> </ul> </div> <div class="hmenu_grp_devider"></div> <!-- END: NAV --> </div> <!-- END: CENTER --> <!-- BEGIN: RIGHT --> <div class="hmenu_right"> <!-- BEGIN: SOCIAL --> <div class="hmenu_social_holder hmenu_hide_for_mobile"> <ul class="hmenu_hover_color"> </ul> </div> <div class="hmenu_grp_devider"></div> <!-- END: SOCIAL --> <!-- BEGIN: TOGGLE --> <div class="hmenu_toggle_holder hmenu_mobile_show" data-toggle="close"> <div class="hmenu_grp_devider"></div> <ul class="hmenu_hover_color"> <li><a><div class="hmenu_wrap icon_hero_default_thin_e645"></div></a></li> </ul> </div> <!-- END: TOGGLE --> </div> <!-- END: RIGHT --> </div> <!-- END: INNER --> <!-- BEGIN: SEARCH FULL INPUT --> <!-- END: SEARCH FULL INPUT --> </div> <!-- END: MAIN --> </div></div></div>
-                
-            
+             <div class="newt_eternal_wrapper">
+    <div class="newt_mobile_trigger" onclick="toggleNewtMenu()">
+        <span>｛ 逛街 ｝</span>
+        <div class="newt_hamburger_icon">
+            <i></i><i></i><i></i>
+        </div>
+    </div>
+
+    <ul id="newt_nav_list" class="newt_eternal_nav">
+        <li><a href="#">手指滑板系列</a></li>
+        <li><a href="/product-category/%e7%99%82%e7%99%92%e6%96%87%e5%89%b5">療癒文創</a></li>
+        <li><a href="/product-category/%e6%96%87%e5%8c%96%e6%96%87%e5%85%b7">文化文具</a></li>
+        <li><a href="/my-account/index.html">會員&訂單</a></li>
+        <li><a href="/cart/index.html">購物車</a></li>
+        <li><a href="/checkout/index.html">結帳</a></li>
+    </ul>
+</div>
+
+<style>
+    /* 1. 基礎設定與封印壞東西 */
+    #hmenu_load_4 { display: none !important; height: 0 !important; }
+    
+    .newt_eternal_wrapper {
+        width: 100% !important;
+        background: #fff9e1 !important;
+        border-bottom: 0px solid #eee !important;
+        padding: 0 !important;
+        display: block !important;
+        clear: both !important;
+        position: relative;
+    }
+
+    /* 2. 預設桌面與平板：水噹噹橫排與分隔線 */
+    .newt_eternal_nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 12px 0 !important;
+    }
+
+    .newt_eternal_nav li { display: flex; align-items: center; }
+    .newt_eternal_nav li a {
+        color: #ac6f00 !important;
+        text-decoration: none !important;
+        font-weight: bolder !important;
+        font-size: 18px !important;
+        padding: 15px 15px !important;
+        border-top: 2px solid #fff5cb;
+        background: #fff9e1 !important;
         
+    }
+    .newt_eternal_nav li:not(:last-child)::after {
+        content: "｜"; color: #ccc; font-size: 12px;
+    }
+
+    /* 預設隱藏漢堡按鈕 */
+    .newt_mobile_trigger { display: none; }
+
+    /* 3. 【核心】320px 以下變身漢堡選單 */
+    @media (max-width: 480px) { /* 建議設 480 讓一般手機也受惠，若堅持 320 可改為 320 */
+        .newt_mobile_trigger {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+            gap: 10px;
+            font-weight:bolder;
+            color: #ac6f00;
+        }
+
+        .newt_hamburger_icon { display: flex; flex-direction: column; gap: 4px; }
+        .newt_hamburger_icon i { display: block; width: 20px; height: 0px; background: #ac6f00; }
+
+        .newt_eternal_nav {
+            display: none !important; /* 預設收起來 */
+            flex-direction: column !important;
+            padding: 0 !important;
+            border-top: 1px solid #fff5cb;
+        }
+
+        /* 展開狀態 */
+        .newt_eternal_nav.is-open { display: flex !important; }
+        .newt_eternal_nav li { width: 100%; justify-content: center; border-bottom: 1px solid #f9f9f9; }
+        .newt_eternal_nav li::after { content: "" !important; } /* 手機版不留分隔線 */
+        .newt_eternal_nav li a { padding: 12px 0 !important; width: 100%; text-align: center; }
+    }
+</style>
+
+<script>
+    function toggleNewtMenu() {
+        var nav = document.getElementById('newt_nav_list');
+        nav.classList.toggle('is-open');
+    }
+</script>
     
 </div>
+
+
 </div><div class="tm-grid-expand uk-child-width-1-1 uk-grid-margin" uk-grid>
 <div>
     
@@ -3534,5 +3630,161 @@ var fifuImageVars = {"fifu_woo_lbox_enabled":"","fifu_is_product":"","fifu_is_fl
 <script type="text/javascript" src="../../cwp/wp-content/plugins/hmenu/assets/js/frontend_dimensions.js?ver=6.8.3" id="hmenu_userdimentions-js"></script>
 <script type="text/javascript">window.addEventListener("DOMContentLoaded",(e=>{document.querySelectorAll('img[loading="lazy"]').forEach((e=>{e.getBoundingClientRect().top<=window.innerHeight&&(e.loading="eager")}))}));</script>    
 
+  
 
-</body></html>
+        </body>
+
+ <script>
+          (function () {
+            // PRO Robust Menu Controller v20 - CONSOLIDATED
+            var menuController = {
+              init: function () {
+                console.log('Menu Controller Init v20 - Shop');
+                this.applyGlobalFixes();
+                this.moveMenuToContainer();
+                this.fixMobileLayout();
+                this.setupShoppingMenu();
+                this.setupMainMenu();
+                this.setupGlobalHandlers();
+              },
+              applyGlobalFixes: function () {
+                document.documentElement.style.overflowX = 'hidden';
+                document.body.style.overflowX = 'hidden';
+                document.body.style.width = '100%';
+              },
+              moveMenuToContainer: function () {
+                var isMobile = window.innerWidth <= 767;
+                var shopMenu = document.getElementById('hmenu_load_4');
+                var container = document.getElementById('mobile-shop-menu-container');
+                if (isMobile && shopMenu && container && !container.contains(shopMenu)) {
+                  container.appendChild(shopMenu);
+                } else if (!isMobile && shopMenu && container && container.contains(shopMenu)) {
+                  // Move back to original state if needed or leave it
+                }
+              },
+              fixMobileLayout: function () {
+                var isMobile = window.innerWidth <= 767;
+                var shopMenu = document.getElementById('hmenu_load_4');
+                if (isMobile && shopMenu) {
+                  var setImp = function (el, prop, val) { el.style.setProperty(prop, val, 'important'); };
+                  var holders = shopMenu.querySelectorAll('.hmenu_main_holder, .hmenu_inner_holder, .hmenu_center');
+                  holders.forEach(function (h) {
+                    setImp(h, 'display', 'block');
+                    setImp(h, 'width', '100%');
+                    setImp(h, 'left', '0');
+                    setImp(h, 'transform', 'none');
+                    setImp(h, 'margin', '0 auto');
+                  });
+                  setImp(shopMenu, 'left', '0');
+                  setImp(shopMenu, 'width', '100%');
+                }
+              },
+              setupAccordion: function (wrapperId, labelSelector, navSelector, mobileClass, bodyClass) {
+                var wrapper = document.querySelector(wrapperId);
+                if (!wrapper) return;
+                var labels = wrapper.querySelectorAll(labelSelector);
+                var nav = wrapper.querySelector(navSelector);
+                if (labels.length > 0 && nav) {
+                  nav.classList.add(mobileClass);
+                  var toggleFunc = (function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var wasOpen = nav.classList.contains('mobile-open');
+
+                    // Close all first
+                    document.querySelectorAll('.mobile-open').forEach(function (el) { el.classList.remove('mobile-open'); });
+
+                    if (!wasOpen) {
+                      nav.classList.add('mobile-open');
+                      if (bodyClass) document.body.classList.add(bodyClass);
+                    } else {
+                      if (bodyClass) document.body.classList.remove(bodyClass);
+                    }
+                  }).bind(this);
+
+                  labels.forEach(function (label) {
+                    if (label.dataset.initV20) return;
+                    label.dataset.initV20 = "true";
+                    label.addEventListener('click', toggleFunc);
+                    label.addEventListener('touchstart', toggleFunc, { passive: false });
+                  });
+                  this.injectToggleArea(nav);
+                }
+              },
+              injectToggleArea: function (nav) {
+                var parents = nav.querySelectorAll('li');
+                parents.forEach(function (li) {
+                  var sub = li.querySelector('.hmenu_submenu');
+                  if (sub && !li.dataset.toggleInitV20) {
+                    li.dataset.toggleInitV20 = "true";
+                    var toggle = document.createElement('span');
+                    toggle.className = 'hmenu_click_toggle';
+                    li.appendChild(toggle);
+                    var subToggle = function (e) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      var isOpen = sub.classList.contains('sub-open');
+                      sub.classList.toggle('sub-open');
+                      if (!isOpen) {
+                        // 強制顯示：覆蓋插件 opacity:0 visibility:hidden position:absolute
+                        sub.style.setProperty('display', 'block', 'important');
+                        sub.style.setProperty('opacity', '1', 'important');
+                        sub.style.setProperty('visibility', 'visible', 'important');
+                        sub.style.setProperty('position', 'static', 'important');
+                        sub.style.setProperty('width', '100%', 'important');
+                        sub.style.setProperty('height', 'auto', 'important');
+                        sub.style.setProperty('max-height', 'none', 'important');
+                        sub.style.setProperty('overflow', 'visible', 'important');
+                        sub.style.setProperty('left', 'auto', 'important');
+                        sub.style.setProperty('top', 'auto', 'important');
+                      } else {
+                        // 還原隱藏
+                        sub.style.removeProperty('display');
+                        sub.style.removeProperty('opacity');
+                        sub.style.removeProperty('visibility');
+                        sub.style.removeProperty('position');
+                        sub.style.removeProperty('width');
+                        sub.style.removeProperty('height');
+                        sub.style.removeProperty('max-height');
+                        sub.style.removeProperty('overflow');
+                        sub.style.removeProperty('left');
+                        sub.style.removeProperty('top');
+                      }
+                    };
+                    toggle.addEventListener('click', subToggle);
+                    toggle.addEventListener('touchstart', subToggle, { passive: false });
+                  }
+                });
+              },
+              setupShoppingMenu: function () {
+                this.setupAccordion('#hmenu_load_4', '.menu_responsive_label, .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_shopping_mobile_active', 'heron-menu-active');
+              },
+              setupMainMenu: function () {
+                this.setupAccordion('#hmenu_load_1', '.menu_responsive_label, #hmenu_load_1 .hmenu_toggle_holder', '.hmenu_navigation_holder', 'hmenu_main_mobile_active', '');
+              },
+              setupGlobalHandlers: function () {
+                document.addEventListener('click', function (e) {
+                  if (!e.target.closest('.hmenu_load_menu')) {
+                    document.querySelectorAll('.mobile-open').forEach(function (el) { el.classList.remove('mobile-open'); });
+                    document.body.classList.remove('heron-menu-active');
+                  }
+                });
+                window.addEventListener('resize', this.moveMenuToContainer.bind(this));
+                window.addEventListener('resize', this.fixMobileLayout.bind(this));
+              }
+            };
+            var runInit = function () {
+              menuController.init();
+              setTimeout(function () { menuController.fixMobileLayout(); }, 300);
+            };
+            if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', runInit); } else { runInit(); }
+          })();
+        </script>
+</body>
+
+
+
+</style>
+</body>
+
+</html>
